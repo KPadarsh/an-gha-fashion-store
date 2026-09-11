@@ -38,7 +38,7 @@ const CATEGORIES: CategoryItem[] = [
     href: "/shop/outerwear",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAo654oTcXyvQ4BVlZr_Kok3e2KwfNIGJQLAfJN_CrHV97eUGkbvQcV-kxPWNssKei9Rsur8rTkkUTtBrE4a90CrFS0M43q9v59EgTO2OvEa12HbBZWDZzesoVat_Ba3S6qLvXZLE64bCr9FqHUT2AgmxwH0f1BfiSe63mOgzXDTZWfz_XEZQp1gbfSpnxM0F_NZcs_F4X5zv0VDaySlsMZED9wvYsgPPtFnF3zZsOsYhZfxD0waQiCBw",
-    imageAlt: "Outerwear category tailored coat preview",
+    imageAlt: "Outerwear category structured coat preview",
   },
   {
     id: "accessories",
@@ -53,56 +53,69 @@ const CATEGORIES: CategoryItem[] = [
 
 export function CategoryGrid() {
   return (
-    <section className="w-full px-margin py-10 sm:py-16 lg:py-24 bg-surface-container-lowest">
-      {/* Header Row */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-10 lg:mb-14 pb-3 sm:pb-4 border-b border-surface-dim/60">
-        <div className="space-y-1">
-          <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-            02 / THE WARDROBE
-          </span>
-          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-on-surface font-normal">
-            THE WARDROBE, EDITED.
-          </h2>
-        </div>
-        <p className="hidden md:block font-sans text-sm sm:text-[15px] text-on-surface-variant max-w-md leading-relaxed">
-          Explore the collection through considered silhouettes, tactile layers, and everyday essentials.
-        </p>
-      </div>
+    <section className="w-full py-10 sm:py-16 lg:py-24 bg-surface-container-lowest">
+      <div className="angha-container">
+        {/* Header Row */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-10 lg:mb-14 pb-3 sm:pb-4 border-b border-surface-dim/60">
+          <div className="space-y-1">
+            <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+              02 / THE WARDROBE
+            </span>
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-on-surface font-normal">
+              THE WARDROBE, EDITED.
+            </h2>
+          </div>
 
-      {/* 2-Col Mobile / 4-Col Desktop Visual Category Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-        {CATEGORIES.map((cat) => (
           <Link
-            key={cat.id}
-            href={cat.href}
-            className="group flex flex-col bg-surface border border-surface-dim/30 hover:border-surface-dim transition-colors"
+            href="/shop"
+            className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-primary hover:text-on-surface transition-colors pb-1"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-surface-container">
-              <Image
-                src={cat.imageUrl}
-                alt={cat.imageAlt}
-                fill
-                quality={95}
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              />
-              <span className="absolute top-2 left-2 font-sans text-[10px] sm:text-[11px] font-medium bg-surface/85 px-1.5 py-0.5 text-on-surface">
-                {cat.index}
-              </span>
-            </div>
-
-            <div className="p-2.5 sm:p-4 flex flex-col justify-between flex-grow space-y-1 sm:space-y-2">
-              <div className="flex items-center justify-between pt-1 sm:pt-2 border-t border-surface-dim/40">
-                <h3 className="font-serif text-[13px] sm:text-lg font-medium uppercase text-on-surface group-hover:text-primary transition-colors truncate">
-                  {cat.name}
-                </h3>
-                <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.08em] text-primary flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform shrink-0">
-                  EXPLORE <ArrowRight className="w-3 h-3 ml-0.5" />
-                </span>
-              </div>
-            </div>
+            <span>VIEW ALL CATEGORIES</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
-        ))}
+        </div>
+
+        {/* 4-Col Desktop / 2-Col Mobile Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          {CATEGORIES.map((cat) => (
+            <Link
+              key={cat.id}
+              href={cat.href}
+              className="group relative flex flex-col bg-surface overflow-hidden border border-surface-dim/40 hover:border-on-surface/20 transition-all"
+            >
+              {/* 3:4 Aspect Image */}
+              <div className="relative aspect-[3/4] w-full bg-surface-container-low overflow-hidden">
+                <Image
+                  src={cat.imageUrl}
+                  alt={cat.imageAlt}
+                  fill
+                  quality={95}
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+
+                {/* Index Numeral */}
+                <div className="absolute top-2.5 left-2.5 bg-surface/90 px-2 py-0.5 z-10">
+                  <span className="font-sans text-[10px] sm:text-[11px] font-medium tracking-[0.15em] text-on-surface uppercase">
+                    {cat.index}
+                  </span>
+                </div>
+              </div>
+
+              {/* Title & Chevron */}
+              <div className="p-3 sm:p-4 bg-surface-container-lowest">
+                <div className="flex items-center justify-between pt-2 border-t border-surface-dim/40">
+                  <h3 className="font-serif text-base sm:text-lg font-medium uppercase text-on-surface group-hover:text-primary transition-colors">
+                    {cat.name}
+                  </h3>
+                  <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.08em] text-on-surface group-hover:translate-x-1 transition-transform">
+                    EXPLORE →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

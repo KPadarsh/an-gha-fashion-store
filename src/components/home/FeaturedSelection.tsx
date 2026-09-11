@@ -52,45 +52,47 @@ const FEATURED_PRODUCTS: ProductCardProps[] = [
 
 export function FeaturedSelection() {
   return (
-    <section className="w-full px-margin py-10 sm:py-16 lg:py-24">
-      {/* Header */}
-      <div className="flex items-baseline justify-between mb-6 sm:mb-10 lg:mb-14 pb-2.5 sm:pb-3 border-b border-surface-dim/50">
-        <div className="space-y-1">
-          <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-            03 / FEATURED SELECTION
-          </span>
-          <h2 className="font-serif text-2xl sm:text-4xl uppercase text-on-surface tracking-tight font-normal">
-            THE NEW EDIT
-          </h2>
+    <section className="w-full py-10 sm:py-16 lg:py-24">
+      <div className="angha-container">
+        {/* Header */}
+        <div className="flex items-baseline justify-between mb-6 sm:mb-10 lg:mb-14 pb-2.5 sm:pb-3 border-b border-surface-dim/50">
+          <div className="space-y-1">
+            <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+              03 / FEATURED SELECTION
+            </span>
+            <h2 className="font-serif text-2xl sm:text-4xl uppercase text-on-surface tracking-tight font-normal">
+              THE NEW EDIT
+            </h2>
+          </div>
         </div>
-      </div>
 
-      {/* 2-Col Mobile / 4-Col Desktop Commerce Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-        {FEATURED_PRODUCTS.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </div>
+        {/* 2-Col Mobile / 4-Col Desktop Commerce Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          {FEATURED_PRODUCTS.map((product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </div>
 
-      {/* Section CTA */}
-      <div className="mt-8 sm:mt-12 lg:mt-16 text-center">
-        {/* Mobile Button Variant */}
-        <Link
-          href="/shop?collection=new-in"
-          className="sm:hidden min-h-[44px] flex items-center justify-center gap-2 font-sans text-xs uppercase tracking-[0.18em] text-on-surface hover:text-primary transition-colors bg-surface-container-low py-3 border border-surface-dim/30 w-full"
-        >
-          <span>VIEW ALL NEW IN</span>
-          <ArrowRight className="w-4 h-4" />
-        </Link>
+        {/* Section CTA */}
+        <div className="mt-8 sm:mt-12 lg:mt-16 text-center">
+          {/* Mobile Button Variant */}
+          <Link
+            href="/shop?collection=new-in"
+            className="sm:hidden min-h-[44px] flex items-center justify-center gap-2 font-sans text-xs uppercase tracking-[0.18em] text-on-surface hover:text-primary transition-colors bg-surface-container-low py-3 border border-surface-dim/30 w-full"
+          >
+            <span>VIEW ALL NEW IN</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
 
-        {/* Desktop Button Variant */}
-        <Link
-          href="/shop?collection=new-in"
-          className="hidden sm:inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-on-surface hover:text-primary pb-1 border-b border-on-surface hover:border-primary transition-colors duration-150"
-        >
-          <span>VIEW ALL NEW IN</span>
-          <span>→</span>
-        </Link>
+          {/* Desktop Button Variant */}
+          <Link
+            href="/shop?collection=new-in"
+            className="hidden sm:inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-on-surface hover:text-primary pb-1 border-b border-on-surface hover:border-primary transition-colors duration-150"
+          >
+            <span>VIEW ALL NEW IN</span>
+            <span>→</span>
+          </Link>
+        </div>
       </div>
     </section>
   );
