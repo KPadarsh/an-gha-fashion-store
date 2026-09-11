@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X, Search, Heart, ShoppingBag } from "lucide-react";
+import { X, ArrowUpRight } from "lucide-react";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -13,24 +13,24 @@ interface MobileMenuProps {
 
 interface MobileNavItem {
   label: string;
+  index: string;
   href: string;
   highlight?: boolean;
 }
 
 const MOBILE_NAV_ITEMS: MobileNavItem[] = [
-  { label: "NEW IN", href: "/shop?collection=new-in" },
-  { label: "SHOP ALL", href: "/shop" },
-  { label: "DRESSES", href: "/shop/dresses" },
-  { label: "KNITWEAR", href: "/shop/knitwear" },
-  { label: "OUTERWEAR", href: "/shop/outerwear" },
-  { label: "ACCESSORIES", href: "/shop/accessories" },
-  { label: "SALE", href: "/shop?collection=sale", highlight: true },
+  { label: "NEW IN", index: "01", href: "/shop?collection=new-in" },
+  { label: "DRESSES", index: "02", href: "/shop/dresses" },
+  { label: "KNITWEAR", index: "03", href: "/shop/knitwear" },
+  { label: "OUTERWEAR", index: "04", href: "/shop/outerwear" },
+  { label: "ACCESSORIES", index: "05", href: "/shop/accessories" },
+  { label: "SALE", index: "06", href: "/shop?collection=sale", highlight: true },
 ];
 
-export function MobileMenu({ isOpen, onClose, bagCount = 0 }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
 
-  // Close on Escape key and prevent body scroll when open
+  // Close on Escape key and lock body scroll
   useEffect(() => {
     if (!isOpen) return;
 
@@ -61,87 +61,79 @@ export function MobileMenu({ isOpen, onClose, bagCount = 0 }: MobileMenuProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Navigation Menu"
-      className="fixed inset-0 z-50 flex"
+      className="fixed inset-0 z-50 flex justify-end"
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-angha-charcoal/40 transition-opacity"
+        className="fixed inset-0 bg-inverse-surface/30 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Drawer */}
-      <div className="relative w-full max-w-sm bg-angha-ivory text-angha-charcoal h-full shadow-xl flex flex-col justify-between overflow-y-auto z-10 border-r border-angha-charcoal/10">
-        {/* Header inside drawer */}
+      {/* Drawer Panel */}
+      <aside className="relative w-full max-w-[340px] bg-background text-on-surface shadow-2xl flex flex-col justify-between h-full z-10 border-l border-surface-dim/40 overflow-y-auto">
+        {/* Drawer Header */}
         <div>
-          <div className="flex items-center justify-between px-6 py-5 border-b border-angha-charcoal/10">
-            <span className="font-serif text-xl tracking-[0.2em] uppercase font-normal">
-              AN GHA
+          <div className="h-16 px-6 flex items-center justify-between border-b border-surface-dim/40">
+            <span className="font-sans text-[11px] font-semibold tracking-[0.2em] text-on-surface-variant uppercase">
+              CATALOGUE INDEX
             </span>
             <button
               type="button"
               onClick={onClose}
-              className="p-2 -mr-2 text-angha-charcoal hover:text-angha-terracotta transition-colors"
-              aria-label="Close menu"
+              className="w-11 h-11 -mr-2 flex items-center justify-center text-on-surface hover:text-primary transition-colors focus-visible:outline-none"
+              aria-label="Close Menu"
             >
               <X className="w-5 h-5" strokeWidth={1.5} />
             </button>
           </div>
 
-          {/* Nav items */}
-          <nav className="px-6 py-6 space-y-1">
+          {/* Navigation Links with Editorial Index Numerals */}
+          <nav className="px-6 py-6 flex flex-col justify-center gap-4">
             {MOBILE_NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`block py-3 text-[13px] font-medium tracking-[0.2em] uppercase transition-colors border-b border-angha-charcoal/5 ${
+                  className={`flex items-baseline justify-between min-h-[44px] py-1 border-b border-surface-dim/20 transition-colors ${
                     item.highlight
-                      ? "text-angha-terracotta font-semibold"
+                      ? "text-primary hover:text-primary-container"
                       : isActive
-                      ? "text-angha-terracotta"
-                      : "text-angha-charcoal hover:text-angha-terracotta"
+                      ? "text-primary italic font-serif text-xl"
+                      : "text-on-surface hover:text-primary"
                   }`}
                 >
-                  {item.label}
+                  <span className="font-serif text-lg uppercase tracking-wide">
+                    {item.label}
+                  </span>
+                  <span
+                    className={`font-sans text-xs tracking-widest ${
+                      item.highlight ? "text-primary" : "text-outline"
+                    }`}
+                  >
+                    {item.index}
+                  </span>
                 </Link>
               );
             })}
           </nav>
         </div>
 
-        {/* Bottom Utility section */}
-        <div className="p-6 border-t border-angha-charcoal/10 bg-angha-blush/30 space-y-4">
-          <div className="grid grid-cols-2 gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-angha-gray">
-            <Link
-              href="/search"
-              className="flex items-center gap-2 py-2 hover:text-angha-charcoal transition-colors"
-            >
-              <Search className="w-4 h-4" strokeWidth={1.5} />
-              <span>Search</span>
-            </Link>
-            <Link
-              href="/wishlist"
-              className="flex items-center gap-2 py-2 hover:text-angha-charcoal transition-colors"
-            >
-              <Heart className="w-4 h-4" strokeWidth={1.5} />
-              <span>Wishlist</span>
-            </Link>
-            <Link
-              href="/cart"
-              className="flex items-center gap-2 py-2 hover:text-angha-charcoal transition-colors col-span-2"
-            >
-              <ShoppingBag className="w-4 h-4" strokeWidth={1.5} />
-              <span>Shopping Bag ({bagCount})</span>
-            </Link>
-          </div>
-
-          <div className="pt-2 text-[10px] tracking-[0.15em] uppercase text-angha-gray/80">
-            <p>© 2026 AN GHA • All Rights Reserved</p>
-          </div>
+        {/* Client Services Footer Panel */}
+        <div className="px-6 py-6 bg-surface-container-low flex flex-col gap-2 border-t border-surface-dim/30">
+          <Link
+            href="/contact"
+            className="flex items-center justify-between text-on-surface-variant font-sans text-xs font-semibold tracking-widest uppercase hover:text-primary transition-colors"
+          >
+            <span>CLIENT SERVICES</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+          <p className="font-sans text-xs text-outline">
+            Private Appointments & Fitting Guidance
+          </p>
         </div>
-      </div>
+      </aside>
     </div>
   );
 }

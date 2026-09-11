@@ -8,14 +8,93 @@
   --color-angha-olive: #5C5A3E;
   --color-angha-blush: #EFE4D8;
 
+  /* Stitch semantic token mappings */
+  --color-surface: #FAF6F1;
+  --color-surface-dim: #E5D7D1;
+  --color-surface-bright: #FFF8F5;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #FFF1EA;
+  --color-surface-container: #F9EBE5;
+  --color-surface-container-high: #F3E5DF;
+  --color-surface-container-highest: #EDE0D9;
+  --color-surface-variant: #EDE0D9;
+  --color-on-surface: #2B2420;
+  --color-on-surface-variant: #53433F;
+  --color-inverse-surface: #2B2420;
+  --color-inverse-on-surface: #FCEEE7;
+  --color-outline: #7A7168;
+  --color-outline-variant: #D8C2BB;
+  --color-primary: #C17A63;
+  --color-primary-container: #A6634E;
+  --color-on-primary: #FFFFFF;
+  --color-primary-fixed: #FFDBD0;
+  --color-on-primary-fixed: #380D01;
+  --color-secondary: #5C5A3E;
+  --color-secondary-container: #E5E1BD;
+  --color-on-secondary: #FFFFFF;
+  --color-tertiary: #625B52;
+
   --font-serif: var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-playfair: var(--font-playfair), Georgia, serif;
   --font-manrope: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --spacing-18: 4.5rem;
-  --spacing-28: 7rem;
-  --spacing-30: 7.5rem;
+  /* Typography scale */
+  --text-display-lg: 4.5rem;
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.02em;
+
+  --text-display-md: 3.25rem;
+  --text-display-md--line-height: 1.1;
+  --text-display-md--letter-spacing: -0.015em;
+
+  --text-headline-lg: 2.25rem;
+  --text-headline-lg--line-height: 1.2;
+  --text-headline-lg--letter-spacing: -0.01em;
+
+  --text-headline-sm: 1.5rem;
+  --text-headline-sm--line-height: 1.25;
+  --text-headline-sm--letter-spacing: 0em;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+
+  --text-body-md: 0.9375rem;
+  --text-body-md--line-height: 1.55;
+  --text-body-md--letter-spacing: 0.01em;
+
+  --text-body-sm: 0.8125rem;
+  --text-body-sm--line-height: 1.5;
+  --text-body-sm--letter-spacing: 0.01em;
+
+  --text-label-editorial: 0.6875rem;
+  --text-label-editorial--line-height: 1.2;
+  --text-label-editorial--letter-spacing: 0.18em;
+
+  --text-label-ui: 0.75rem;
+  --text-label-ui--line-height: 1.3;
+  --text-label-ui--letter-spacing: 0.08em;
+
+  --text-price-lg: 1.125rem;
+  --text-price-lg--line-height: 1.2;
+  --text-price-lg--letter-spacing: 0.02em;
+
+  --text-index-numeral: 0.75rem;
+  --text-index-numeral--line-height: 1;
+  --text-index-numeral--letter-spacing: 0.15em;
+
+  /* Spacing Scale */
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+  --spacing-space-2xl: 4rem;
+  --spacing-space-3xl: 6rem;
+  --spacing-margin: 3rem;
+  --spacing-margin-mobile: 1rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-mobile: 0.75rem;
 }
 
 :root {
@@ -69,4 +148,22 @@ img, picture, video, canvas, svg {
   margin-right: auto;
   padding-left: clamp(1rem, 3.5vw, 3rem);
   padding-right: clamp(1rem, 3.5vw, 3rem);
+}
+
+/* Stitch Spacing Helpers */
+.px-margin {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .px-margin {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .px-margin {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
