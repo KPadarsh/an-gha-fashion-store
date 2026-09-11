@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Manrope } from "next/font/google";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CartProvider } from "@/context/CartContext";
-import { CartDrawer } from "@/components/cart/CartDrawer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -19,8 +17,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "An Gha — Modern E-Commerce Storefront",
-  description: "Experience crystal-clear acoustic precision and luxurious handcrafted apparel.",
+  title: "ANGHA — A Fashion Catalogue in Motion",
+  description: "A contemporary archival maison synthesizing architectural precision with tactile materiality.",
 };
 
 export default function RootLayout({
@@ -33,13 +31,10 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-white text-gray-900">
-        <CartProvider>
-          <Header />
-          <div className="flex-1 flex flex-col">{children}</div>
-          <Footer />
-          <CartDrawer />
-        </CartProvider>
+      <body className="min-h-full flex flex-col font-sans bg-surface text-on-surface">
+        <Header />
+        <div className="flex-1 flex flex-col">{children}</div>
+        <Footer />
       </body>
     </html>
   );

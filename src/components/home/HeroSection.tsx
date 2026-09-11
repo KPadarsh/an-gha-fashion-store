@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,50 +5,62 @@ import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="w-full py-6 sm:py-8">
-      <div className="angha-container">
-        {/* Soft Warm Promo Card matching Reference UI */}
-        <div className="relative w-full rounded-2xl sm:rounded-3xl bg-[#FAF1EB] overflow-hidden border border-[#EEDCD2]/60 shadow-xs">
-          <div className="grid grid-cols-1 md:grid-cols-12 items-center min-h-[360px] sm:min-h-[420px] lg:min-h-[460px]">
-            {/* Left Content Column */}
-            <div className="md:col-span-7 p-6 sm:p-10 lg:p-14 z-10 space-y-5 sm:space-y-6">
-              <div className="space-y-2">
-                <span className="inline-block text-xs font-bold uppercase tracking-[0.15em] text-[#C17A63] bg-white/70 px-3 py-1 rounded-full border border-[#EEDCD2]">
-                  Limited Time Seasonal Sale
-                </span>
-                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1B3B2B] leading-[1.15] max-w-lg">
-                  Grab Upto 50% Off On Selected Headphone
-                </h1>
-              </div>
+    <section className="w-full lg:px-margin pb-10 sm:pb-16 lg:pb-24 lg:pt-6">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 gap-0 lg:gap-6 items-stretch">
+        {/* Campaign Visual (Mobile: 3:4 aspect with Edition badge, Desktop: 8 cols) */}
+        <div className="lg:col-span-8 relative bg-surface-container-low overflow-hidden group w-full aspect-[3/4] lg:aspect-auto lg:min-h-[640px]">
+          <Image
+            src="https://lh3.googleusercontent.com/aida/AEtjO1VAlbM6622XpA-Qi7MCS_2vcdgzH3jRYux6MJmZjGRGVkvR76d4Bi-uhR8NDBpzNCNgadnJi_xlkK5az_k4H5yLxSS6axpRIJ2tSoZpeosOtoS0Cg6zMYW1ppBHduibe_6xtaKIz8d7cxrb5yiXvksBcP0vIoOl8-WcYraFGSP_woEIHQoxsaJkDAZ30um9GVIpj4WXr-SlBrOLKEWzYFnkmQa7j0zCkJnvflYoBYeXur8ckf5xod_gk_55"
+            alt="Editorial campaign draped terracotta linen dress in architectural stone setting"
+            fill
+            priority
+            quality={95}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 75vw"
+            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          />
 
-              <p className="text-gray-600 text-sm sm:text-base max-w-md leading-relaxed font-sans">
-                Experience crystal-clear acoustic precision and luxurious handcrafted apparel. Pure fidelity meets timeless contemporary design.
+          {/* Mobile Floating Badge (Stitch Mobile screen) */}
+          <div className="lg:hidden absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-2.5 py-1 z-10 border border-surface-dim/30">
+            <span className="font-sans text-[10px] font-semibold text-primary uppercase tracking-widest">
+              EDITION 2026.1
+            </span>
+          </div>
+        </div>
+
+        {/* Information Column (Mobile: bottom attached container, Desktop: 4 cols) */}
+        <div className="lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-surface-container-lowest lg:bg-surface-container-low border-b lg:border border-surface-dim/30 shadow-sm lg:shadow-none">
+          <div className="space-y-3 sm:space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="font-sans text-[10px] sm:text-[11px] font-semibold text-primary tracking-[0.18em] uppercase">
+                01 / NEW EDIT
+              </span>
+              <span className="font-sans text-[10px] sm:text-[11px] font-semibold text-outline tracking-[0.18em] uppercase">
+                AUTUMN / WINTER 2026
+              </span>
+            </div>
+
+            <div className="h-px w-full bg-surface-dim" />
+
+            <div className="pt-1 sm:pt-2 space-y-3 sm:space-y-4">
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal uppercase tracking-tight text-on-surface leading-[1.05]">
+                THE NEW
+                <br className="hidden sm:inline" />{" "}
+                EDIT.
+              </h1>
+              <p className="font-sans text-sm sm:text-base lg:text-lg text-on-surface-variant max-w-sm leading-relaxed">
+                Quiet forms. Considered textures. A contemporary wardrobe curated for deliberate everyday movement.
               </p>
-
-              <div className="pt-2">
-                <Link
-                  href="#curated-products"
-                  className="inline-flex items-center justify-center px-8 py-3.5 bg-[#1B3B2B] hover:bg-[#132A1F] text-white font-sans text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <span>Buy Now</span>
-                </Link>
-              </div>
             </div>
+          </div>
 
-            {/* Right Visual Column with Crisp Model Image */}
-            <div className="md:col-span-5 relative h-[280px] sm:h-[360px] md:h-full min-h-[320px] md:min-h-[460px] w-full">
-              <Image
-                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop"
-                alt="Headphones & Luxury Lifestyle Audio Model"
-                fill
-                priority
-                quality={95}
-                sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-cover object-center"
-              />
-              {/* Subtle gradient vignette blend into the soft background */}
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#FAF1EB] via-transparent to-transparent opacity-80 md:opacity-40" />
-            </div>
+          <div className="pt-6 sm:pt-8 lg:pt-12">
+            <Link
+              href="/shop?collection=new-in"
+              className="inline-flex items-center justify-between w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-inverse-surface text-inverse-on-surface hover:bg-primary font-sans text-xs font-semibold uppercase tracking-[0.15em] transition-colors duration-200 group"
+            >
+              <span>EXPLORE NEW IN</span>
+              <ArrowRight className="w-4 h-4 ml-3 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </div>
