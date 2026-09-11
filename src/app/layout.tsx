@@ -17,7 +17,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "ANGHA — A Fashion Catalogue in Motion",
+  title: "An Gha — A Fashion Catalogue in Motion",
   description: "A contemporary archival maison synthesizing architectural precision with tactile materiality.",
 };
 

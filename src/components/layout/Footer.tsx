@@ -9,8 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 pb-8 sm:pb-12 lg:pb-16 border-b border-surface-dim/15">
           {/* Brand Column (Mobile: col-span-2, Desktop: col-span-5) */}
           <div className="col-span-2 md:col-span-5 pr-0 lg:pr-12">
-            <span className="font-serif text-2xl sm:text-3xl uppercase tracking-[0.22em] text-inverse-on-surface block mb-2 font-normal">
-              ANGHA
+            <span className="font-serif text-2xl sm:text-3xl tracking-[0.18em] text-inverse-on-surface block mb-2 font-normal">
+              An Gha
             </span>
             <p className="font-serif italic text-base sm:text-lg lg:text-xl text-surface-variant/80 font-normal leading-relaxed mb-3 sm:mb-4">
               “A fashion catalogue in motion.”
@@ -91,7 +91,7 @@ export function Footer() {
 
         {/* Sub-Footer Legal / Attribution Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 sm:pt-8 text-surface-variant/50 text-[10px] sm:text-[11px] font-sans tracking-widest uppercase">
-          <p>© {new Date().getFullYear()} ANGHA MAISON. ALL RIGHTS RESERVED.</p>
+          <p>© {new Date().getFullYear()} AN GHA MAISON. ALL RIGHTS RESERVED.</p>
           <div className="flex items-center gap-4 sm:gap-6">
             <Link href="/legal/privacy" className="hover:text-inverse-on-surface transition-colors">
               PRIVACY

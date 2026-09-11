@@ -16,14 +16,14 @@ export function Header() {
       {/* Main Single-Row Navigation Bar */}
       <div className="angha-container">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-4 lg:gap-8">
-          {/* Left: Brand Wordmark */}
+          {/* Left: Brand Wordmark "An Gha" */}
           <div className="shrink-0 flex items-center">
             <Link
               href="/"
-              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.22em] uppercase text-on-surface hover:opacity-90 transition-opacity focus-visible:outline-none"
-              aria-label="ANGHA Home"
+              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-on-surface hover:opacity-90 transition-opacity focus-visible:outline-none"
+              aria-label="An Gha Home"
             >
-              ANGHA
+              An Gha
             </Link>
           </div>
 

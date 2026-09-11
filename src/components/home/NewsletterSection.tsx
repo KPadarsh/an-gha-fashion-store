@@ -30,7 +30,7 @@ export function NewsletterSection() {
 
           {/* Body Narrative */}
           <p className="font-sans text-sm sm:text-base text-surface-variant/80 max-w-md mx-auto leading-relaxed">
-            New collections, selected pieces, and occasional archival notes from ANGHA.
+            New collections, selected pieces, and occasional archival notes from An Gha.
           </p>
 
           {/* Form / Confirmation */}
