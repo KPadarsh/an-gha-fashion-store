@@ -8,8 +8,8 @@ export function HeroSection() {
     <section className="w-full py-4 sm:py-6 lg:py-8">
       <div className="angha-container">
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Campaign Visual (8 cols on desktop, aligned height & container bounds) */}
-          <div className="lg:col-span-8 relative bg-surface-container-low overflow-hidden group w-full aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[620px] border border-surface-dim/30">
+          {/* Campaign Visual (8 cols on desktop, perfect portrait alignment from head to hem) */}
+          <div className="lg:col-span-8 relative bg-[#F5ECE3] overflow-hidden group w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:min-h-[680px] border border-surface-dim/30">
             <Image
               src="/images/hero-campaign.jpg"
               alt="Editorial campaign model in draped terracotta and tan wrap dress"
@@ -17,15 +17,8 @@ export function HeroSection() {
               priority
               quality={95}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 67vw"
-              className="object-cover object-top sm:object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              className="object-cover object-[center_top] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
             />
-
-            {/* Floating Editorial Badge */}
-            <div className="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-2.5 py-1 z-10 border border-surface-dim/30">
-              <span className="font-sans text-[10px] font-semibold text-primary uppercase tracking-widest">
-                EDITION 2026.1
-              </span>
-            </div>
           </div>
 
           {/* Information Column (4 cols on desktop, matching height & styling) */}
