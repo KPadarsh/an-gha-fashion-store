@@ -11,13 +11,13 @@ export function HeroSection() {
           {/* Campaign Visual (8 cols on desktop, aligned height & container bounds) */}
           <div className="lg:col-span-8 relative bg-surface-container-low overflow-hidden group w-full aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[620px] border border-surface-dim/30">
             <Image
-              src="https://lh3.googleusercontent.com/aida/AEtjO1VAlbM6622XpA-Qi7MCS_2vcdgzH3jRYux6MJmZjGRGVkvR76d4Bi-uhR8NDBpzNCNgadnJi_xlkK5az_k4H5yLxSS6axpRIJ2tSoZpeosOtoS0Cg6zMYW1ppBHduibe_6xtaKIz8d7cxrb5yiXvksBcP0vIoOl8-WcYraFGSP_woEIHQoxsaJkDAZ30um9GVIpj4WXr-SlBrOLKEWzYFnkmQa7j0zCkJnvflYoBYeXur8ckf5xod_gk_55"
-              alt="Editorial campaign draped terracotta linen dress in architectural stone setting"
+              src="/images/hero-campaign.jpg"
+              alt="Editorial campaign model in draped terracotta and tan wrap dress"
               fill
               priority
               quality={95}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 67vw"
-              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              className="object-cover object-top sm:object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
             />
 
             {/* Floating Editorial Badge */}
