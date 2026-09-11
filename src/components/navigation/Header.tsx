@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Search, Heart, ShoppingBag, Menu, User } from "lucide-react";
-import { AnnouncementBar } from "./AnnouncementBar";
 import { DesktopNav } from "./DesktopNav";
 import { MobileMenu } from "./MobileMenu";
 
@@ -14,13 +13,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-surface/95 backdrop-blur-md border-b border-on-surface/10 transition-colors">
-      {/* 1. Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* 2. Main Single-Row Navigation Bar */}
+      {/* Main Single-Row Navigation Bar */}
       <div className="angha-container">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-4 lg:gap-8">
-          {/* Left: Brand Wordmark (no 01 - new edit text) */}
+          {/* Left: Brand Wordmark */}
           <div className="shrink-0 flex items-center">
             <Link
               href="/"
@@ -128,7 +124,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* 3. Subtle Search Overlay */}
+      {/* Subtle Search Overlay */}
       {isSearchOpen && (
         <div className="border-t border-on-surface/10 bg-surface py-4 px-4 transition-all">
           <div className="angha-container">
@@ -157,7 +153,7 @@ export function Header() {
         </div>
       )}
 
-      {/* 4. Mobile Menu Drawer */}
+      {/* Mobile Menu Drawer */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
