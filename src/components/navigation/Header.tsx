@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Search, Heart, ShoppingBag, Menu } from "lucide-react";
+import { Search, Heart, ShoppingBag, Menu, User } from "lucide-react";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { DesktopNav } from "./DesktopNav";
 import { MobileMenu } from "./MobileMenu";
@@ -17,107 +17,112 @@ export function Header() {
       {/* 1. Announcement Bar */}
       <AnnouncementBar />
 
-      {/* 2. Main Desktop & Mobile Header Container */}
+      {/* 2. Main Single-Row Navigation Bar */}
       <div className="angha-container">
-        {/* Desktop Top Bar (md and up) */}
-        <div className="hidden md:grid grid-cols-3 items-center py-5 border-b border-on-surface/5">
-          {/* Left: Search Trigger */}
-          <div className="flex items-center justify-start">
-            <button
-              type="button"
-              onClick={() => setIsSearchOpen((prev) => !prev)}
-              className="group flex items-center gap-2.5 text-on-surface/80 hover:text-on-surface transition-colors py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-on-surface"
-              aria-label="Search collection"
-              aria-expanded={isSearchOpen}
-            >
-              <Search className="w-4 h-4 text-on-surface group-hover:text-primary transition-colors" strokeWidth={1.5} />
-              <span className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase">
-                Search
-              </span>
-            </button>
-          </div>
-
-          {/* Center: Brand Wordmark */}
-          <div className="flex items-center justify-center text-center">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-4 lg:gap-8">
+          {/* Left: Brand Wordmark (no 01 - new edit text) */}
+          <div className="shrink-0 flex items-center">
             <Link
               href="/"
-              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.22em] uppercase text-on-surface hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-on-surface px-2"
-              aria-label="AN GHA Home"
+              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.22em] uppercase text-on-surface hover:opacity-90 transition-opacity focus-visible:outline-none"
+              aria-label="ANGHA Home"
             >
               ANGHA
             </Link>
           </div>
 
-          {/* Right: Wishlist & Bag */}
-          <div className="flex items-center justify-end gap-6 lg:gap-8">
+          {/* Center: Primary Navigation Links (Desktop) */}
+          <div className="hidden lg:flex items-center justify-center flex-1">
+            <DesktopNav />
+          </div>
+
+          {/* Right: Actions (Search, Wishlist, Bag [0], User Avatar) */}
+          <div className="hidden md:flex items-center gap-5 lg:gap-6 shrink-0">
+            {/* Search */}
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen((prev) => !prev)}
+              className="group flex items-center gap-1.5 text-on-surface/90 hover:text-primary transition-colors py-1 focus-visible:outline-none"
+              aria-label="Search collection"
+              aria-expanded={isSearchOpen}
+            >
+              <Search
+                className="w-3.5 h-3.5 text-on-surface group-hover:text-primary transition-colors"
+                strokeWidth={2}
+              />
+              <span className="font-sans text-[11px] font-semibold tracking-[0.18em] uppercase">
+                SEARCH
+              </span>
+            </button>
+
+            {/* Wishlist */}
             <Link
               href="/wishlist"
-              className="group flex items-center gap-1.5 text-on-surface/80 hover:text-on-surface transition-colors py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-on-surface"
+              className="group flex items-center gap-1.5 text-on-surface/90 hover:text-primary transition-colors py-1 focus-visible:outline-none"
               aria-label="Wishlist"
             >
-              <Heart className="w-4 h-4 text-on-surface group-hover:text-primary transition-colors" strokeWidth={1.5} />
-              <span className="hidden lg:inline font-sans text-[11px] font-medium tracking-[0.2em] uppercase">
-                Wishlist
+              <Heart
+                className="w-3.5 h-3.5 text-on-surface group-hover:text-primary transition-colors"
+                strokeWidth={2}
+              />
+              <span className="font-sans text-[11px] font-semibold tracking-[0.18em] uppercase">
+                WISHLIST
               </span>
             </Link>
 
+            {/* Bag [0] */}
             <Link
               href="/cart"
-              className="group flex items-center gap-2 text-on-surface/80 hover:text-on-surface transition-colors py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-on-surface"
+              className="group flex items-center gap-1.5 text-on-surface/90 hover:text-primary transition-colors py-1 focus-visible:outline-none"
               aria-label={`Shopping Bag, ${bagCount} items`}
             >
-              <ShoppingBag className="w-4 h-4 text-on-surface group-hover:text-primary transition-colors" strokeWidth={1.5} />
-              <span className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase">
-                Bag ({bagCount})
+              <ShoppingBag
+                className="w-3.5 h-3.5 text-on-surface group-hover:text-primary transition-colors"
+                strokeWidth={2}
+              />
+              <span className="font-sans text-[11px] font-semibold tracking-[0.18em] uppercase">
+                [{bagCount}]
               </span>
             </Link>
+
+            {/* User Avatar Circle */}
+            <Link
+              href="/account"
+              className="w-7 h-7 rounded-full bg-[#8D5B4C] hover:bg-primary transition-colors flex items-center justify-center text-white shadow-xs focus-visible:outline-none shrink-0"
+              aria-label="User Account"
+            >
+              <User className="w-3.5 h-3.5 text-white" strokeWidth={2.2} />
+            </Link>
           </div>
-        </div>
 
-        {/* Desktop Primary Navigation Row (md and up) */}
-        <div className="hidden md:block py-3">
-          <DesktopNav />
-        </div>
-
-        {/* Mobile Header Bar (below md) */}
-        <div className="flex md:hidden items-center justify-between h-14">
-          {/* Mobile Left: Brand Wordmark */}
-          <Link
-            href="/"
-            className="font-serif text-xl tracking-[0.2em] uppercase text-on-surface font-normal"
-            aria-label="AN GHA Home"
-          >
-            ANGHA
-          </Link>
-
-          {/* Mobile Right: Actions */}
-          <div className="flex items-center gap-4">
+          {/* Mobile Right Controls */}
+          <div className="flex md:hidden items-center gap-3.5">
             <button
               type="button"
               onClick={() => setIsSearchOpen((prev) => !prev)}
               className="p-1.5 text-on-surface hover:text-primary transition-colors focus-visible:outline-none"
               aria-label="Search"
             >
-              <Search className="w-5 h-5" strokeWidth={1.5} />
+              <Search className="w-4 h-4" strokeWidth={1.75} />
             </button>
 
             <Link
               href="/cart"
-              className="p-1.5 text-on-surface hover:text-primary transition-colors relative flex items-center"
+              className="p-1.5 text-on-surface hover:text-primary transition-colors flex items-center gap-1"
               aria-label={`Shopping Bag, ${bagCount} items`}
             >
-              <ShoppingBag className="w-5 h-5" strokeWidth={1.5} />
-              <span className="ml-1 font-sans text-xs font-medium">({bagCount})</span>
+              <ShoppingBag className="w-4 h-4" strokeWidth={1.75} />
+              <span className="font-sans text-xs font-semibold">[{bagCount}]</span>
             </Link>
 
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-1.5 -mr-1.5 text-on-surface hover:text-primary transition-colors focus-visible:outline-none"
+              className="p-1.5 -mr-1 text-on-surface hover:text-primary transition-colors focus-visible:outline-none"
               aria-label="Open navigation menu"
               aria-expanded={isMobileMenuOpen}
             >
-              <Menu className="w-6 h-6" strokeWidth={1.5} />
+              <Menu className="w-5 h-5" strokeWidth={1.75} />
             </button>
           </div>
         </div>
@@ -145,7 +150,7 @@ export function Header() {
                 className="absolute right-2 text-on-surface hover:text-primary transition-colors"
                 aria-label="Submit search"
               >
-                <Search className="w-4 h-4" strokeWidth={1.5} />
+                <Search className="w-4 h-4" strokeWidth={1.75} />
               </button>
             </form>
           </div>

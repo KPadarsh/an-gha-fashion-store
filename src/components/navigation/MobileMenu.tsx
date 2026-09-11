@@ -20,11 +20,11 @@ interface MobileNavItem {
 
 const MOBILE_NAV_ITEMS: MobileNavItem[] = [
   { label: "NEW IN", index: "01", href: "/shop?collection=new-in" },
-  { label: "DRESSES", index: "02", href: "/shop/dresses" },
-  { label: "KNITWEAR", index: "03", href: "/shop/knitwear" },
-  { label: "OUTERWEAR", index: "04", href: "/shop/outerwear" },
-  { label: "ACCESSORIES", index: "05", href: "/shop/accessories" },
-  { label: "SALE", index: "06", href: "/shop?collection=sale", highlight: true },
+  { label: "COLLECTIONS", index: "02", href: "/shop" },
+  { label: "DRESSES", index: "03", href: "/shop/dresses" },
+  { label: "KNITWEAR", index: "04", href: "/shop/knitwear" },
+  { label: "OUTERWEAR", index: "05", href: "/shop/outerwear" },
+  { label: "ACCESSORIES", index: "06", href: "/shop/accessories" },
 ];
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
@@ -71,7 +71,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       />
 
       {/* Drawer Panel */}
-      <aside className="relative w-full max-w-[340px] bg-background text-on-surface shadow-2xl flex flex-col justify-between h-full z-10 border-l border-surface-dim/40 overflow-y-auto">
+      <aside className="relative w-full max-w-[340px] bg-surface text-on-surface shadow-2xl flex flex-col justify-between h-full z-10 border-l border-surface-dim/40 overflow-y-auto">
         {/* Drawer Header */}
         <div>
           <div className="h-16 px-6 flex items-center justify-between border-b border-surface-dim/40">
