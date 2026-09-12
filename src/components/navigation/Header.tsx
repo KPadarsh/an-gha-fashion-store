@@ -79,7 +79,7 @@ export function Header() {
           {/* Left: Brand Wordmark "An Gha" */}
           <div className="shrink-0 flex items-center">
             <Link
-              href="/"
+              href="/home"
               className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-on-surface hover:opacity-90 transition-opacity focus-visible:outline-none"
               aria-label="An Gha Home"
             >

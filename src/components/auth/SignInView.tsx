@@ -26,7 +26,7 @@ export function SignInView() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Dummy frontend navigation only: simply navigate to homepage
-    router.push("/");
+    router.push("/home");
   };
 
   return (

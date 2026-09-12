@@ -37,9 +37,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const NAV_LINKS = [
     {
       label: "HOME",
-      href: "/",
+      href: "/home",
       icon: Home,
-      isActive: pathname === "/",
+      isActive: pathname === "/home",
       badge: null,
     },
     {

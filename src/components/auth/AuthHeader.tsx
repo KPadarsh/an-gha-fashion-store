@@ -27,7 +27,7 @@ export function AuthHeader() {
 
         <div className="flex flex-col items-center justify-center text-center select-none">
           <Link
-            href="/"
+            href="/home"
             className="font-serif text-lg tracking-[0.18em] text-[#2B2420] leading-none hover:text-[#894B37] transition-colors"
           >
             An Gha
@@ -62,7 +62,7 @@ export function AuthHeader() {
         {/* Center: Brand Wordmark & Atelier Subtitle */}
         <div className="flex flex-col items-center justify-center text-center select-none">
           <Link
-            href="/"
+            href="/home"
             className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors"
           >
             An Gha
