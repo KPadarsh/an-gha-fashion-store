@@ -18,7 +18,7 @@ export default function CartPage() {
       <CartHeader />
 
       {/* SECTION 2: TWO-COLUMN COMMERCE SPREAD */}
-      <section className="w-full px-6 md:px-12 pb-16 md:pb-24">
+      <section className="w-full px-4 md:px-12 pb-12 md:pb-24">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
           {/* LEFT COLUMN: CART ITEMS (8 cols / 65%) */}
           <div className="lg:col-span-8">

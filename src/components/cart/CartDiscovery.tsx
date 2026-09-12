@@ -48,7 +48,7 @@ const DISCOVERY_ITEMS: DiscoveryItem[] = [
 
 export function CartDiscovery() {
   return (
-    <section className="w-full px-6 md:px-12 py-16 bg-[#F5EFE8] border-t border-[#2B2420]/10">
+    <section className="w-full px-4 md:px-12 py-10 md:py-16 bg-[#F5EFE8] border-t border-[#2B2420]/10">
       <div className="max-w-[1440px] mx-auto">
         {/* Header Bar */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 gap-3">
