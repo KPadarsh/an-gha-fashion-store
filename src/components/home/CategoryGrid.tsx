@@ -17,7 +17,7 @@ const CATEGORIES: CategoryItem[] = [
     id: "dresses",
     index: "01 / 04",
     name: "DRESSES",
-    href: "/shop/dresses",
+    href: "/shop?category=Dresses",
     imageUrl:
       "https://lh3.googleusercontent.com/aida/AEtjO1VAlbM6622XpA-Qi7MCS_2vcdgzH3jRYux6MJmZjGRGVkvR76d4Bi-uhR8NDBpzNCNgadnJi_xlkK5az_k4H5yLxSS6axpRIJ2tSoZpeosOtoS0Cg6zMYW1ppBHduibe_6xtaKIz8d7cxrb5yiXvksBcP0vIoOl8-WcYraFGSP_woEIHQoxsaJkDAZ30um9GVIpj4WXr-SlBrOLKEWzYFnkmQa7j0zCkJnvflYoBYeXur8ckf5xod_gk_55",
     imageAlt: "Dresses category campaign preview",
@@ -26,7 +26,7 @@ const CATEGORIES: CategoryItem[] = [
     id: "knitwear",
     index: "02 / 04",
     name: "KNITWEAR",
-    href: "/shop/knitwear",
+    href: "/shop?category=Knitwear",
     imageUrl:
       "https://lh3.googleusercontent.com/aida/AEtjO1WykBoPkAIypz8ytgRf0NS4SUc46vxJcAnUJk1OvXEvoNsg3eVKb6OfhzLWhcQmOiA-mSN9PXwU24MB8qzwsKq307qbr5v88bOg-NrB7W1KtAKfd3BcPQI9Rgtk36rMThseIRpusM-5S12Wc3GnVUEJNbp24b8MOzVKKubntsGDU6bNyNNM2rfSPiTEwRFLPPKqgLsRnB4eXmh6VpbSm9TaOP2kjrzckLQgj1kt94voAQILRMp2ia-LkiXk",
     imageAlt: "Knitwear category tactile texture preview",
@@ -35,7 +35,7 @@ const CATEGORIES: CategoryItem[] = [
     id: "outerwear",
     index: "03 / 04",
     name: "OUTERWEAR",
-    href: "/shop/outerwear",
+    href: "/shop?category=Outerwear",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAo654oTcXyvQ4BVlZr_Kok3e2KwfNIGJQLAfJN_CrHV97eUGkbvQcV-kxPWNssKei9Rsur8rTkkUTtBrE4a90CrFS0M43q9v59EgTO2OvEa12HbBZWDZzesoVat_Ba3S6qLvXZLE64bCr9FqHUT2AgmxwH0f1BfiSe63mOgzXDTZWfz_XEZQp1gbfSpnxM0F_NZcs_F4X5zv0VDaySlsMZED9wvYsgPPtFnF3zZsOsYhZfxD0waQiCBw",
     imageAlt: "Outerwear category structured coat preview",
@@ -44,7 +44,7 @@ const CATEGORIES: CategoryItem[] = [
     id: "accessories",
     index: "04 / 04",
     name: "ACCESSORIES",
-    href: "/shop/accessories",
+    href: "/shop?category=Accessories",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBFvwv7IeTWsVlilDONEpQDHcJeYNMjMGX7JTKVPPW2YrypwsGlt4YoENBYmqzAnLvFnFVCIBwfBS5YxPBVOoh7OIt1XsvnFiQjrCirej5Npp5o7G0tCuuCrnvJfoXfp7kSify8f0Hr9e8-lxZVQBpOX0H18aM4NIiyGiAtkN15IjW63IfmMkwAxyhDJhz3fCNtFdFB6WwPFOVR648e385g_xQe4KkMQUEu5ztXUqcpWq7tklBUSpy3rQ",
     imageAlt: "Accessories category smooth leather bag preview",

@@ -49,6 +49,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         category={productData.category}
         specimenNumber={productData.specimenNumber}
         atelier={productData.atelier}
+        productName={productData.name}
       />
 
       {/* 2. Signature Hero Layout (7:5 Split) */}

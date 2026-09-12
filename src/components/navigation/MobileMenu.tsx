@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { X, ArrowUpRight, Heart } from "lucide-react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { X, ArrowUpRight } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
 
 interface MobileMenuProps {
@@ -29,9 +29,11 @@ const MOBILE_NAV_ITEMS: MobileNavItem[] = [
   { label: "WISHLIST", index: "07", href: "/wishlist" },
 ];
 
-
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+function MobileMenuContent({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category");
+  const collection = searchParams.get("collection");
   const { totalWishlistCount } = useWishlist();
 
   // Close on Escape key and lock body scroll
@@ -56,9 +58,29 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   // Close menu on route change
   useEffect(() => {
     onClose();
-  }, [pathname, onClose]);
+  }, [pathname, searchParams, onClose]);
 
   if (!isOpen) return null;
+
+  const isItemActive = (item: MobileNavItem) => {
+    if (item.href.startsWith("/shop?category=")) {
+      const cat = item.href.split("=")[1];
+      return (
+        pathname === "/shop" && category?.toLowerCase() === cat.toLowerCase()
+      );
+    }
+    if (item.href.startsWith("/shop?collection=")) {
+      const col = item.href.split("=")[1];
+      return (
+        pathname === "/shop" &&
+        collection?.toLowerCase() === col.toLowerCase()
+      );
+    }
+    if (item.href === "/shop") {
+      return pathname === "/shop" && !category && !collection;
+    }
+    return pathname === item.href;
+  };
 
   return (
     <div
@@ -95,25 +117,29 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {/* Navigation Links with Editorial Index Numerals */}
           <nav className="px-6 py-6 flex flex-col justify-center gap-4">
             {MOBILE_NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = isItemActive(item);
+              const labelWithCount =
+                item.label === "WISHLIST" && totalWishlistCount > 0
+                  ? `WISHLIST [${totalWishlistCount}]`
+                  : item.label;
+
               return (
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={onClose}
                   className={`flex items-baseline justify-between min-h-[44px] py-1 border-b border-surface-dim/20 transition-colors ${
-                    item.highlight
-                      ? "text-primary hover:text-primary-container"
-                      : isActive
+                    isActive
                       ? "text-primary italic font-serif text-xl"
                       : "text-on-surface hover:text-primary"
                   }`}
                 >
                   <span className="font-serif text-lg uppercase tracking-wide">
-                    {item.label}
+                    {labelWithCount}
                   </span>
                   <span
                     className={`font-sans text-xs tracking-widest ${
-                      item.highlight ? "text-primary" : "text-outline"
+                      isActive ? "text-primary font-bold" : "text-outline"
                     }`}
                   >
                     {item.index}
@@ -127,7 +153,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Client Services Footer Panel */}
         <div className="px-6 py-6 bg-surface-container-low flex flex-col gap-2 border-t border-surface-dim/30">
           <Link
-            href="/contact"
+            href="/shop"
+            onClick={onClose}
             className="flex items-center justify-between text-on-surface-variant font-sans text-xs font-semibold tracking-widest uppercase hover:text-primary transition-colors"
           >
             <span>CLIENT SERVICES</span>
@@ -139,5 +166,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         </div>
       </aside>
     </div>
+  );
+}
+
+export function MobileMenu(props: MobileMenuProps) {
+  return (
+    <Suspense fallback={null}>
+      <MobileMenuContent {...props} />
+    </Suspense>
   );
 }

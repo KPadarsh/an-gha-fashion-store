@@ -19,7 +19,7 @@ export function CategoryQuickAccess() {
 
           <nav className="flex flex-col space-y-1 mt-1">
             <Link
-              href="/shop/dresses"
+              href="/shop?category=Dresses"
               className="min-h-[52px] flex items-center justify-between py-3 bg-surface-container-lowest px-4 hover:bg-surface-container transition-colors group"
             >
               <span className="font-serif text-base text-on-surface tracking-wide">DRESSES</span>
@@ -27,7 +27,7 @@ export function CategoryQuickAccess() {
             </Link>
 
             <Link
-              href="/shop/knitwear"
+              href="/shop?category=Knitwear"
               className="min-h-[52px] flex items-center justify-between py-3 bg-surface-container-lowest px-4 hover:bg-surface-container transition-colors group"
             >
               <span className="font-serif text-base text-on-surface tracking-wide">KNITWEAR</span>
@@ -35,7 +35,7 @@ export function CategoryQuickAccess() {
             </Link>
 
             <Link
-              href="/shop/outerwear"
+              href="/shop?category=Outerwear"
               className="min-h-[52px] flex items-center justify-between py-3 bg-surface-container-lowest px-4 hover:bg-surface-container transition-colors group"
             >
               <span className="font-serif text-base text-on-surface tracking-wide">OUTERWEAR</span>
@@ -43,7 +43,7 @@ export function CategoryQuickAccess() {
             </Link>
 
             <Link
-              href="/shop/accessories"
+              href="/shop?category=Accessories"
               className="min-h-[52px] flex items-center justify-between py-3 bg-surface-container-lowest px-4 hover:bg-surface-container transition-colors group"
             >
               <span className="font-serif text-base text-on-surface tracking-wide">ACCESSORIES</span>
@@ -70,19 +70,19 @@ export function CategoryQuickAccess() {
           </h2>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-2 font-sans text-xs sm:text-[13px] font-semibold uppercase tracking-[0.15em] text-on-surface">
-            <Link href="/shop/dresses" className="hover:text-primary transition-colors">
+            <Link href="/shop?category=Dresses" className="hover:text-primary transition-colors">
               DRESSES
             </Link>
             <span className="text-outline text-xs">•</span>
-            <Link href="/shop/knitwear" className="hover:text-primary transition-colors">
+            <Link href="/shop?category=Knitwear" className="hover:text-primary transition-colors">
               KNITWEAR
             </Link>
             <span className="text-outline text-xs">•</span>
-            <Link href="/shop/outerwear" className="hover:text-primary transition-colors">
+            <Link href="/shop?category=Outerwear" className="hover:text-primary transition-colors">
               OUTERWEAR
             </Link>
             <span className="text-outline text-xs">•</span>
-            <Link href="/shop/accessories" className="hover:text-primary transition-colors">
+            <Link href="/shop?category=Accessories" className="hover:text-primary transition-colors">
               ACCESSORIES
             </Link>
             <span className="text-outline text-xs">•</span>

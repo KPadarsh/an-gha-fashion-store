@@ -5,13 +5,18 @@ interface ProductBreadcrumbProps {
   category?: string;
   specimenNumber?: string;
   atelier?: string;
+  productName?: string;
 }
 
 export function ProductBreadcrumb({
   category = "DRESSES",
   specimenNumber = "SPECIMEN N° 01",
   atelier = "ATELIER BIELA",
+  productName = "ELARA",
 }: ProductBreadcrumbProps) {
+  const formattedCategory =
+    category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+
   return (
     <div className="w-full max-w-[1440px] mx-auto px-4 md:px-12 pt-3 md:pt-6 pb-2 border-b border-[#2B2420]/10 md:border-b-0">
       <div className="flex items-center justify-between">
@@ -20,11 +25,16 @@ export function ProductBreadcrumb({
             ARCHIVE
           </Link>
           <span className="text-[#7A7168]/50">/</span>
-          <Link href="/shop" className="hover:text-[#2B2420] transition-colors">
+          <Link
+            href={`/shop?category=${encodeURIComponent(formattedCategory)}`}
+            className="hover:text-[#2B2420] transition-colors"
+          >
             {category}
           </Link>
           <span className="text-[#7A7168]/50">/</span>
-          <span className="text-[#C17A63] font-medium tracking-[0.2em]">ELARA</span>
+          <span className="text-[#C17A63] font-medium tracking-[0.2em]">
+            {productName.split(" ")[0]}
+          </span>
         </div>
 
         {/* Mobile Specimen Pill */}

@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { Search, Heart, ShoppingBag, Menu, User } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { DesktopNav } from "./DesktopNav";
 import { MobileMenu } from "./MobileMenu";
 import { useCart } from "@/context/CartContext";
@@ -11,8 +11,10 @@ import { useWishlist } from "@/context/WishlistContext";
 
 export function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const { totalCount } = useCart();
   const { totalWishlistCount } = useWishlist();
   const bagCount = totalCount;
@@ -23,6 +25,17 @@ export function Header() {
   ) {
     return null;
   }
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      router.push("/shop");
+    }
+    setIsSearchOpen(false);
+    setSearchQuery("");
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full bg-surface/95 backdrop-blur-md border-b border-on-surface/10 transition-colors">
@@ -51,7 +64,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setIsSearchOpen((prev) => !prev)}
-              className="group flex items-center gap-1.5 text-on-surface/90 hover:text-primary transition-colors py-1 focus-visible:outline-none"
+              className="group flex items-center gap-1.5 text-on-surface/90 hover:text-primary transition-colors py-1 focus-visible:outline-none cursor-pointer"
               aria-label="Search collection"
               aria-expanded={isSearchOpen}
             >
@@ -100,9 +113,10 @@ export function Header() {
 
             {/* User Avatar Circle */}
             <Link
-              href="/account"
+              href="/shop"
               className="w-7 h-7 rounded-full bg-[#8D5B4C] hover:bg-primary transition-colors flex items-center justify-center text-white shadow-xs focus-visible:outline-none shrink-0"
-              aria-label="User Account"
+              aria-label="Maison Atelier"
+              title="An Gha Atelier"
             >
               <User className="w-3.5 h-3.5 text-white" strokeWidth={2.2} />
             </Link>
@@ -113,7 +127,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setIsSearchOpen((prev) => !prev)}
-              className="p-1.5 text-on-surface hover:text-primary transition-colors focus-visible:outline-none"
+              className="p-1.5 text-on-surface hover:text-primary transition-colors focus-visible:outline-none cursor-pointer"
               aria-label="Search"
             >
               <Search className="w-4 h-4" strokeWidth={1.75} />
@@ -144,7 +158,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-1.5 -mr-1 text-on-surface hover:text-primary transition-colors focus-visible:outline-none"
+              className="p-1.5 -mr-1 text-on-surface hover:text-primary transition-colors focus-visible:outline-none cursor-pointer"
               aria-label="Open navigation menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -156,24 +170,23 @@ export function Header() {
 
       {/* Subtle Search Overlay */}
       {isSearchOpen && (
-        <div className="border-t border-on-surface/10 bg-surface py-4 px-4 transition-all">
+        <div className="border-t border-on-surface/10 bg-surface py-4 px-4 transition-all animate-fadeIn">
           <div className="angha-container">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setIsSearchOpen(false);
-              }}
+              onSubmit={handleSearchSubmit}
               className="relative flex items-center max-w-xl mx-auto"
             >
               <input
                 type="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search collection (e.g. Silk Dress, Wool Coat, Cashmere)..."
                 autoFocus
                 className="w-full bg-transparent border-b border-on-surface/30 py-2 pl-2 pr-10 text-sm font-sans placeholder:text-outline placeholder:font-normal focus:border-on-surface focus:outline-none tracking-wide text-on-surface"
               />
               <button
                 type="submit"
-                className="absolute right-2 text-on-surface hover:text-primary transition-colors"
+                className="absolute right-2 text-on-surface hover:text-primary transition-colors cursor-pointer"
                 aria-label="Submit search"
               >
                 <Search className="w-4 h-4" strokeWidth={1.75} />
