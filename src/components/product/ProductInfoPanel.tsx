@@ -512,7 +512,7 @@ export function ProductInfoPanel({
 
       {/* 9. Toast Notification Pill for Cart Feedback */}
       {isAdded && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#2B2420] text-[#FAF6F1] px-4 py-2.5 shadow-xl flex items-center gap-2 font-sans text-[11px] uppercase tracking-wider border border-[#FAF6F1]/20 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="fixed top-20 sm:top-24 left-1/2 -translate-x-1/2 z-50 bg-[#2B2420] text-[#FAF6F1] px-5 py-3 shadow-2xl flex items-center gap-2.5 font-sans text-xs uppercase tracking-widest border border-[#FAF6F1]/20 animate-in fade-in slide-in-from-top-3 duration-300 pointer-events-none whitespace-nowrap">
           <Check className="w-4 h-4 text-[#C17A63]" />
           <span>Added to Archival Bag [{quantity}]</span>
         </div>
