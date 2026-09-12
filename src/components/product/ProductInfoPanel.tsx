@@ -18,8 +18,11 @@ import {
   SizeMeasurement,
   AccordionSection,
 } from "@/data/productDetailData";
+import { useCart } from "@/context/CartContext";
 
 interface ProductInfoPanelProps {
+  productId?: string;
+  category?: string;
   categoryLine?: string;
   stockStatus?: string;
   name: string;
@@ -31,9 +34,12 @@ interface ProductInfoPanelProps {
   sizes: string[];
   measurements: SizeMeasurement[];
   accordions: AccordionSection[];
+  imageUrl?: string;
 }
 
 export function ProductInfoPanel({
+  productId = "elara-draped-dress",
+  category = "DRESSES",
   categoryLine = "ARCHIVE DRESSES · SS26",
   stockStatus = "IN STOCK · READY TO SHIP",
   name,
@@ -45,7 +51,9 @@ export function ProductInfoPanel({
   sizes,
   measurements,
   accordions,
+  imageUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuCbLubd2SxrTCa0Lvo_EFbTuLU5__M8_8WS0jcGpGI8JyTIyEXEQ3xMPlQ-DyA9hxs79vaVQghvjvdjV9IZldemcbxh1xECtiknxj2l6qnotZVbnLfoWupoQM7YTJ1RF2HTS0CUmL4CPa3MjCvOKzJrshkK3EPdKEBCHBFi6XN-840RO_yMAyjhC3UDrO2VkF0-JbKOU4keSNlLk1f2qtlc3bbXepXN7JRewkU_tMRSHapbfqLtE1LIvg",
 }: ProductInfoPanelProps) {
+  const { addItem } = useCart();
   const [selectedColor, setSelectedColor] = useState(colors[0]?.name || "TERRACOTTA");
   const [selectedSize, setSelectedSize] = useState(sizes[1] || sizes[0] || "S");
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
@@ -62,6 +70,21 @@ export function ProductInfoPanel({
   };
 
   const handleAddToBag = () => {
+    addItem({
+      productId,
+      name,
+      category,
+      specimenNumber: "SPECIMEN N° 01",
+      price,
+      currency,
+      color: selectedColor,
+      size: selectedSize,
+      fabricDetails: "100% RAW SILK CHARMEUSE",
+      careDetails: "DRY CLEAN ONLY",
+      imageUrl,
+      quantity,
+      href: `/shop/${productId}`,
+    });
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2500);
   };
