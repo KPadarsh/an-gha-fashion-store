@@ -19,10 +19,10 @@ export function Footer() {
   return (
     <footer className="w-full bg-inverse-surface text-inverse-on-surface pt-10 sm:pt-16 lg:pt-24 pb-8 sm:pb-12 lg:pb-16 border-t border-surface-dim/20">
       <div className="angha-container">
-        {/* Main Grid: 2-Col Mobile / 12-Col Desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 pb-8 sm:pb-12 lg:pb-16 border-b border-surface-dim/15">
-          {/* Brand Column (Mobile: col-span-2, Desktop: col-span-5) */}
-          <div className="col-span-2 md:col-span-5 pr-0 lg:pr-12">
+        {/* Main Grid: 1-Col Mobile / 12-Col Desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-8 sm:pb-12 lg:pb-16 border-b border-surface-dim/15">
+          {/* Brand Column (Mobile: col-span-1, Desktop: col-span-8) */}
+          <div className="md:col-span-8 pr-0 lg:pr-12">
             <span className="font-serif text-2xl sm:text-3xl tracking-[0.18em] text-inverse-on-surface block mb-2 font-normal">
               An Gha
             </span>
@@ -34,8 +34,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Collections Column (Mobile: col-span-1, Desktop: col-span-3) */}
-          <div className="col-span-1 md:col-span-3">
+          {/* Collections Column (Mobile: col-span-1, Desktop: col-span-4) */}
+          <div className="md:col-span-4">
             <h4 className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-surface-variant/70 mb-3 sm:mb-4">
               Collections
             </h4>
@@ -63,40 +63,6 @@ export function Footer() {
               <li>
                 <Link href="/shop?collection=new-in" className="hover:text-inverse-on-surface transition-colors block py-0.5">
                   New Arrivals
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Maison & Services Column (Mobile: col-span-1, Desktop: col-span-4) */}
-          <div className="col-span-1 md:col-span-4">
-            <h4 className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-surface-variant/70 mb-3 sm:mb-4">
-              Maison & Services
-            </h4>
-            <ul className="space-y-2 sm:space-y-2.5 font-sans text-xs sm:text-[13px] uppercase tracking-wider text-surface-variant/80">
-              <li>
-                <Link href="/about" className="hover:text-inverse-on-surface transition-colors block py-0.5">
-                  The Philosophy
-                </Link>
-              </li>
-              <li>
-                <Link href="/stores" className="hover:text-inverse-on-surface transition-colors block py-0.5">
-                  Atelier Locations
-                </Link>
-              </li>
-              <li>
-                <Link href="/sustainability" className="hover:text-inverse-on-surface transition-colors block py-0.5">
-                  Material Provenance
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-inverse-on-surface transition-colors block py-0.5">
-                  Private Appointments
-                </Link>
-              </li>
-              <li>
-                <Link href="/client-services" className="hover:text-inverse-on-surface transition-colors block py-0.5">
-                  Care & Preservation
                 </Link>
               </li>
             </ul>
