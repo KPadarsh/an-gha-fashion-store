@@ -570,30 +570,8 @@ export function SignUpView() {
             </div>
           </form>
 
-          {/* Tactile Visual Interlude: Atelier Fabric & Monograph Plate */}
-          <div className="my-6 p-4 bg-[#FFF1EA] flex items-center gap-3.5 border border-[#2B2420]/10">
-            <div className="w-14 h-18 shrink-0 relative overflow-hidden bg-[#F9EBE5] border border-[#2B2420]/10">
-              <Image
-                src="/images/signup-image.png"
-                alt="Architectural fabric detail"
-                fill
-                quality={85}
-                unoptimized
-                className="object-cover grayscale-[20%]"
-              />
-            </div>
-            <div className="flex flex-col justify-center min-w-0">
-              <span className="font-sans text-[10px] font-semibold text-[#894B37] uppercase tracking-[0.18em] mb-0.5">
-                Archival Privilege
-              </span>
-              <p className="font-serif text-sm leading-snug text-[#2B2420]">
-                Registered patrons gain access to limited editions and custom bespoke commissions.
-              </p>
-            </div>
-          </div>
-
           {/* Divider: Shift to Sign In */}
-          <div className="relative flex items-center justify-center my-3">
+          <div className="relative flex items-center justify-center my-4">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full h-px bg-[#2B2420]/10" />
             </div>
