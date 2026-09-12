@@ -30,12 +30,12 @@ export function SignInView() {
     <div className="min-h-screen flex flex-col bg-[#FAF6F1] text-[#2B2420]">
       <main className="flex-1 w-full bg-[#FAF6F1] flex flex-col justify-center py-8 lg:py-14">
         {/* DESKTOP VIEW (>= lg) */}
-        <div className="hidden lg:block w-full px-8 lg:px-12">
+        <div className="hidden lg:block w-full px-6 lg:px-8">
           {/* Top Brand Wordmark Strip */}
-          <div className="max-w-[1440px] mx-auto flex items-center justify-between pb-8 mb-4 border-b border-[#2B2420]/10">
+          <div className="max-w-[940px] mx-auto flex items-center justify-between pb-5 mb-6 border-b border-[#2B2420]/10">
             <Link
               href="/home"
-              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors select-none"
+              className="font-serif text-2xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors select-none"
             >
               An Gha
             </Link>
@@ -50,10 +50,10 @@ export function SignInView() {
             </Link>
           </div>
 
-          <div className="max-w-[1440px] mx-auto grid grid-cols-12 gap-8 lg:gap-16 items-start">
-            {/* Visual Column (Campaign Plate) */}
-            <div className="col-span-6 flex flex-col">
-              <div className="relative w-full aspect-[3/4] overflow-hidden bg-[#F9EBE5] border border-[#2B2420]/10 shadow-xs">
+          <div className="max-w-[940px] mx-auto grid grid-cols-12 gap-8 items-start">
+            {/* Visual Column (Campaign Plate - Compact & Contained) */}
+            <div className="col-span-5 flex flex-col">
+              <div className="relative w-full aspect-[3/4] max-h-[460px] overflow-hidden bg-[#F9EBE5] border border-[#2B2420]/10 shadow-xs">
                 <Image
                   src="/images/signIn-image.png"
                   alt="Editorial fashion campaign photograph of An Gha atelier wrap coat"
@@ -61,73 +61,73 @@ export function SignInView() {
                   quality={95}
                   priority
                   unoptimized
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 380px"
                   className="w-full h-full object-cover object-center filter contrast-[0.98] brightness-[0.99]"
                 />
-                <div className="absolute top-4 left-4 bg-[#FAF6F1]/90 backdrop-blur-xs px-3 py-1.5 flex items-center gap-2 border border-[#2B2420]/10">
+                <div className="absolute top-3.5 left-3.5 bg-[#FAF6F1]/95 backdrop-blur-xs px-2.5 py-1 flex items-center gap-1.5 border border-[#2B2420]/10">
                   <span className="w-1.5 h-1.5 bg-[#894B37]" />
-                  <span className="font-sans text-[11px] font-semibold text-[#2B2420] uppercase tracking-[0.2em]">
+                  <span className="font-sans text-[10px] font-semibold text-[#2B2420] uppercase tracking-[0.18em]">
                     Plate № 04 — Autumn Archive
                   </span>
                 </div>
               </div>
 
-              <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-[#7A7168]">
-                <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em]">
-                  Archive Campaign № 04 — Unstructured Camel Wrap Coat
+              <div className="mt-2.5 flex items-center justify-between text-[#7A7168]">
+                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em]">
+                  Archive Campaign № 04
                 </span>
-                <span className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#7A7168]/80">
-                  Captured in Soft Mediterranean Daylight
+                <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#7A7168]/80">
+                  Soft Daylight Study
                 </span>
               </div>
 
               {/* Archival Curated Metadata Snippet */}
-              <div className="mt-6 bg-[#FFF1EA] p-4 flex items-center justify-between border border-[#2B2420]/10">
-                <div className="flex items-center gap-2.5">
-                  <ShieldCheck className="w-4 h-4 text-[#894B37]" />
-                  <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420]">
-                    Authenticated Sartorial Vault
+              <div className="mt-3.5 bg-[#FFF1EA] p-3 flex items-center justify-between border border-[#2B2420]/10">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#894B37]" />
+                  <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420]">
+                    Authenticated Vault
                   </span>
                 </div>
-                <span className="font-mono text-xs text-[#7A7168] tracking-widest">
-                  EDITION 2026 / REVISION 08
+                <span className="font-mono text-[10px] text-[#7A7168] tracking-wider">
+                  EDITION 2026 / REV 08
                 </span>
               </div>
             </div>
 
             {/* Atelier Access Form Column */}
-            <div className="col-span-6 xl:col-span-5 xl:col-start-8 flex flex-col justify-center">
+            <div className="col-span-7 flex flex-col justify-center">
               {/* Chapter Index Label */}
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-1.5">
                 <span className="font-mono text-xs font-semibold text-[#894B37]">01</span>
                 <span className="text-[#2B2420]/20">/</span>
-                <span className="font-sans text-[11px] font-semibold uppercase text-[#7A7168] tracking-[0.25em]">
+                <span className="font-sans text-[10px] font-semibold uppercase text-[#7A7168] tracking-[0.25em]">
                   Client Archive Portal
                 </span>
               </div>
 
               {/* Section Title */}
-              <h1 className="font-serif text-4xl xl:text-5xl text-[#2B2420] tracking-tight leading-tight mb-3 font-normal">
+              <h1 className="font-serif text-2xl lg:text-3xl text-[#2B2420] tracking-tight leading-snug mb-2 font-normal">
                 Return to Your Sartorial Archive
               </h1>
 
               {/* Contextual Description */}
-              <p className="font-sans text-sm text-[#7A7168] leading-relaxed max-w-md mb-8">
+              <p className="font-sans text-xs text-[#7A7168] leading-relaxed max-w-md mb-5">
                 Access your private client dossier, saved archival curation, bespoke fitting records, and seasonal private previews.
               </p>
 
               {/* Access Form */}
-              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
                 {/* Email Input Field */}
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1">
                   <label
                     htmlFor="desktop-client-email"
-                    className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
+                    className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
                   >
                     <span>
                       Communication Email <span className="text-[#894B37]">*</span>
                     </span>
-                    <span className="text-[#7A7168] font-mono text-[10px] tracking-normal font-normal">
+                    <span className="text-[#7A7168] font-mono text-[9px] tracking-normal font-normal">
                       REGISTERED CLIENT ID
                     </span>
                   </label>
@@ -139,24 +139,24 @@ export function SignInView() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="client@angha-archive.com"
                       required
-                      className="w-full bg-[#FFFFFF] text-[#2B2420] text-sm font-sans px-4 py-3.5 border border-[#2B2420]/15 focus:border-[#2B2420] focus:outline-none transition-colors placeholder:text-[#7A7168]/60"
+                      className="w-full bg-[#FFFFFF] text-[#2B2420] text-xs font-sans px-3.5 py-2.5 border border-[#2B2420]/15 focus:border-[#2B2420] focus:outline-none transition-colors placeholder:text-[#7A7168]/60"
                     />
-                    <Mail className="w-4 h-4 text-[#7A7168] absolute right-4 pointer-events-none" />
+                    <Mail className="w-3.5 h-3.5 text-[#7A7168] absolute right-3.5 pointer-events-none" />
                   </div>
                 </div>
 
                 {/* Password Input Field */}
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor="desktop-client-password"
-                      className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420]"
+                      className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420]"
                     >
                       Password <span className="text-[#894B37]">*</span>
                     </label>
                     <a
                       href="mailto:concierge@angha.com"
-                      className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#894B37] hover:text-[#2B2420] transition-colors underline decoration-[#2B2420]/20 underline-offset-4"
+                      className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#894B37] hover:text-[#2B2420] transition-colors underline decoration-[#2B2420]/20 underline-offset-4"
                     >
                       Forgot Password?
                     </a>
@@ -169,12 +169,12 @@ export function SignInView() {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••••••••••"
                       required
-                      className="w-full bg-[#FFFFFF] text-[#2B2420] text-sm font-sans px-4 py-3.5 pr-16 border border-[#2B2420]/15 focus:border-[#2B2420] focus:outline-none transition-colors placeholder:text-[#7A7168]/60"
+                      className="w-full bg-[#FFFFFF] text-[#2B2420] text-xs font-sans px-3.5 py-2.5 pr-14 border border-[#2B2420]/15 focus:border-[#2B2420] focus:outline-none transition-colors placeholder:text-[#7A7168]/60"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 font-sans text-[10px] font-semibold uppercase tracking-widest text-[#7A7168] hover:text-[#2B2420] transition-colors cursor-pointer select-none"
+                      className="absolute right-3.5 font-sans text-[9px] font-semibold uppercase tracking-widest text-[#7A7168] hover:text-[#2B2420] transition-colors cursor-pointer select-none"
                     >
                       {showPassword ? "HIDE" : "SHOW"}
                     </button>
@@ -182,13 +182,13 @@ export function SignInView() {
                 </div>
 
                 {/* Remember Privilege Session Checkbox */}
-                <div className="flex items-center gap-2.5 pt-1">
-                  <label className="flex items-center gap-2.5 cursor-pointer select-none">
+                <div className="flex items-center gap-2">
+                  <label className="flex items-center gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="w-4 h-4 rounded-none accent-[#2B2420] cursor-pointer"
+                      className="w-3.5 h-3.5 rounded-none accent-[#2B2420] cursor-pointer"
                     />
                     <span className="font-sans text-xs text-[#7A7168]">
                       Maintain authenticated session on this private device
@@ -197,39 +197,39 @@ export function SignInView() {
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-2">
+                <div className="pt-1">
                   <button
                     type="submit"
-                    className="w-full bg-[#2B2420] hover:bg-[#894B37] text-[#FAF6F1] font-sans text-xs uppercase tracking-[0.2em] font-semibold py-4 px-6 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer shadow-xs hover:shadow-sm"
+                    className="w-full bg-[#2B2420] hover:bg-[#894B37] text-[#FAF6F1] font-sans text-xs uppercase tracking-[0.2em] font-semibold py-3 px-5 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer shadow-xs hover:shadow-sm"
                   >
                     <span>Sign In to Atelier</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </form>
 
               {/* Divider & Alternative Access */}
-              <div className="mt-8 pt-6 border-t border-[#2B2420]/10 flex flex-col gap-3">
+              <div className="mt-5 pt-4 border-t border-[#2B2420]/10 flex flex-col gap-2.5">
                 <div className="flex items-center justify-between text-[#7A7168]">
-                  <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em]">
+                  <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em]">
                     New to Angha?
                   </span>
-                  <span className="font-sans text-[10px] font-semibold uppercase tracking-wider">
+                  <span className="font-sans text-[9px] font-semibold uppercase tracking-wider">
                     Membership By Application
                   </span>
                 </div>
                 <Link
                   href="/sign-up"
-                  className="w-full bg-[#F9EBE5] hover:bg-[#2B2420] text-[#2B2420] hover:text-[#FAF6F1] font-sans text-xs font-semibold uppercase tracking-[0.2em] py-3.5 px-6 text-center transition-all duration-300 block border border-[#2B2420]/10"
+                  className="w-full bg-[#F9EBE5] hover:bg-[#2B2420] text-[#2B2420] hover:text-[#FAF6F1] font-sans text-xs font-semibold uppercase tracking-[0.18em] py-2.5 px-4 text-center transition-all duration-300 block border border-[#2B2420]/10"
                 >
                   Create an Atelier Account
                 </Link>
               </div>
 
               {/* Security Badge & Archival Verification */}
-              <div className="mt-6 flex items-center justify-center gap-2 text-[#7A7168]">
-                <Lock className="w-3.5 h-3.5" strokeWidth={1.75} />
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em]">
+              <div className="mt-4 flex items-center justify-center gap-1.5 text-[#7A7168]">
+                <Lock className="w-3 h-3" strokeWidth={1.75} />
+                <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.16em]">
                   Encrypted Client Dossier • 256-Bit SSL Atelier Protection
                 </span>
               </div>

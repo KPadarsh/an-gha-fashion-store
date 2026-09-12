@@ -37,12 +37,12 @@ export function SignUpView() {
     <div className="min-h-screen flex flex-col bg-[#FAF6F1] text-[#2B2420]">
       <main className="flex-1 w-full bg-[#FAF6F1] flex flex-col justify-center py-8 lg:py-14">
         {/* DESKTOP VIEW (>= lg) */}
-        <div className="hidden lg:block w-full px-8 lg:px-12">
+        <div className="hidden lg:block w-full px-6 lg:px-8">
           {/* Top Brand Wordmark Strip */}
-          <div className="max-w-[1400px] mx-auto flex items-center justify-between pb-8 mb-4 border-b border-[#2B2420]/10">
+          <div className="max-w-[980px] mx-auto flex items-center justify-between pb-5 mb-6 border-b border-[#2B2420]/10">
             <Link
               href="/home"
-              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors select-none"
+              className="font-serif text-2xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors select-none"
             >
               An Gha
             </Link>
@@ -57,12 +57,12 @@ export function SignUpView() {
             </Link>
           </div>
 
-          <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div className="max-w-[980px] mx-auto grid grid-cols-12 gap-8 items-start">
             {/* LEFT COLUMN: Editorial Photography & Monograph Narrative (5 cols) */}
             <aside className="col-span-5 flex flex-col">
               {/* Visual Presentation Plate */}
               <div className="relative bg-[#FFFFFF] border border-[#2B2420]/10 shadow-xs overflow-hidden">
-                <div className="aspect-[3/4] w-full relative overflow-hidden bg-[#EDE0D9]">
+                <div className="aspect-[3/4] max-h-[440px] w-full relative overflow-hidden bg-[#EDE0D9]">
                   <Image
                     src="/images/signup-image.png"
                     alt="Archival Monograph Editorial plate for An Gha atelier"
@@ -70,35 +70,35 @@ export function SignUpView() {
                     quality={95}
                     priority
                     unoptimized
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    sizes="(max-width: 1024px) 100vw, 380px"
                     className="w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-[1.02]"
                   />
                   {/* Minimalist Editorial Watermark Pin */}
-                  <div className="absolute top-4 left-4 bg-[#FAF6F1]/90 backdrop-blur-xs px-3 py-1.5 border border-[#2B2420]/10 shadow-xs">
-                    <span className="font-mono text-[10px] text-[#2B2420] uppercase tracking-widest font-medium">
+                  <div className="absolute top-3.5 left-3.5 bg-[#FAF6F1]/95 backdrop-blur-xs px-2.5 py-1 border border-[#2B2420]/10 shadow-xs">
+                    <span className="font-mono text-[9px] text-[#2B2420] uppercase tracking-widest font-medium">
                       EDITION 2026 / PROTOCOL 02
                     </span>
                   </div>
                   {/* Sartorial Seal Indicator */}
-                  <div className="absolute bottom-4 right-4 bg-[#2B2420]/85 backdrop-blur-xs px-3 py-1 text-[#FAF6F1]">
-                    <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em]">
+                  <div className="absolute bottom-3.5 right-3.5 bg-[#2B2420]/85 backdrop-blur-xs px-2.5 py-1 text-[#FAF6F1]">
+                    <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.18em]">
                       ATELIER ENROLLMENT
                     </span>
                   </div>
                 </div>
 
                 {/* Monograph Caption Section */}
-                <div className="p-4 bg-[#FFFFFF] flex flex-col gap-1 border-t border-[#2B2420]/10">
+                <div className="p-3 bg-[#FFFFFF] flex flex-col gap-1 border-t border-[#2B2420]/10">
                   <div className="flex items-center justify-between">
-                    <span className="font-sans text-[10px] font-semibold text-[#7A7168] uppercase tracking-widest">
-                      ARCHIVE MONOGRAPH № 07 — MINIMALIST SILK SLIP
+                    <span className="font-sans text-[9px] font-semibold text-[#7A7168] uppercase tracking-widest">
+                      ARCHIVE MONOGRAPH № 07
                     </span>
-                    <span className="font-mono text-xs text-[#894B37] font-semibold tracking-widest">
+                    <span className="font-mono text-[10px] text-[#894B37] font-semibold tracking-widest">
                       VOL. IV
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-[#7A7168] font-sans text-[9px] font-semibold uppercase tracking-[0.16em] pt-1">
-                    <span>ATELIER MEMBERSHIP PRIVILEGES</span>
+                  <div className="flex items-center justify-between text-[#7A7168] font-sans text-[8px] font-semibold uppercase tracking-[0.14em] pt-0.5">
+                    <span>PRIVILEGES</span>
                     <span>•</span>
                     <span>PRIVATE PREVIEWS</span>
                     <span>•</span>
@@ -108,16 +108,16 @@ export function SignUpView() {
               </div>
 
               {/* Archival Narrative Inset Plate */}
-              <div className="mt-6 p-5 bg-[#FFF1EA] flex flex-col gap-2 border border-[#2B2420]/10">
-                <span className="font-sans text-[11px] font-semibold uppercase text-[#894B37] tracking-widest">
+              <div className="mt-4 p-3.5 bg-[#FFF1EA] flex flex-col gap-1.5 border border-[#2B2420]/10">
+                <span className="font-sans text-[10px] font-semibold uppercase text-[#894B37] tracking-widest">
                   Curatorial Mandate
                 </span>
                 <p className="font-sans text-xs text-[#7A7168] leading-relaxed">
-                  Every garment preserved within the ANGHA collection is indexed under individual client portfolios. Dossier holders gain unmediated access to private showroom fittings in Paris, Florence, and Kyoto alongside archival restorative care.
+                  Every garment preserved within the ANGHA collection is indexed under individual client portfolios with bespoke fitting access.
                 </p>
-                <div className="flex items-center gap-2 pt-1 text-[#2B2420]">
-                  <ShieldCheck className="w-4 h-4 text-[#894B37]" />
-                  <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#7A7168]">
+                <div className="flex items-center gap-1.5 pt-0.5 text-[#2B2420]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#894B37]" />
+                  <span className="font-sans text-[9px] font-semibold uppercase tracking-wider text-[#7A7168]">
                     Permanent Archival Record
                   </span>
                 </div>
@@ -125,39 +125,39 @@ export function SignUpView() {
             </aside>
 
             {/* RIGHT COLUMN: Registration Dossier Form (7 cols) */}
-            <section className="col-span-7 flex flex-col lg:pl-6">
+            <section className="col-span-7 flex flex-col">
               {/* Index Categorization */}
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 bg-[#894B37]" />
-                <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#7A7168]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-1.5 h-1.5 bg-[#894B37]" />
+                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7A7168]">
                   02 / NEW CLIENT ENROLLMENT
                 </span>
               </div>
 
               {/* Editorial Headline */}
-              <h1 className="font-serif text-4xl xl:text-5xl text-[#2B2420] font-normal leading-[1.08] tracking-tight mb-3">
+              <h1 className="font-serif text-2xl lg:text-3xl text-[#2B2420] font-normal leading-snug tracking-tight mb-2">
                 Create Your Atelier Dossier
               </h1>
 
               {/* Supporting Editorial Rationale */}
-              <p className="font-sans text-sm text-[#7A7168] leading-relaxed max-w-xl mb-8">
-                Receive exclusive invitations to seasonal collection releases, bespoke sizing curation, complimentary archival garment care, and priority atelier dispatch.
+              <p className="font-sans text-xs text-[#7A7168] leading-relaxed max-w-lg mb-4">
+                Receive exclusive invitations to seasonal collection releases, bespoke sizing curation, complimentary archival care, and priority dispatch.
               </p>
 
               {/* Registration Dossier Form */}
-              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3.5">
                 {/* NAME ROW: 2-Column Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {/* First Name Field */}
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1">
                     <label
                       htmlFor="desktop-first-name"
-                      className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
+                      className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
                     >
                       <span>
                         First Name <span className="text-[#894B37]">*</span>
                       </span>
-                      <span className="font-mono text-[10px] text-[#7A7168]">SEC. 01</span>
+                      <span className="font-mono text-[9px] text-[#7A7168]">SEC. 01</span>
                     </label>
                     <div className="relative bg-[#FFFFFF] border border-[#2B2420]/15">
                       <input
@@ -167,21 +167,21 @@ export function SignUpView() {
                         onChange={(e) => setFirstName(e.target.value)}
                         placeholder="Amrita"
                         required
-                        className="w-full px-4 py-3 bg-[#FFFFFF] text-[#2B2420] font-sans text-sm placeholder:text-[#7A7168]/60 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 bg-[#FFFFFF] text-[#2B2420] font-sans text-xs placeholder:text-[#7A7168]/60 focus:outline-none"
                       />
                     </div>
                   </div>
 
                   {/* Last Name Field */}
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1">
                     <label
                       htmlFor="desktop-last-name"
-                      className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
+                      className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
                     >
                       <span>
                         Last Name <span className="text-[#894B37]">*</span>
                       </span>
-                      <span className="font-mono text-[10px] text-[#7A7168]">SEC. 02</span>
+                      <span className="font-mono text-[9px] text-[#7A7168]">SEC. 02</span>
                     </label>
                     <div className="relative bg-[#FFFFFF] border border-[#2B2420]/15">
                       <input
@@ -191,22 +191,22 @@ export function SignUpView() {
                         onChange={(e) => setLastName(e.target.value)}
                         placeholder="Sen"
                         required
-                        className="w-full px-4 py-3 bg-[#FFFFFF] text-[#2B2420] font-sans text-sm placeholder:text-[#7A7168]/60 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 bg-[#FFFFFF] text-[#2B2420] font-sans text-xs placeholder:text-[#7A7168]/60 focus:outline-none"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* EMAIL ADDRESS */}
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1">
                   <label
                     htmlFor="desktop-email"
-                    className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
+                    className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
                   >
                     <span>
                       Communication Email <span className="text-[#894B37]">*</span>
                     </span>
-                    <span className="font-mono text-[10px] text-[#7A7168]">DISPATCH REGISTER</span>
+                    <span className="font-mono text-[9px] text-[#7A7168]">DISPATCH REGISTER</span>
                   </label>
                   <div className="relative bg-[#FFFFFF] border border-[#2B2420]/15 flex items-center">
                     <input
@@ -216,24 +216,24 @@ export function SignUpView() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="amrita.sen@atelier-archive.com"
                       required
-                      className="w-full px-4 py-3 bg-[#FFFFFF] text-[#2B2420] font-sans text-sm placeholder:text-[#7A7168]/60 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-[#FFFFFF] text-[#2B2420] font-sans text-xs placeholder:text-[#7A7168]/60 focus:outline-none"
                     />
-                    <Mail className="w-4 h-4 text-[#7A7168] absolute right-4 pointer-events-none" />
+                    <Mail className="w-3.5 h-3.5 text-[#7A7168] absolute right-3.5 pointer-events-none" />
                   </div>
                 </div>
 
                 {/* PASSWORD MATRIX: 2-Column Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {/* Create Password */}
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1">
                     <label
                       htmlFor="desktop-password"
-                      className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
+                      className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
                     >
                       <span>
                         Create Password <span className="text-[#894B37]">*</span>
                       </span>
-                      <span className="font-mono text-[10px] text-[#7A7168]">KEY 01</span>
+                      <span className="font-mono text-[9px] text-[#7A7168]">KEY 01</span>
                     </label>
                     <div className="relative bg-[#FFFFFF] border border-[#2B2420]/15 flex items-center">
                       <input
@@ -243,29 +243,29 @@ export function SignUpView() {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••••••"
                         required
-                        className="w-full px-4 py-3 pr-10 bg-[#FFFFFF] text-[#2B2420] font-sans text-sm placeholder:text-[#7A7168]/60 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 pr-8 bg-[#FFFFFF] text-[#2B2420] font-sans text-xs placeholder:text-[#7A7168]/60 focus:outline-none"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
                         aria-label="Toggle password visibility"
-                        className="absolute right-3 text-[#7A7168] hover:text-[#2B2420] focus:outline-none cursor-pointer"
+                        className="absolute right-2.5 text-[#7A7168] hover:text-[#2B2420] focus:outline-none cursor-pointer"
                       >
-                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                        {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
                     </div>
                   </div>
 
                   {/* Confirm Password */}
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1">
                     <label
                       htmlFor="desktop-confirm-password"
-                      className="font-sans text-[11px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
+                      className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#2B2420] flex items-center justify-between"
                     >
                       <span>
                         Confirm Password <span className="text-[#894B37]">*</span>
                       </span>
-                      <span className="font-mono text-[10px] text-[#7A7168]">KEY 02</span>
+                      <span className="font-mono text-[9px] text-[#7A7168]">KEY 02</span>
                     </label>
                     <div className="relative bg-[#FFFFFF] border border-[#2B2420]/15 flex items-center">
                       <input
@@ -275,37 +275,37 @@ export function SignUpView() {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="••••••••••••"
                         required
-                        className="w-full px-4 py-3 pr-10 bg-[#FFFFFF] text-[#2B2420] font-sans text-sm placeholder:text-[#7A7168]/60 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 pr-8 bg-[#FFFFFF] text-[#2B2420] font-sans text-xs placeholder:text-[#7A7168]/60 focus:outline-none"
                       />
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         aria-label="Toggle confirm password visibility"
-                        className="absolute right-3 text-[#7A7168] hover:text-[#2B2420] focus:outline-none cursor-pointer"
+                        className="absolute right-2.5 text-[#7A7168] hover:text-[#2B2420] focus:outline-none cursor-pointer"
                       >
-                        {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                        {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
                     </div>
                   </div>
                 </div>
 
                 {/* Password Requirement Helper Token */}
-                <div className="flex items-center gap-1.5 -mt-2">
-                  <Info className="w-3.5 h-3.5 text-[#7A7168]" />
-                  <span className="font-sans text-[10px] font-semibold text-[#7A7168] uppercase tracking-wider">
+                <div className="flex items-center gap-1.5 -mt-1">
+                  <Info className="w-3 h-3 text-[#7A7168]" />
+                  <span className="font-sans text-[9px] font-semibold text-[#7A7168] uppercase tracking-wider">
                     Minimum 8 characters with numerical or sartorial symbol
                   </span>
                 </div>
 
                 {/* PREFERENCES & TERMS ACKNOWLEDGEMENT */}
-                <div className="flex flex-col gap-3 pt-2">
+                <div className="flex flex-col gap-2 pt-1">
                   {/* Newsletter Checkbox */}
-                  <label className="flex items-start gap-3 cursor-pointer select-none group">
+                  <label className="flex items-start gap-2.5 cursor-pointer select-none group">
                     <input
                       type="checkbox"
                       checked={newsletterOptIn}
                       onChange={(e) => setNewsletterOptIn(e.target.checked)}
-                      className="w-4 h-4 mt-0.5 rounded-none accent-[#2B2420] cursor-pointer"
+                      className="w-3.5 h-3.5 mt-0.5 rounded-none accent-[#2B2420] cursor-pointer"
                     />
                     <span className="font-sans text-xs text-[#7A7168] group-hover:text-[#2B2420] transition-colors leading-relaxed">
                       Receive limited catalog printings, archival dossiers, and seasonal preview dispatches.
@@ -313,8 +313,8 @@ export function SignUpView() {
                   </label>
 
                   {/* Legal Protocol Notice */}
-                  <div className="bg-[#FFF1EA] p-3.5 border border-[#2B2420]/10">
-                    <p className="font-sans text-xs text-[#7A7168] leading-relaxed">
+                  <div className="bg-[#FFF1EA] p-2.5 border border-[#2B2420]/10">
+                    <p className="font-sans text-[11px] text-[#7A7168] leading-relaxed">
                       By creating an account, you acknowledge and agree to ANGHA&apos;s{" "}
                       <Link href="/shop" className="text-[#2B2420] underline underline-offset-4 decoration-[#894B37] hover:text-[#894B37] transition-colors">
                         Terms of Atelier
@@ -325,41 +325,41 @@ export function SignUpView() {
                 </div>
 
                 {/* PRIMARY SUBMISSION BUTTON */}
-                <div className="pt-2">
+                <div className="pt-1">
                   <button
                     type="submit"
-                    className="w-full py-4 px-6 bg-[#2B2420] hover:bg-[#894B37] text-[#FAF6F1] font-sans text-xs uppercase tracking-widest font-semibold transition-colors duration-200 flex items-center justify-center gap-2 shadow-xs hover:shadow-sm cursor-pointer"
+                    className="w-full py-3 px-5 bg-[#2B2420] hover:bg-[#894B37] text-[#FAF6F1] font-sans text-xs uppercase tracking-widest font-semibold transition-colors duration-200 flex items-center justify-center gap-2 shadow-xs hover:shadow-sm cursor-pointer"
                   >
                     <span>Create Account — Enter Atelier</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
                 {/* ALTERNATIVE AUTHENTICATION LINKAGE */}
-                <div className="flex flex-col gap-3 mt-4 pt-5 bg-[#FFFFFF] p-5 border border-[#2B2420]/10 shadow-xs">
+                <div className="flex flex-col gap-2 mt-2 pt-3 bg-[#FFFFFF] p-3.5 border border-[#2B2420]/10 shadow-xs">
                   <div className="flex items-center justify-between">
-                    <span className="font-sans text-[11px] font-semibold uppercase tracking-widest text-[#7A7168]">
+                    <span className="font-sans text-[10px] font-semibold uppercase tracking-widest text-[#7A7168]">
                       ALREADY HAVE AN ATELIER ACCOUNT?
                     </span>
-                    <span className="font-mono text-xs text-[#894B37] font-semibold">PORTAL 01</span>
+                    <span className="font-mono text-[10px] text-[#894B37] font-semibold">PORTAL 01</span>
                   </div>
                   <Link
                     href="/sign-in"
-                    className="w-full py-3.5 px-4 bg-[#F9EBE5] hover:bg-[#2B2420] text-[#2B2420] hover:text-[#FAF6F1] font-sans text-xs uppercase tracking-widest font-semibold text-center transition-colors duration-200 flex items-center justify-center gap-2 border border-[#2B2420]/10"
+                    className="w-full py-2.5 px-3 bg-[#F9EBE5] hover:bg-[#2B2420] text-[#2B2420] hover:text-[#FAF6F1] font-sans text-xs uppercase tracking-widest font-semibold text-center transition-colors duration-200 flex items-center justify-center gap-2 border border-[#2B2420]/10"
                   >
-                    <Unlock className="w-3.5 h-3.5" />
+                    <Unlock className="w-3 h-3" />
                     <span>SIGN IN TO YOUR ARCHIVE</span>
                   </Link>
                 </div>
               </form>
 
               {/* Bespoke Concierge Footnote Support */}
-              <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-4 border-t border-[#2B2420]/10 text-[#7A7168]">
-                <div className="flex items-center gap-1.5 font-sans text-[11px] uppercase tracking-wider">
-                  <Headphones className="w-3.5 h-3.5 text-[#894B37]" />
+              <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-3 border-t border-[#2B2420]/10 text-[#7A7168]">
+                <div className="flex items-center gap-1.5 font-sans text-[10px] uppercase tracking-wider">
+                  <Headphones className="w-3 h-3 text-[#894B37]" />
                   <span>Atelier Protocol Concierge: Private Line (+33 1 42 68 00 12)</span>
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-widest">
+                <span className="font-mono text-[9px] uppercase tracking-widest">
                   UTC+1 · MON—SAT
                 </span>
               </div>
