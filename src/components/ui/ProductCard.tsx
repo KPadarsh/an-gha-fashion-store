@@ -3,7 +3,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart } from "lucide-react";
+import { Heart, ArrowRight, Check } from "lucide-react";
+
+export interface ProductBadge {
+  text: string;
+  variant?: "primary" | "secondary";
+}
 
 export interface ProductCardProps {
   id: string;
@@ -13,8 +18,11 @@ export interface ProductCardProps {
   price: string | number;
   imageUrl: string;
   imageAlt: string;
+  badge?: ProductBadge;
+  sizes?: string[];
   href?: string;
   onWishlistToggle?: (id: string) => void;
+  onQuickAdd?: (id: string, size: string) => void;
 }
 
 export function ProductCard({
@@ -25,13 +33,22 @@ export function ProductCard({
   price,
   imageUrl,
   imageAlt,
-  href = "/shop",
+  badge,
+  sizes = ["XS", "S", "M", "L"],
+  href = `/shop/${id}`,
   onWishlistToggle,
+  onQuickAdd,
 }: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [isAdded, setIsAdded] = useState(false);
 
   const formattedPrice =
-    typeof price === "number" ? `$${price}` : price.startsWith("$") ? price : `$${price}`;
+    typeof price === "number"
+      ? `$${price}`
+      : price.startsWith("$")
+      ? price
+      : `$${price}`;
 
   const handleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -42,24 +59,53 @@ export function ProductCard({
     }
   };
 
-  return (
-    <article className="flex flex-col bg-surface-container-lowest group relative border border-transparent hover:border-surface-dim/40 shadow-sm transition-colors">
-      {/* 3:4 Aspect Ratio Image Container */}
-      <Link href={href} className="relative aspect-[3/4] w-full bg-surface-container overflow-hidden block">
-        <Image
-          src={imageUrl}
-          alt={imageAlt}
-          fill
-          quality={95}
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
-        />
+  const handleQuickAdd = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const sizeToAdd = selectedSize || sizes[0] || "ONE SIZE";
+    setIsAdded(true);
+    if (onQuickAdd) {
+      onQuickAdd(id, sizeToAdd);
+    }
+    setTimeout(() => setIsAdded(false), 2000);
+  };
 
-        {/* Monospaced Index Badge */}
-        <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-surface/90 px-1.5 sm:px-2 py-0.5 sm:py-1 z-10">
-          <span className="font-sans text-[10px] sm:text-[11px] font-medium tracking-[0.15em] text-on-surface uppercase">
-            {indexNumber}
-          </span>
+  return (
+    <article className="group flex flex-col w-full bg-surface-container-lowest sm:bg-transparent">
+      {/* 3:4 Aspect Ratio Image Container */}
+      <div className="relative w-full aspect-[3/4] bg-surface-container-high overflow-hidden">
+        <Link href={href} className="block w-full h-full relative" aria-label={name}>
+          <Image
+            src={imageUrl}
+            alt={imageAlt}
+            fill
+            quality={95}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        </Link>
+
+        {/* Top Badges (Index + Optional Status Badge) */}
+        <div className="absolute top-2 left-2 flex items-center gap-1 sm:gap-1.5 z-10 pointer-events-none">
+          <div className="bg-surface/90 px-1.5 sm:px-2 py-0.5 backdrop-blur-xs">
+            <span className="font-sans text-[10px] sm:text-[11px] font-medium tracking-[0.15em] text-on-surface uppercase">
+              {indexNumber}
+            </span>
+          </div>
+
+          {badge && (
+            <div
+              className={`px-1.5 sm:px-2 py-0.5 text-white ${
+                badge.variant === "secondary"
+                  ? "bg-secondary"
+                  : "bg-primary"
+              }`}
+            >
+              <span className="font-sans text-[8px] sm:text-[10px] font-semibold tracking-wider uppercase">
+                {badge.text}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Wishlist Button */}
@@ -67,7 +113,7 @@ export function ProductCard({
           type="button"
           onClick={handleWishlist}
           aria-label={`Save ${name} to Wishlist`}
-          className="absolute top-2 sm:top-3 right-2 sm:right-3 w-7 h-7 sm:w-8 sm:h-8 rounded-full sm:rounded-none flex items-center justify-center bg-surface/85 backdrop-blur-sm text-on-surface hover:text-primary transition-colors z-10 focus-visible:outline-none"
+          className="absolute top-2 right-2 w-8 h-8 rounded-full sm:rounded-none bg-surface/80 sm:bg-surface/90 hover:bg-surface flex items-center justify-center text-on-surface hover:text-primary transition-colors z-10 focus-visible:outline-none"
         >
           <Heart
             className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${
@@ -78,37 +124,99 @@ export function ProductCard({
             strokeWidth={1.5}
           />
         </button>
-      </Link>
 
-      {/* Metadata & Actions */}
-      <div className="p-2.5 sm:p-4 flex flex-col justify-between flex-grow">
-        <div>
-          <div className="flex items-center justify-between mb-1 sm:mb-1.5">
-            <span className="font-sans text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase text-outline">
-              {category}
-            </span>
-            <span className="font-sans text-[13px] sm:text-[15px] font-medium tracking-[0.02em] text-primary sm:text-on-surface">
-              {formattedPrice}
-            </span>
+        {/* Quick Add Hover Drawer (Desktop group-hover) */}
+        <div className="hidden md:flex absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-inverse-surface/95 text-inverse-on-surface p-2.5 lg:p-3 backdrop-blur-xs items-center justify-between z-20">
+          <div className="flex items-center gap-1 lg:gap-1.5 font-sans text-xs font-semibold uppercase tracking-wider">
+            {sizes.map((size) => (
+              <button
+                key={size}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setSelectedSize(size);
+                }}
+                className={`px-1.5 lg:px-2 py-0.5 transition-colors ${
+                  selectedSize === size
+                    ? "bg-primary text-white"
+                    : "hover:bg-primary/80 hover:text-white text-surface-variant/80"
+                }`}
+              >
+                {size}
+              </button>
+            ))}
           </div>
 
-          <Link href={href}>
-            <h3 className="font-serif text-[14px] sm:text-lg font-medium leading-snug text-on-surface group-hover:text-primary transition-colors line-clamp-1">
-              {name}
-            </h3>
-          </Link>
+          <button
+            type="button"
+            onClick={handleQuickAdd}
+            className="font-sans text-xs font-semibold uppercase tracking-widest text-primary-fixed hover:text-surface-bright flex items-center gap-1 transition-colors focus-visible:outline-none"
+          >
+            {isAdded ? (
+              <>
+                <span>ADDED</span>
+                <Check className="w-3.5 h-3.5 text-primary-fixed" />
+              </>
+            ) : (
+              <>
+                <span>ADD</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </>
+            )}
+          </button>
         </div>
+      </div>
 
-        {/* Quick Explore Strip */}
-        <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3 border-t border-surface-dim/40 flex items-center justify-between">
+      {/* Product Metadata & Actions */}
+      {/* Mobile Layout (< md) */}
+      <div className="flex md:hidden p-2 flex-col gap-1">
+        <span className="font-sans text-[10px] uppercase tracking-widest text-tertiary">
+          {category}
+        </span>
+        <Link href={href} className="text-on-surface hover:text-primary transition-colors">
+          <h2 className="font-serif text-[1.15rem] leading-snug line-clamp-1 font-normal">
+            {name}
+          </h2>
+        </Link>
+        <div className="flex items-center justify-between pt-0.5">
+          <span className="font-sans text-sm font-medium tracking-[0.02em] text-primary">
+            {formattedPrice}
+          </span>
           <Link
             href={href}
-            className="font-sans text-[10px] sm:text-[11px] font-semibold tracking-[0.12em] uppercase text-primary sm:text-outline group-hover:text-primary transition-colors flex items-center gap-1"
+            className="font-sans text-[10px] font-semibold text-tertiary hover:text-primary transition-colors uppercase tracking-wider flex items-center gap-0.5"
           >
             <span>EXPLORE</span>
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+            <span>→</span>
           </Link>
         </div>
+      </div>
+
+      {/* Desktop Layout (>= md) */}
+      <div className="hidden md:flex pt-3 lg:pt-4 flex-col">
+        <div className="flex items-center justify-between mb-1">
+          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-tertiary">
+            {category}
+          </span>
+          <span className="font-sans text-base lg:text-[1.125rem] font-medium tracking-[0.02em] text-on-surface">
+            {formattedPrice}
+          </span>
+        </div>
+
+        <Link href={href} className="group-hover:text-primary transition-colors">
+          <h3 className="font-serif text-lg sm:text-xl lg:text-[1.5rem] font-normal leading-tight text-on-surface">
+            {name}
+          </h3>
+        </Link>
+
+        <Link
+          href={href}
+          className="mt-2.5 inline-flex items-center gap-1.5 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-primary hover:text-on-surface transition-colors"
+        >
+          <span>EXPLORE</span>
+          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </div>
     </article>
   );
