@@ -29,48 +29,10 @@ interface CartContextType {
   totalCount: number;
 }
 
-// Initial structured mock items matching the authoritative Stitch Cart design
-const INITIAL_CART_ITEMS: CartItem[] = [
-  {
-    id: "elara-draped-dress-M-TERRACOTTA",
-    productId: "elara-draped-dress",
-    name: "Elara Draped Dress",
-    category: "DRESSES",
-    specimenNumber: "SPECIMEN N° 01",
-    price: 128,
-    currency: "USD",
-    color: "TERRACOTTA",
-    size: "M",
-    fabricDetails: "100% RAW SILK CHARMEUSE",
-    careDetails: "DRY CLEAN ONLY",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCbLubd2SxrTCa0Lvo_EFbTuLU5__M8_8WS0jcGpGI8JyTIyEXEQ3xMPlQ-DyA9hxs79vaVQghvjvdjV9IZldemcbxh1xECtiknxj2l6qnotZVbnLfoWupoQM7YTJ1RF2HTS0CUmL4CPa3MjCvOKzJrshkK3EPdKEBCHBFi6XN-840RO_yMAyjhC3UDrO2VkF0-JbKOU4keSNlLk1f2qtlc3bbXepXN7JRewkU_tMRSHapbfqLtE1LIvg",
-    quantity: 1,
-    href: "/shop/elara-draped-dress",
-  },
-  {
-    id: "solis-ribbed-knit-sweater-S-MOSS GREEN",
-    productId: "solis-ribbed-knit-sweater",
-    name: "Solis Ribbed Knit Sweater",
-    category: "KNITWEAR",
-    specimenNumber: "SPECIMEN N° 02",
-    price: 164,
-    currency: "USD",
-    color: "MOSS GREEN",
-    size: "S",
-    fabricDetails: "100% UNTREATED MERINO WOOL",
-    careDetails: "ARCHIVAL WEAVE",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCiQBen1YG1GICG6Tlx_7EDeSiGGoZO74uOFI2c94Wen5K-wNv-KyWWzVRbXqGDlV_vZUdK090_TANQvKTVMurxd4GrN6wWveyJrCv15beYvPHKzgkyAU_D_y9mbM5upXyQSXI5959dqvPULquAfDnI3ITUus6OxpcOGhVQgwr3AirYdHm9fuaDIgw9fenhAvA6urAqyUM7A2pACMTz92JnYHb3vmhLcLYzUoN9mwsN-QhabPBm0NKrNA",
-    quantity: 1,
-    href: "/shop/solis-ribbed-knit-sweater",
-  },
-];
-
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>(INITIAL_CART_ITEMS);
+  const [items, setItems] = useState<CartItem[]>([]);
 
   const addItem = (newItem: Omit<CartItem, "id">) => {
     const lineId = `${newItem.productId}-${newItem.size}-${newItem.color}`;

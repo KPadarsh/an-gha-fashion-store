@@ -17,16 +17,10 @@ interface WishlistContextType {
   totalWishlistCount: number;
 }
 
-const INITIAL_WISHLIST_IDS = [
-  "elara-draped-dress",
-  "sienna-tailored-trench",
-  "cove-leather-tote",
-];
-
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
 export function WishlistProvider({ children }: { children: React.ReactNode }) {
-  const [wishlistIds, setWishlistIds] = useState<string[]>(INITIAL_WISHLIST_IDS);
+  const [wishlistIds, setWishlistIds] = useState<string[]>([]);
   const { addItem } = useCart();
 
   // Retrieve full product models from shop products catalog

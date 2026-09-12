@@ -5,7 +5,6 @@ import { useCart } from "@/context/CartContext";
 import { CartHeader } from "@/components/cart/CartHeader";
 import { CartItemList } from "@/components/cart/CartItemList";
 import { CartOrderSummary } from "@/components/cart/CartOrderSummary";
-import { CartDiscovery } from "@/components/cart/CartDiscovery";
 import { EmptyBagView } from "@/components/cart/EmptyBagView";
 
 export function CartPageView() {
@@ -34,9 +33,7 @@ export function CartPageView() {
           </div>
         </div>
       </section>
-
-      {/* SECTION 3: REFINED BOTTOM DISCOVERY (CONTINUE EXPLORING) */}
-      <CartDiscovery />
     </div>
   );
 }
+
