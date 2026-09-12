@@ -2,7 +2,22 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, Check, CreditCard, HelpCircle, ChevronDown } from "lucide-react";
+import {
+  CheckCircle2,
+  Check,
+  CreditCard,
+  HelpCircle,
+  ChevronDown,
+  Mail,
+  Smartphone,
+  Truck,
+  ShieldCheck,
+  Lock,
+  ArrowRight,
+  ArrowLeft,
+  QrCode,
+} from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 export interface CheckoutFormData {
   email: string;
@@ -31,14 +46,20 @@ interface CheckoutFormProps {
   formData: CheckoutFormData;
   setFormData: React.Dispatch<React.SetStateAction<CheckoutFormData>>;
   isValidationStateActive?: boolean;
+  onPlaceOrder?: () => void;
 }
 
 export function CheckoutForm({
   formData,
   setFormData,
   isValidationStateActive = false,
+  onPlaceOrder,
 }: CheckoutFormProps) {
+  const { subtotal } = useCart();
   const [upiVerified, setUpiVerified] = useState(false);
+
+  const shippingCost = formData.deliveryMethod === "express" ? 45 : 0;
+  const totalAmount = subtotal + shippingCost;
 
   const handleInputChange = (
     field: keyof CheckoutFormData,
@@ -52,26 +73,23 @@ export function CheckoutForm({
     (formData.pin.length < 6 || !/^\d{6}$/.test(formData.pin));
 
   return (
-    <div className="flex flex-col gap-10 lg:gap-12">
+    <div className="flex flex-col gap-8 lg:gap-12">
       {/* ================= SECTION 01: INFORMATION & YOUR DETAILS ================= */}
-      <div className="flex flex-col gap-6">
+      <div className="bg-[#FFF1EA] md:bg-transparent p-4 sm:p-6 md:p-0 border border-[#2B2420]/10 md:border-none shadow-xs md:shadow-none flex flex-col gap-5 md:gap-6">
         <div className="flex items-baseline justify-between border-b border-[#2B2420]/10 pb-3">
-          <div className="flex flex-col gap-0.5">
-            <span className="font-mono text-xs text-[#7A7168] uppercase tracking-widest">
+          <div className="flex items-center md:items-baseline gap-2 md:gap-0 md:flex-col">
+            <span className="font-mono text-xs text-[#894B37] md:text-[#7A7168] uppercase tracking-widest font-semibold md:font-normal">
+              01
+            </span>
+            <span className="hidden md:inline font-mono text-xs text-[#7A7168] uppercase tracking-widest">
               CATALOGUE STEP 01
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#2B2420] font-normal">
-              YOUR DETAILS
+            <h2 className="font-serif text-lg sm:text-2xl lg:text-3xl text-[#2B2420] font-normal uppercase md:normal-case tracking-wide md:tracking-tight">
+              INFORMATION
             </h2>
           </div>
-          <span className="font-sans text-[11px] font-semibold text-[#7A7168] uppercase tracking-wider">
-            RETURNING CLIENT?{" "}
-            <Link
-              href="/shop"
-              className="text-[#894B37] underline ml-1 hover:text-[#2B2420] transition-colors"
-            >
-              LOG IN
-            </Link>
+          <span className="font-sans text-[10px] md:text-[11px] font-semibold text-[#7A7168] uppercase tracking-wider">
+            REQUIRED *
           </span>
         </div>
 
@@ -81,30 +99,33 @@ export function CheckoutForm({
             <div className="flex items-center justify-between">
               <label
                 htmlFor="checkout-email"
-                className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+                className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
               >
-                EMAIL ADDRESS *
+                COMMUNICATION EMAIL <span className="text-[#894B37]">*</span>
               </label>
-              <span className="flex items-center gap-1 text-[#5C5A3E] font-sans text-[11px] font-semibold uppercase tracking-widest">
+              <span className="flex items-center gap-1 text-[#5C5A3E] font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest">
                 <CheckCircle2 className="w-3.5 h-3.5" /> VERIFIED CLIENT
               </span>
             </div>
-            <input
-              id="checkout-email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              className="w-full bg-[#FFFFFF] px-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 focus:outline-none focus:border-[#2B2420] focus:bg-[#FFF8F5] transition-colors"
-            />
+            <div className="relative flex items-center bg-[#FFFFFF]">
+              <input
+                id="checkout-email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                className="w-full bg-transparent px-4 py-3 pr-10 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 focus:outline-none focus:border-[#2B2420] focus:bg-[#FFF8F5] transition-colors"
+              />
+              <Mail className="w-4 h-4 text-[#7A7168] absolute right-3 pointer-events-none" />
+            </div>
           </div>
 
-          {/* First Name */}
+          {/* First Name (Desktop/Responsive) */}
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="checkout-first-name"
-              className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+              className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
             >
-              FIRST NAME *
+              FIRST NAME <span className="text-[#894B37]">*</span>
             </label>
             <input
               id="checkout-first-name"
@@ -119,9 +140,9 @@ export function CheckoutForm({
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="checkout-last-name"
-              className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+              className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
             >
-              LAST NAME *
+              LAST NAME <span className="text-[#894B37]">*</span>
             </label>
             <input
               id="checkout-last-name"
@@ -134,13 +155,18 @@ export function CheckoutForm({
 
           {/* Phone Number */}
           <div className="md:col-span-2 flex flex-col gap-1.5">
-            <label
-              htmlFor="checkout-phone"
-              className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
-            >
-              PHONE NUMBER *
-            </label>
-            <div className="relative flex items-center">
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="checkout-phone"
+                className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+              >
+                SMS DISPATCH NOTICES <span className="text-[#894B37]">*</span>
+              </label>
+              <span className="font-sans text-[10px] font-semibold text-[#7A7168] uppercase">
+                INDIA (+91)
+              </span>
+            </div>
+            <div className="relative flex items-center bg-[#FFFFFF]">
               <span className="absolute left-4 font-sans text-sm text-[#7A7168] select-none font-medium">
                 +91
               </span>
@@ -149,25 +175,46 @@ export function CheckoutForm({
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full bg-[#FFFFFF] pl-14 pr-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 focus:outline-none focus:border-[#2B2420] focus:bg-[#FFF8F5] transition-colors"
+                className="w-full bg-transparent pl-14 pr-10 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 focus:outline-none focus:border-[#2B2420] focus:bg-[#FFF8F5] transition-colors"
               />
+              <Smartphone className="w-4 h-4 text-[#7A7168] absolute right-3 pointer-events-none" />
             </div>
             <span className="font-sans text-xs text-[#7A7168] pt-0.5">
               Used strictly for delivery status notifications &amp; carbon dispatch transit.
             </span>
           </div>
+
+          {/* Opt-in Checkbox (Mobile / Desktop) */}
+          <label className="md:col-span-2 flex items-start gap-2.5 cursor-pointer pt-1 group">
+            <input
+              type="checkbox"
+              defaultChecked
+              className="mt-1 w-4 h-4 accent-[#894B37] rounded-none cursor-pointer"
+            />
+            <span className="font-sans text-xs text-[#7A7168] leading-tight select-none">
+              Receive limited catalog printings and seasonal preview dispatches.
+            </span>
+          </label>
         </div>
       </div>
 
       {/* ================= SECTION 02: DELIVERY SPECIFICATIONS ================= */}
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-col gap-0.5 border-b border-[#2B2420]/10 pb-3">
-          <span className="font-mono text-xs text-[#7A7168] uppercase tracking-widest">
-            CATALOGUE STEP 02
+      <div className="bg-[#FFF1EA] md:bg-transparent p-4 sm:p-6 md:p-0 border border-[#2B2420]/10 md:border-none shadow-xs md:shadow-none flex flex-col gap-5 md:gap-6">
+        <div className="flex items-baseline justify-between border-b border-[#2B2420]/10 pb-3">
+          <div className="flex items-center md:items-baseline gap-2 md:gap-0 md:flex-col">
+            <span className="font-mono text-xs text-[#894B37] md:text-[#7A7168] uppercase tracking-widest font-semibold md:font-normal">
+              02
+            </span>
+            <span className="hidden md:inline font-mono text-xs text-[#7A7168] uppercase tracking-widest">
+              CATALOGUE STEP 02
+            </span>
+            <h2 className="font-serif text-lg sm:text-2xl lg:text-3xl text-[#2B2420] font-normal uppercase md:normal-case tracking-wide md:tracking-tight">
+              DESTINATION
+            </h2>
+          </div>
+          <span className="font-sans text-[10px] md:text-[11px] font-semibold text-[#7A7168] uppercase tracking-wider">
+            DOMESTIC
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-[#2B2420] font-normal">
-            WHERE SHOULD WE SEND IT?
-          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -175,16 +222,16 @@ export function CheckoutForm({
           <div className="md:col-span-2 flex flex-col gap-1.5">
             <label
               htmlFor="checkout-country"
-              className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+              className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
             >
-              COUNTRY / DESTINATION REGION *
+              COUNTRY / DESTINATION REGION <span className="text-[#894B37]">*</span>
             </label>
-            <div className="relative">
+            <div className="relative bg-[#FFFFFF]">
               <select
                 id="checkout-country"
                 value={formData.country}
                 onChange={(e) => handleInputChange("country", e.target.value)}
-                className="w-full bg-[#FFFFFF] px-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 appearance-none focus:outline-none focus:border-[#2B2420] focus:bg-[#FFF8F5] transition-colors cursor-pointer"
+                className="w-full bg-transparent px-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 appearance-none focus:outline-none focus:border-[#2B2420] focus:bg-[#FFF8F5] transition-colors cursor-pointer"
               >
                 <option value="IN">India (Domestic Insured Atelier Transit)</option>
                 <option value="AE">United Arab Emirates (Direct Courier)</option>
@@ -200,9 +247,9 @@ export function CheckoutForm({
           <div className="md:col-span-2 flex flex-col gap-1.5">
             <label
               htmlFor="checkout-address"
-              className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+              className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
             >
-              STREET ADDRESS *
+              STREET &amp; RESIDENCE SPECIFICATION <span className="text-[#894B37]">*</span>
             </label>
             <input
               id="checkout-address"
@@ -218,7 +265,7 @@ export function CheckoutForm({
             <div className="flex items-center justify-between">
               <label
                 htmlFor="checkout-apartment"
-                className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+                className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
               >
                 APARTMENT, SUITE, RESIDENCE
               </label>
@@ -240,9 +287,9 @@ export function CheckoutForm({
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="checkout-city"
-              className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+              className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
             >
-              CITY *
+              CITY <span className="text-[#894B37]">*</span>
             </label>
             <input
               id="checkout-city"
@@ -257,9 +304,9 @@ export function CheckoutForm({
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="checkout-state"
-              className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+              className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
             >
-              STATE / PROVINCE *
+              STATE / PROVINCE <span className="text-[#894B37]">*</span>
             </label>
             <input
               id="checkout-state"
@@ -270,17 +317,17 @@ export function CheckoutForm({
             />
           </div>
 
-          {/* Postal / PIN Code with validation state indicator */}
+          {/* Postal / PIN Code */}
           <div className="md:col-span-2 flex flex-col gap-1.5">
             <div className="flex items-center justify-between">
               <label
                 htmlFor="checkout-pin"
-                className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+                className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
               >
-                POSTAL / PIN CODE *
+                POSTAL / PIN CODE <span className="text-[#894B37]">*</span>
               </label>
               <span
-                className={`font-sans text-[11px] font-semibold uppercase tracking-widest ${
+                className={`font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest ${
                   isPinInvalid ? "text-[#BA1A1A]" : "text-[#5C5A3E]"
                 }`}
               >
@@ -307,7 +354,7 @@ export function CheckoutForm({
         </div>
 
         {/* Special Delivery Instructions Checkbox */}
-        <label className="flex items-start gap-3 cursor-pointer select-none pt-2 group">
+        <label className="flex items-start gap-3 cursor-pointer select-none pt-1 group">
           <div className="w-5 h-5 shrink-0 mt-0.5 bg-[#FFFFFF] border border-[#2B2420]/20 flex items-center justify-center transition-colors group-hover:bg-[#FAF6F1]">
             <input
               type="checkbox"
@@ -333,7 +380,7 @@ export function CheckoutForm({
 
         {/* Collapsible Delivery Instructions Field */}
         {formData.hasSpecialInstructions && (
-          <div className="pt-2 animate-in fade-in duration-200">
+          <div className="pt-1 animate-in fade-in duration-200">
             <textarea
               value={formData.specialInstructions}
               onChange={(e) =>
@@ -347,8 +394,8 @@ export function CheckoutForm({
         )}
 
         {/* DELIVERY METHOD SELECTOR */}
-        <div className="flex flex-col gap-3 pt-3">
-          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2B2420]">
+        <div className="flex flex-col gap-3 pt-2">
+          <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2B2420]">
             SELECT ATELIER DISPATCH METHOD
           </span>
 
@@ -363,17 +410,7 @@ export function CheckoutForm({
               }`}
             >
               <div className="flex items-center gap-3.5">
-                <div
-                  className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
-                    formData.deliveryMethod === "standard"
-                      ? "bg-[#894B37]"
-                      : "border border-[#2B2420]/30"
-                  }`}
-                >
-                  {formData.deliveryMethod === "standard" && (
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#FAF6F1]" />
-                  )}
-                </div>
+                <Truck className="w-5 h-5 text-[#894B37] shrink-0" />
                 <div className="flex flex-col">
                   <span className="font-sans text-xs uppercase tracking-wider text-[#2B2420] font-semibold">
                     STANDARD ATELIER DISPATCH
@@ -403,17 +440,7 @@ export function CheckoutForm({
               }`}
             >
               <div className="flex items-center gap-3.5">
-                <div
-                  className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
-                    formData.deliveryMethod === "express"
-                      ? "bg-[#894B37]"
-                      : "border border-[#2B2420]/30"
-                  }`}
-                >
-                  {formData.deliveryMethod === "express" && (
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#FAF6F1]" />
-                  )}
-                </div>
+                <Truck className="w-5 h-5 text-[#894B37] shrink-0" />
                 <div className="flex flex-col">
                   <span className="font-sans text-xs uppercase tracking-wider text-[#2B2420] font-semibold">
                     EXPRESS BESPOKE COURIER
@@ -432,18 +459,29 @@ export function CheckoutForm({
       </div>
 
       {/* ================= SECTION 03: PAYMENT DETAILS ================= */}
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-col gap-0.5 border-b border-[#2B2420]/10 pb-3">
-          <span className="font-mono text-xs text-[#7A7168] uppercase tracking-widest">
-            CATALOGUE STEP 03
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-[#2B2420] font-normal">
-            PAYMENT METHOD
-          </h2>
+      <div className="bg-[#FFF1EA] md:bg-transparent p-4 sm:p-6 md:p-0 border border-[#2B2420]/10 md:border-none shadow-xs md:shadow-none flex flex-col gap-5 md:gap-6">
+        <div className="flex items-baseline justify-between border-b border-[#2B2420]/10 pb-3">
+          <div className="flex items-center md:items-baseline gap-2 md:gap-0 md:flex-col">
+            <span className="font-mono text-xs text-[#894B37] md:text-[#7A7168] uppercase tracking-widest font-semibold md:font-normal">
+              03
+            </span>
+            <span className="hidden md:inline font-mono text-xs text-[#7A7168] uppercase tracking-widest">
+              CATALOGUE STEP 03
+            </span>
+            <h2 className="font-serif text-lg sm:text-2xl lg:text-3xl text-[#2B2420] font-normal uppercase md:normal-case tracking-wide md:tracking-tight">
+              PAYMENT METHOD
+            </h2>
+          </div>
+          <div className="flex items-center gap-1 text-[#5C5A3E]">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span className="font-sans text-[10px] md:text-[11px] font-semibold uppercase tracking-widest">
+              SECURED
+            </span>
+          </div>
         </div>
 
         {/* Tab Selectors */}
-        <div className="grid grid-cols-3 gap-2 bg-[#F3E5DF] p-1 border border-[#2B2420]/10">
+        <div className="grid grid-cols-3 gap-1.5 md:gap-2 bg-[#F3E5DF] p-1 border border-[#2B2420]/10">
           <button
             type="button"
             onClick={() => handleInputChange("paymentMethod", "card")}
@@ -453,7 +491,7 @@ export function CheckoutForm({
                 : "text-[#7A7168] hover:text-[#2B2420]"
             }`}
           >
-            CREDIT / DEBIT
+            CARD
           </button>
           <button
             type="button"
@@ -464,7 +502,7 @@ export function CheckoutForm({
                 : "text-[#7A7168] hover:text-[#2B2420]"
             }`}
           >
-            UPI DIRECT
+            UPI
           </button>
           <button
             type="button"
@@ -475,16 +513,16 @@ export function CheckoutForm({
                 : "text-[#7A7168] hover:text-[#2B2420]"
             }`}
           >
-            CASH ON ARRIVAL
+            COD
           </button>
         </div>
 
         {/* CARD FORM VIEW */}
         {formData.paymentMethod === "card" && (
           <div className="flex flex-col gap-4 animate-in fade-in duration-200">
-            <div className="bg-[#FFFFFF] p-6 border border-[#2B2420]/15 flex flex-col gap-4">
+            <div className="bg-[#FFFFFF] p-4 sm:p-6 border border-[#2B2420]/15 flex flex-col gap-4">
               <div className="flex items-center justify-between text-[#7A7168] pb-1 border-b border-[#2B2420]/10">
-                <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em]">
+                <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em]">
                   ENCRYPTED ATELIER GATEWAY
                 </span>
                 <div className="flex items-center gap-2">
@@ -504,11 +542,11 @@ export function CheckoutForm({
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="checkout-card-number"
-                  className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+                  className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
                 >
-                  CARD NUMBER *
+                  CARD NUMBER <span className="text-[#894B37]">*</span>
                 </label>
-                <div className="relative flex items-center">
+                <div className="relative flex items-center bg-[#FAF6F1]">
                   <input
                     id="checkout-card-number"
                     type="text"
@@ -517,20 +555,20 @@ export function CheckoutForm({
                       handleInputChange("cardNumber", e.target.value)
                     }
                     placeholder="4242 •••• •••• 8820"
-                    className="w-full bg-[#FAF6F1] px-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 placeholder:text-[#7A7168]/50 focus:outline-none focus:border-[#2B2420]"
+                    className="w-full bg-transparent px-4 py-3 pr-10 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 placeholder:text-[#7A7168]/50 focus:outline-none focus:border-[#2B2420]"
                   />
-                  <CreditCard className="w-4 h-4 absolute right-4 text-[#7A7168]" />
+                  <CreditCard className="w-4 h-4 absolute right-3 pointer-events-none text-[#7A7168]" />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {/* Expiry Date */}
                 <div className="flex flex-col gap-1.5">
                   <label
                     htmlFor="checkout-card-expiry"
-                    className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+                    className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
                   >
-                    EXPIRATION MM/YY *
+                    EXPIRY (MM/YY) <span className="text-[#894B37]">*</span>
                   </label>
                   <input
                     id="checkout-card-expiry"
@@ -539,8 +577,8 @@ export function CheckoutForm({
                     onChange={(e) =>
                       handleInputChange("cardExpiry", e.target.value)
                     }
-                    placeholder="08 / 27"
-                    className="w-full bg-[#FAF6F1] px-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 placeholder:text-[#7A7168]/50 focus:outline-none focus:border-[#2B2420]"
+                    placeholder="08/27"
+                    className="w-full bg-[#FAF6F1] px-4 py-3 text-center font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 placeholder:text-[#7A7168]/50 focus:outline-none focus:border-[#2B2420]"
                   />
                 </div>
 
@@ -549,11 +587,11 @@ export function CheckoutForm({
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor="checkout-card-cvc"
-                      className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+                      className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
                     >
-                      SECURITY CODE *
+                      SECURITY CVC <span className="text-[#894B37]">*</span>
                     </label>
-                    <HelpCircle className="w-3.5 h-3.5 text-[#7A7168]" />
+                    <HelpCircle className="w-3 h-3 text-[#7A7168]" />
                   </div>
                   <input
                     id="checkout-card-cvc"
@@ -564,7 +602,7 @@ export function CheckoutForm({
                       handleInputChange("cardCvc", e.target.value)
                     }
                     placeholder="•••"
-                    className="w-full bg-[#FAF6F1] px-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 placeholder:text-[#7A7168]/50 focus:outline-none focus:border-[#2B2420]"
+                    className="w-full bg-[#FAF6F1] px-4 py-3 text-center tracking-widest font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 placeholder:text-[#7A7168]/50 focus:outline-none focus:border-[#2B2420]"
                   />
                 </div>
               </div>
@@ -573,9 +611,9 @@ export function CheckoutForm({
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="checkout-card-name"
-                  className="font-sans text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
+                  className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase text-[#2B2420] tracking-[0.18em]"
                 >
-                  CARDHOLDER NAME *
+                  NAME ON CARD <span className="text-[#894B37]">*</span>
                 </label>
                 <input
                   id="checkout-card-name"
@@ -616,40 +654,47 @@ export function CheckoutForm({
 
         {/* UPI FORM VIEW */}
         {formData.paymentMethod === "upi" && (
-          <div className="flex flex-col gap-4 bg-[#FFFFFF] p-6 border border-[#2B2420]/15 animate-in fade-in duration-200">
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2B2420]">
-              ENTER VIRTUAL PAYMENT ADDRESS (UPI ID)
-            </span>
-            <div className="flex items-stretch gap-2">
-              <input
-                type="text"
-                value={formData.upiId}
-                onChange={(e) => handleInputChange("upiId", e.target.value)}
-                placeholder="username@okhdfcbank"
-                className="flex-1 bg-[#FAF6F1] px-4 py-3 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 focus:outline-none focus:border-[#2B2420]"
-              />
-              <button
-                type="button"
-                onClick={() => setUpiVerified(true)}
-                className="px-6 py-3 bg-[#894B37] text-[#FAF6F1] font-sans text-xs font-semibold uppercase tracking-wider hover:bg-[#2B2420] transition-colors cursor-pointer"
-              >
-                {upiVerified ? "VERIFIED" : "VERIFY"}
-              </button>
+          <div className="flex flex-col gap-4 bg-[#FFFFFF] p-4 sm:p-6 border border-[#2B2420]/15 animate-in fade-in duration-200">
+            <div className="p-3 bg-[#F9EBE5] text-[#7A7168] font-sans text-xs">
+              Instant settlement through Google Pay, PhonePe, Paytm, or your Virtual Payment Address (VPA).
             </div>
-            <p className="font-sans text-xs text-[#7A7168] leading-relaxed">
-              A payment request will be sent to your UPI app for instantaneous approval.
-            </p>
+            <div className="flex flex-col gap-1.5">
+              <label
+                htmlFor="checkout-upi"
+                className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2B2420]"
+              >
+                VPA / UPI ID <span className="text-[#894B37]">*</span>
+              </label>
+              <div className="relative flex items-center bg-[#FAF6F1]">
+                <input
+                  id="checkout-upi"
+                  type="text"
+                  value={formData.upiId}
+                  onChange={(e) => handleInputChange("upiId", e.target.value)}
+                  placeholder="username@okhdfcbank"
+                  className="flex-1 bg-transparent px-4 py-3 pr-10 font-sans text-sm text-[#2B2420] border border-[#2B2420]/15 focus:outline-none focus:border-[#2B2420]"
+                />
+                <QrCode className="w-4 h-4 text-[#7A7168] absolute right-3 pointer-events-none" />
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setUpiVerified(true)}
+              className="w-full sm:w-auto self-start px-6 py-3 bg-[#894B37] text-[#FAF6F1] font-sans text-xs font-semibold uppercase tracking-wider hover:bg-[#2B2420] transition-colors cursor-pointer"
+            >
+              {upiVerified ? "VERIFIED" : "VERIFY UPI"}
+            </button>
           </div>
         )}
 
         {/* CASH ON ARRIVAL VIEW */}
         {formData.paymentMethod === "cod" && (
-          <div className="flex flex-col gap-2.5 bg-[#FFFFFF] p-6 border border-[#2B2420]/15 animate-in fade-in duration-200">
+          <div className="flex flex-col gap-2.5 bg-[#FFFFFF] p-4 sm:p-6 border border-[#2B2420]/15 animate-in fade-in duration-200">
             <span className="font-serif text-lg text-[#2B2420]">
               Atelier Concierge Settlement
             </span>
             <p className="font-sans text-xs text-[#7A7168] leading-relaxed">
-              Pay cash or through contactless payment terminal upon delivery. Please ensure exact change is prepared.
+              Please prepare the exact amount of ${totalAmount} USD in cash or local contactless terminal upon physical courier arrival.
             </p>
             <span className="font-sans text-[10px] font-semibold text-[#894B37] tracking-widest uppercase pt-1">
               ADDITIONAL ID VERIFICATION REQUIRED AT DOORSTEP
@@ -657,6 +702,46 @@ export function CheckoutForm({
           </div>
         )}
       </div>
+
+      {/* ================= SECTION 04: PRIMARY CTA & SECURITY SEAL (MOBILE ONLY) ================= */}
+      <section
+        aria-label="Transaction Submission"
+        className="flex lg:hidden flex-col gap-4 pt-2 pb-6"
+      >
+        {/* High-End Primary Button */}
+        <button
+          type="button"
+          onClick={onPlaceOrder}
+          className="w-full h-14 bg-[#2B2420] hover:bg-[#894B37] text-[#FAF6F1] font-sans text-xs uppercase tracking-[0.18em] transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] font-semibold cursor-pointer"
+        >
+          <span>PLACE ORDER — ${totalAmount}</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
+
+        {/* Discreet Legal and Security Guarantee */}
+        <div className="flex flex-col items-center text-center gap-1.5 px-2">
+          <div className="flex items-center gap-1 text-[#7A7168]">
+            <Lock className="w-3.5 h-3.5" />
+            <span className="font-sans text-[10px] font-semibold uppercase tracking-widest text-[#7A7168]">
+              256-BIT ENCRYPTED CHECKOUT
+            </span>
+          </div>
+          <p className="font-sans text-[11px] text-[#7A7168] leading-relaxed">
+            By placing your order, you acknowledge and agree to ANGHA&apos;s Terms of Atelier, complimentary returns within 14 days, and archival garment preservation policies.
+          </p>
+        </div>
+
+        {/* Centered Return to Bag Navigation */}
+        <div className="flex justify-center pt-1">
+          <Link
+            href="/cart"
+            className="inline-flex items-center gap-1.5 text-[#7A7168] hover:text-[#2B2420] transition-colors py-2 font-sans text-[11px] font-semibold uppercase tracking-[0.2em]"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>RETURN TO BAG</span>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
