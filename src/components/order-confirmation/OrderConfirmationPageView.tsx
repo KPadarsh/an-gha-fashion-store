@@ -19,11 +19,11 @@ export function OrderConfirmationPageView() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FFF8F5] text-[#211A16] antialiased">
-      {/* 1. Header */}
+      {/* 1. Fixed Header */}
       <OrderConfirmationHeader />
 
       {/* 2. Main Flow */}
-      <main className="w-full pt-20 bg-[#FFF8F5] min-h-screen flex-1">
+      <main className="w-full pt-16 sm:pt-20 bg-[#FFF8F5] min-h-screen flex-1">
         <div className="flex flex-col w-full">
           {/* Subtle Prototype State Switcher Rail */}
           <OrderProtocolBar
@@ -34,7 +34,7 @@ export function OrderConfirmationPageView() {
           {isConfirmedState ? (
             /* Main Confirmed Viewport Flow */
             <div className="w-full flex flex-col items-center">
-              <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16">
+              <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 md:py-16">
                 {/* 1. SUCCESS MOMENT */}
                 <OrderSuccessHero order={currentOrder} />
 
@@ -42,7 +42,7 @@ export function OrderConfirmationPageView() {
                 <OrderTimeline order={currentOrder} />
 
                 {/* 3. TWO-COLUMN MAIN CONTENT (60% / 40%) */}
-                <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
+                <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start mb-8 md:mb-16">
                   {/* Left Column (60% / 7 cols): Purchased Pieces & Financials */}
                   <div className="lg:col-span-7">
                     <OrderItemsMatrix order={currentOrder} />
@@ -54,7 +54,7 @@ export function OrderConfirmationPageView() {
                   </div>
                 </section>
 
-                {/* 4. CONTINUE EXPLORING (3 curated pieces) */}
+                {/* 4. CONTINUE EXPLORING (curated pieces) */}
                 <OrderRecommendations />
 
                 {/* 5. NEWSLETTER & CLIENT CONCIERGE ASSURANCE */}
@@ -76,3 +76,4 @@ export function OrderConfirmationPageView() {
     </div>
   );
 }
+

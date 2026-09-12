@@ -14,9 +14,39 @@ export function OrderProtocolBar({
   return (
     <aside
       aria-label="Prototype Controls"
-      className="w-full bg-[#FFF1EA]/70 py-2.5 px-4 md:px-12 border-b border-[#2B2420]/10 transition-colors duration-200"
+      className="w-full bg-[#F3E5DF] md:bg-[#FFF1EA]/70 py-2 md:py-2.5 px-4 md:px-12 border-b border-[#2B2420]/10 transition-colors duration-200"
     >
-      <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3 text-[11px] font-sans uppercase tracking-widest text-[#53433F]">
+      {/* Mobile Bar (< md) */}
+      <div className="flex md:hidden items-center justify-between text-[11px] font-sans uppercase tracking-[0.2em] text-[#53433F]">
+        <span className="font-semibold text-[#53433F]">STATE:</span>
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => onToggleState(true)}
+            className={`px-3 py-1 font-sans text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              isConfirmedState
+                ? "bg-[#362F2B] text-[#FCEEE7] font-semibold"
+                : "bg-[#FFF8F5] text-[#53433F] hover:text-[#211A16]"
+            }`}
+          >
+            Confirmed
+          </button>
+          <button
+            type="button"
+            onClick={() => onToggleState(false)}
+            className={`px-3 py-1 font-sans text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              !isConfirmedState
+                ? "bg-[#362F2B] text-[#FCEEE7] font-semibold"
+                : "bg-[#FFF8F5] text-[#53433F] hover:text-[#211A16]"
+            }`}
+          >
+            Unavailable
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop Bar (>= md) */}
+      <div className="hidden md:flex max-w-5xl mx-auto flex-wrap items-center justify-between gap-3 text-[11px] font-sans uppercase tracking-widest text-[#53433F]">
         <div className="flex items-center gap-2">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#894B37] animate-pulse" />
           <span className="font-semibold text-[#211A16]">
