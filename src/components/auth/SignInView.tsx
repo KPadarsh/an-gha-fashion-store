@@ -24,18 +24,12 @@ export function SignInView() {
       <main className="flex-1 w-full flex flex-col justify-center py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[880px] w-full mx-auto">
           {/* Top Header */}
-          <div className="flex items-center justify-between pb-5 mb-8 border-b border-[#2B2420]/10">
+          <div className="flex items-center justify-center pb-5 mb-8 border-b border-[#2B2420]/10">
             <Link
               href="/home"
               className="font-serif text-2xl font-normal tracking-[0.16em] text-[#2B2420] hover:text-[#894B37] transition-colors"
             >
               An Gha
-            </Link>
-            <Link
-              href="/shop"
-              className="font-sans text-xs font-medium text-[#7A7168] hover:text-[#2B2420] transition-colors"
-            >
-              ← Return to Catalogue
             </Link>
           </div>
 
