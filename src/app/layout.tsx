@@ -4,6 +4,7 @@ import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartProvider } from "@/context/CartContext";
 import { OrderProvider } from "@/context/OrderContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -35,13 +36,16 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans bg-surface text-on-surface">
         <CartProvider>
-          <OrderProvider>
-            <Header />
-            <div className="flex-1 flex flex-col">{children}</div>
-            <Footer />
-          </OrderProvider>
+          <WishlistProvider>
+            <OrderProvider>
+              <Header />
+              <div className="flex-1 flex flex-col">{children}</div>
+              <Footer />
+            </OrderProvider>
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>
   );
 }
+

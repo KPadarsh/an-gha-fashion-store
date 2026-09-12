@@ -3,7 +3,8 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X, ArrowUpRight } from "lucide-react";
+import { X, ArrowUpRight, Heart } from "lucide-react";
+import { useWishlist } from "@/context/WishlistContext";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -25,10 +26,12 @@ const MOBILE_NAV_ITEMS: MobileNavItem[] = [
   { label: "KNITWEAR", index: "04", href: "/shop/knitwear" },
   { label: "OUTERWEAR", index: "05", href: "/shop/outerwear" },
   { label: "ACCESSORIES", index: "06", href: "/shop/accessories" },
+  { label: "WISHLIST", index: "07", href: "/wishlist" },
 ];
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
+  const { totalWishlistCount } = useWishlist();
 
   // Close on Escape key and lock body scroll
   useEffect(() => {

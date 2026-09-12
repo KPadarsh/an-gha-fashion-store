@@ -19,6 +19,7 @@ import {
   AccordionSection,
 } from "@/data/productDetailData";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 interface ProductInfoPanelProps {
   productId?: string;
@@ -54,13 +55,14 @@ export function ProductInfoPanel({
   imageUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuCbLubd2SxrTCa0Lvo_EFbTuLU5__M8_8WS0jcGpGI8JyTIyEXEQ3xMPlQ-DyA9hxs79vaVQghvjvdjV9IZldemcbxh1xECtiknxj2l6qnotZVbnLfoWupoQM7YTJ1RF2HTS0CUmL4CPa3MjCvOKzJrshkK3EPdKEBCHBFi6XN-840RO_yMAyjhC3UDrO2VkF0-JbKOU4keSNlLk1f2qtlc3bbXepXN7JRewkU_tMRSHapbfqLtE1LIvg",
 }: ProductInfoPanelProps) {
   const { addItem } = useCart();
+  const { isWishlisted: checkWishlist, toggleWishlist } = useWishlist();
+  const isWishlisted = checkWishlist(productId);
   const [selectedColor, setSelectedColor] = useState(colors[0]?.name || "TERRACOTTA");
   const [selectedSize, setSelectedSize] = useState(sizes[1] || sizes[0] || "S");
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const [isConciergeOpen, setIsConciergeOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [openAccordions, setOpenAccordions] = useState<Record<string, boolean>>({
     mat: true, // First accordion expanded by default
   });
@@ -68,6 +70,7 @@ export function ProductInfoPanel({
   const handleAlterQty = (delta: number) => {
     setQuantity((prev) => Math.max(1, Math.min(10, prev + delta)));
   };
+
 
   const handleAddToBag = () => {
     addItem({
@@ -270,7 +273,7 @@ export function ProductInfoPanel({
         {/* Wishlist trigger */}
         <button
           type="button"
-          onClick={() => setIsWishlisted((prev) => !prev)}
+          onClick={() => toggleWishlist(productId)}
           className={`w-full py-2 flex items-center justify-center gap-1.5 font-sans text-[11px] tracking-[0.14em] uppercase transition-colors cursor-pointer ${
             isWishlisted
               ? "text-[#C17A63]"

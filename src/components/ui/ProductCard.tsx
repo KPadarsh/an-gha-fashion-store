@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, ArrowRight, Check } from "lucide-react";
+import { useWishlist } from "@/context/WishlistContext";
+import { useCart } from "@/context/CartContext";
 
 export interface ProductBadge {
   text: string;
@@ -39,7 +41,9 @@ export function ProductCard({
   onWishlistToggle,
   onQuickAdd,
 }: ProductCardProps) {
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  const { isWishlisted: checkWishlist, toggleWishlist } = useWishlist();
+  const { addItem } = useCart();
+  const isWishlisted = checkWishlist(id);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [isAdded, setIsAdded] = useState(false);
 
@@ -53,7 +57,7 @@ export function ProductCard({
   const handleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsWishlisted((prev) => !prev);
+    toggleWishlist(id);
     if (onWishlistToggle) {
       onWishlistToggle(id);
     }
@@ -66,6 +70,25 @@ export function ProductCard({
     setIsAdded(true);
     if (onQuickAdd) {
       onQuickAdd(id, sizeToAdd);
+    } else {
+      const numPrice =
+        typeof price === "number"
+          ? price
+          : parseFloat(price.replace(/[^0-9.]/g, "")) || 128;
+      addItem({
+        productId: id,
+        name: name,
+        category: category,
+        specimenNumber: `SPECIMEN ${indexNumber}`,
+        price: numPrice,
+        currency: "USD",
+        color: "TERRACOTTA",
+        size: sizeToAdd,
+        fabricDetails: "100% ORGANIC RAW WEAVE",
+        imageUrl: imageUrl,
+        quantity: 1,
+        href: href,
+      });
     }
     setTimeout(() => setIsAdded(false), 2000);
   };
@@ -113,7 +136,7 @@ export function ProductCard({
           type="button"
           onClick={handleWishlist}
           aria-label={`Save ${name} to Wishlist`}
-          className="absolute top-2 right-2 w-8 h-8 rounded-full sm:rounded-none bg-surface/80 sm:bg-surface/90 hover:bg-surface flex items-center justify-center text-on-surface hover:text-primary transition-colors z-10 focus-visible:outline-none"
+          className="absolute top-2 right-2 w-8 h-8 rounded-full sm:rounded-none bg-surface/80 sm:bg-surface/90 hover:bg-surface flex items-center justify-center text-on-surface hover:text-primary transition-colors z-10 focus-visible:outline-none cursor-pointer"
         >
           <Heart
             className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${
@@ -124,6 +147,7 @@ export function ProductCard({
             strokeWidth={1.5}
           />
         </button>
+
 
         {/* Quick Add Hover Drawer (Desktop group-hover) */}
         <div className="hidden md:flex absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-inverse-surface/95 text-inverse-on-surface p-2.5 lg:p-3 backdrop-blur-xs items-center justify-between z-20">

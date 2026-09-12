@@ -7,12 +7,14 @@ import { usePathname } from "next/navigation";
 import { DesktopNav } from "./DesktopNav";
 import { MobileMenu } from "./MobileMenu";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 export function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { totalCount } = useCart();
+  const { totalWishlistCount } = useWishlist();
   const bagCount = totalCount;
 
   if (
@@ -66,14 +68,18 @@ export function Header() {
             <Link
               href="/wishlist"
               className="group flex items-center gap-1.5 text-on-surface/90 hover:text-primary transition-colors py-1 focus-visible:outline-none"
-              aria-label="Wishlist"
+              aria-label={`Wishlist, ${totalWishlistCount} items`}
             >
               <Heart
-                className="w-3.5 h-3.5 text-on-surface group-hover:text-primary transition-colors"
+                className={`w-3.5 h-3.5 transition-colors ${
+                  totalWishlistCount > 0
+                    ? "fill-primary text-primary"
+                    : "text-on-surface group-hover:text-primary"
+                }`}
                 strokeWidth={2}
               />
               <span className="font-sans text-[11px] font-semibold tracking-[0.18em] uppercase">
-                WISHLIST
+                WISHLIST {totalWishlistCount > 0 && `[${totalWishlistCount}]`}
               </span>
             </Link>
 
@@ -112,6 +118,19 @@ export function Header() {
             >
               <Search className="w-4 h-4" strokeWidth={1.75} />
             </button>
+
+            <Link
+              href="/wishlist"
+              className="p-1.5 text-on-surface hover:text-primary transition-colors flex items-center gap-1"
+              aria-label={`Wishlist, ${totalWishlistCount} items`}
+            >
+              <Heart
+                className={`w-4 h-4 ${
+                  totalWishlistCount > 0 ? "fill-primary text-primary" : ""
+                }`}
+                strokeWidth={1.75}
+              />
+            </Link>
 
             <Link
               href="/cart"
