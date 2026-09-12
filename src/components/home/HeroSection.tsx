@@ -11,7 +11,7 @@ export function HeroSection() {
           {/* Campaign Visual (8 cols on desktop, perfect portrait alignment from head to hem) */}
           <div className="lg:col-span-8 relative bg-[#F5ECE3] overflow-hidden group w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:min-h-[680px] border border-surface-dim/30">
             <Image
-              src="/images/hero-campaign.jpg"
+              src="/images/hero-image.jpg"
               alt="Editorial campaign model in draped terracotta and tan wrap dress"
               fill
               priority
