@@ -1,7 +1,16 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/checkout")) {
+    return null;
+  }
+
   return (
     <footer className="w-full bg-inverse-surface text-inverse-on-surface pt-10 sm:pt-16 lg:pt-24 pb-8 sm:pb-12 lg:pb-16 border-t border-surface-dim/20">
       <div className="angha-container">

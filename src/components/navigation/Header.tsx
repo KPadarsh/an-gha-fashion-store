@@ -3,15 +3,21 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Search, Heart, ShoppingBag, Menu, User } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { DesktopNav } from "./DesktopNav";
 import { MobileMenu } from "./MobileMenu";
 import { useCart } from "@/context/CartContext";
 
 export function Header() {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { totalCount } = useCart();
   const bagCount = totalCount;
+
+  if (pathname?.startsWith("/checkout")) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-40 w-full bg-surface/95 backdrop-blur-md border-b border-on-surface/10 transition-colors">

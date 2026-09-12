@@ -7,7 +7,10 @@ import { useCart } from "@/context/CartContext";
 import { CheckoutHeader } from "@/components/checkout/CheckoutHeader";
 import { CheckoutProgressRail } from "@/components/checkout/CheckoutProgressRail";
 import { CheckoutForm, CheckoutFormData } from "@/components/checkout/CheckoutForm";
-import { CheckoutOrderSummary } from "@/components/checkout/CheckoutOrderSummary";
+import {
+  CheckoutMobileOrderSummary,
+  CheckoutDesktopOrderSummary,
+} from "@/components/checkout/CheckoutOrderSummary";
 import { CheckoutEmptyState } from "@/components/checkout/CheckoutEmptyState";
 import { CheckoutFooter } from "@/components/checkout/CheckoutFooter";
 
@@ -15,7 +18,6 @@ export function CheckoutPageView() {
   const { items, totalCount } = useCart();
   const [isValidationStateActive, setIsValidationStateActive] = useState(false);
   const [simulatedEmpty, setSimulatedEmpty] = useState(false);
-  const [orderConfirmed, setOrderConfirmed] = useState(false);
 
   const [formData, setFormData] = useState<CheckoutFormData>({
     email: "amrita.sen@atelier-archive.com",
@@ -50,7 +52,6 @@ export function CheckoutPageView() {
   };
 
   const handlePlaceOrder = () => {
-    setOrderConfirmed(true);
     alert("Thank you. Your bespoke atelier order simulation has been received.");
   };
 
@@ -58,32 +59,32 @@ export function CheckoutPageView() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF6F1]">
-      {/* Header */}
+      {/* Dedicated Checkout Header */}
       <CheckoutHeader />
 
-      <main className="flex-1 w-full pt-14 md:pt-20">
-        {/* Interactive View State Bar (Atelier Utility Bar - Desktop) */}
+      <main className="flex-1 w-full pt-14 md:pt-20 pb-20 md:pb-12">
+        {/* Interactive View State Bar (Atelier Utility Bar) */}
         <aside
           aria-label="Atelier simulation controls"
-          className="w-full bg-[#F9EBE5] border-b border-[#2B2420]/10 px-4 md:px-12 py-2 flex flex-wrap items-center justify-between gap-3 text-[#2B2420]"
+          className="w-full bg-[#F9EBE5] border-b border-[#2B2420]/10 px-4 md:px-12 py-2 flex flex-wrap items-center justify-between gap-2.5 text-[#2B2420]"
         >
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#894B37] inline-block" />
-            <span className="font-sans text-[10px] md:text-[11px] font-semibold tracking-[0.18em] text-[#2B2420] uppercase">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#894B37] inline-block shrink-0" />
+            <span className="font-sans text-[10px] md:text-[11px] font-semibold tracking-[0.18em] text-[#2B2420] uppercase truncate">
               ATELIER CHECKOUT CONDUIT
             </span>
-            <span className="text-[#7A7168] text-[11px]">•</span>
-            <span className="font-mono text-[10px] md:text-xs text-[#7A7168]">
+            <span className="text-[#7A7168] text-[10px] hidden sm:inline">•</span>
+            <span className="font-mono text-[10px] md:text-xs text-[#7A7168] hidden sm:inline">
               SESSION REF: #AG-88201-IND
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={() => setSimulatedEmpty(false)}
-                className={`px-2.5 py-1 font-sans text-[10px] font-semibold tracking-widest uppercase transition-all cursor-pointer ${
+                className={`px-2.5 py-1 font-sans text-[9px] md:text-[10px] font-semibold tracking-widest uppercase transition-all cursor-pointer ${
                   !simulatedEmpty
                     ? "bg-[#2B2420] text-[#FAF6F1]"
                     : "bg-[#F3E5DF] text-[#7A7168] hover:text-[#2B2420]"
@@ -94,7 +95,7 @@ export function CheckoutPageView() {
               <button
                 type="button"
                 onClick={() => setSimulatedEmpty(true)}
-                className={`px-2.5 py-1 font-sans text-[10px] font-semibold tracking-widest uppercase transition-all cursor-pointer ${
+                className={`px-2.5 py-1 font-sans text-[9px] md:text-[10px] font-semibold tracking-widest uppercase transition-all cursor-pointer ${
                   simulatedEmpty
                     ? "bg-[#2B2420] text-[#FAF6F1]"
                     : "bg-[#F3E5DF] text-[#7A7168] hover:text-[#2B2420]"
@@ -107,9 +108,9 @@ export function CheckoutPageView() {
             <button
               type="button"
               onClick={handleToggleValidation}
-              className="flex items-center gap-1 text-[#894B37] hover:text-[#2B2420] font-sans text-[10px] font-semibold tracking-widest uppercase transition-colors cursor-pointer"
+              className="flex items-center gap-1 text-[#894B37] hover:text-[#2B2420] font-sans text-[9px] md:text-[10px] font-semibold tracking-widest uppercase transition-colors cursor-pointer"
             >
-              <Sliders className="w-3.5 h-3.5" />
+              <Sliders className="w-3 h-3 md:w-3.5 md:h-3.5" />
               <span className="hidden sm:inline">TOGGLE VALIDATION</span>
             </button>
           </div>
@@ -137,15 +138,16 @@ export function CheckoutPageView() {
         {isCartEmpty ? (
           <CheckoutEmptyState />
         ) : (
-          <div className="w-full px-4 md:px-12 pt-4 md:pt-6 pb-20 lg:pb-28 max-w-[1440px] mx-auto">
+          <div className="w-full px-4 md:px-12 pt-4 md:pt-6 pb-8 md:pb-16 max-w-[1440px] mx-auto">
             {/* Archival Progress Stepper */}
             <CheckoutProgressRail />
 
-            {/* Mobile Collapsible Order Summary Drawer (rendered above form on < lg) */}
-            <CheckoutOrderSummary
-              deliveryMethod={formData.deliveryMethod}
-              onPlaceOrder={handlePlaceOrder}
-            />
+            {/* Mobile Collapsible Order Summary Drawer (rendered above form on < lg only) */}
+            <div className="block lg:hidden">
+              <CheckoutMobileOrderSummary
+                deliveryMethod={formData.deliveryMethod}
+              />
+            </div>
 
             {/* Main Asymmetric Split Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -161,7 +163,7 @@ export function CheckoutPageView() {
 
               {/* Right Column: Sticky Order Summary (5 cols / 40% - desktop only) */}
               <section className="hidden lg:block lg:col-span-5">
-                <CheckoutOrderSummary
+                <CheckoutDesktopOrderSummary
                   deliveryMethod={formData.deliveryMethod}
                   onPlaceOrder={handlePlaceOrder}
                 />
@@ -171,7 +173,7 @@ export function CheckoutPageView() {
         )}
       </main>
 
-      {/* Footer */}
+      {/* Dedicated Checkout Footer */}
       <CheckoutFooter />
     </div>
   );
