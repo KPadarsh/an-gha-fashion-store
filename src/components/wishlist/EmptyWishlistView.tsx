@@ -26,7 +26,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     description: "Fluid draping, halter backs & weighted silk tailoring.",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDaasZdZNjVPN4ghDeokmkE-8-c3GZfq_HGFX72KwDVI7LHMGcyQ81McxuJjwvJLQChVlIIVtmEEUjWI8BlUPKY7cYqziENv0toemL9ZofZm_t_QZZo_DsabuUY8ooofkRaP705xVBEolamFEk8FK8a9xRYrKtVxIp1Xm3X-LnPrsGyDSQ-2ZN9gcKnA1L65jJRmbRGwA1yRlguYvy2Wn6gTRPwesFYpwPSOujyS5H9d_HMw1AXOZWjRA",
-    href: "/shop/dresses",
+    href: "/shop?category=Dresses",
   },
   {
     id: "knitwear",
@@ -36,7 +36,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     description: "Textured Peruvian wools, brushed alpaca & raw ribbing.",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDbK2l039w6U7QMkKZL0_8zVodqd2rcGaYCxEowkzJLv_q6oFI0muXMv7SrW-iPqNmPlbzWxcNy-KlRY42huf2kT2pv3iuqffD-XTK_pX8-FTNGY82SjcMLJ1N4t0ZDEKDA3BkmNTpNTavKVto0tIZeUQMup5WYIb9PcX4wvob1Sftw5001LYg6xmYaMp4R38VmVmmnHGQsO1TPf5Wom31Fimo5UM5K9tIxRvm78-54fq2ZWRnQqudFSg",
-    href: "/shop/knitwear",
+    href: "/shop?category=Knitwear",
   },
   {
     id: "outerwear",
@@ -46,7 +46,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     description: "Architectural coats, belted trenches & boiled wool wraps.",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDbpw45J4JfwEc029lnmZ61CfGdKKQxwljgc0Mxt1dF1_ItCqEupDqJxMrh0OBt3BgBDuEXiVH3XPKes_Mao2NswlMxSDPvCRL7yALlThHMwL5CozHl4l2zKvwQkCYjdyDVjao8Yf1zJfF_WpnYZI1BOCch83skvkB5xiMORPD6rEmJBGY-VHjik__7El_7frkyO1L9c4sQ_NsQ8Zb3CxhPjM5w3vWBgihFRf7Pw0-_XWpY7gHMZJKWqA",
-    href: "/shop/outerwear",
+    href: "/shop?category=Outerwear",
   },
   {
     id: "accessories",
@@ -56,7 +56,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     description: "Handcrafted vegetable-tanned leather & cast jewelry.",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuC7NqzaKzXztXn-B8RUbJ9jrAAVHevJP83F8G0xYulz_RQYu4Oz4c-9EcFaHNI4Po-ACLCBRvTdH1mmV1kEyW_vjyzr3reSTMB8aGDBIt1fUVz6tXJSEzmoG4GQQMVPAETsOhgMfBH893SzIqzZkteegeZIVzKqMLZX1weCtGVO3X_EUZsXw5YjNTI5MMYRmDPexRcl67SzgSV3qVjHGD-UyKZczXVafltgUjQFMbXpwvyXGRkzy_p9Qg",
-    href: "/shop/accessories",
+    href: "/shop?category=Accessories",
   },
 ];
 

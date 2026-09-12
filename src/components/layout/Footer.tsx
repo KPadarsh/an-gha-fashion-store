@@ -39,22 +39,22 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 sm:space-y-2.5 font-sans text-xs sm:text-[13px] uppercase tracking-wider text-surface-variant/80">
               <li>
-                <Link href="/shop/dresses" className="hover:text-inverse-on-surface transition-colors block py-0.5">
+                <Link href="/shop?category=Dresses" className="hover:text-inverse-on-surface transition-colors block py-0.5">
                   Dresses
                 </Link>
               </li>
               <li>
-                <Link href="/shop/knitwear" className="hover:text-inverse-on-surface transition-colors block py-0.5">
+                <Link href="/shop?category=Knitwear" className="hover:text-inverse-on-surface transition-colors block py-0.5">
                   Knitwear
                 </Link>
               </li>
               <li>
-                <Link href="/shop/outerwear" className="hover:text-inverse-on-surface transition-colors block py-0.5">
+                <Link href="/shop?category=Outerwear" className="hover:text-inverse-on-surface transition-colors block py-0.5">
                   Outerwear
                 </Link>
               </li>
               <li>
-                <Link href="/shop/accessories" className="hover:text-inverse-on-surface transition-colors block py-0.5">
+                <Link href="/shop?category=Accessories" className="hover:text-inverse-on-surface transition-colors block py-0.5">
                   Accessories
                 </Link>
               </li>

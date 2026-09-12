@@ -119,7 +119,7 @@ export function OrderConfirmationFooter() {
             </p>
             <nav className="flex flex-col gap-2.5 font-sans text-xs text-[#D8C2BB]/80">
               <Link
-                href="/shop/dresses"
+                href="/shop?category=Dresses"
                 className="hover:text-[#FCEEE7] transition-colors py-0.5"
               >
                 Permanent Wardrobe
@@ -131,13 +131,13 @@ export function OrderConfirmationFooter() {
                 Limited Monographs
               </Link>
               <Link
-                href="/shop/outerwear"
+                href="/shop?category=Outerwear"
                 className="hover:text-[#FCEEE7] transition-colors py-0.5"
               >
                 Bespoke Tailoring
               </Link>
               <Link
-                href="/shop/accessories"
+                href="/shop?category=Accessories"
                 className="hover:text-[#FCEEE7] transition-colors py-0.5"
               >
                 Objects &amp; Adornment

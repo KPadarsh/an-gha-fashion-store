@@ -22,12 +22,13 @@ interface MobileNavItem {
 const MOBILE_NAV_ITEMS: MobileNavItem[] = [
   { label: "NEW IN", index: "01", href: "/shop?collection=new-in" },
   { label: "COLLECTIONS", index: "02", href: "/shop" },
-  { label: "DRESSES", index: "03", href: "/shop/dresses" },
-  { label: "KNITWEAR", index: "04", href: "/shop/knitwear" },
-  { label: "OUTERWEAR", index: "05", href: "/shop/outerwear" },
-  { label: "ACCESSORIES", index: "06", href: "/shop/accessories" },
+  { label: "DRESSES", index: "03", href: "/shop?category=Dresses" },
+  { label: "KNITWEAR", index: "04", href: "/shop?category=Knitwear" },
+  { label: "OUTERWEAR", index: "05", href: "/shop?category=Outerwear" },
+  { label: "ACCESSORIES", index: "06", href: "/shop?category=Accessories" },
   { label: "WISHLIST", index: "07", href: "/wishlist" },
 ];
+
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();

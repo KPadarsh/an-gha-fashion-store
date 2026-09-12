@@ -62,6 +62,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           {/* Right Column (5 parts): Info Panel */}
           <div className="lg:col-span-5 px-4 md:px-0">
             <ProductInfoPanel
+              productId={productData.id}
+              imageUrl={productData.gallery?.[0]?.imageUrl}
               categoryLine={productData.categoryLine}
               stockStatus={productData.stockStatus}
               name={productData.name}

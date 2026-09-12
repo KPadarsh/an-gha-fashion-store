@@ -12,11 +12,12 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { label: "NEW IN", href: "/shop?collection=new-in" },
   { label: "COLLECTIONS", href: "/shop" },
-  { label: "DRESSES", href: "/shop/dresses" },
-  { label: "KNITWEAR", href: "/shop/knitwear" },
-  { label: "OUTERWEAR", href: "/shop/outerwear" },
-  { label: "ACCESSORIES", href: "/shop/accessories" },
+  { label: "DRESSES", href: "/shop?category=Dresses" },
+  { label: "KNITWEAR", href: "/shop?category=Knitwear" },
+  { label: "OUTERWEAR", href: "/shop?category=Outerwear" },
+  { label: "ACCESSORIES", href: "/shop?category=Accessories" },
 ];
+
 
 export function DesktopNav() {
   const pathname = usePathname();

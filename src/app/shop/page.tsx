@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { ShopHeader, CategoryFilter } from "@/components/shop/ShopHeader";
 import {
   ShopFilterBar,
@@ -12,7 +13,11 @@ import { ShopNewsletter } from "@/components/shop/ShopNewsletter";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { SHOP_PRODUCTS } from "@/data/shopProducts";
 
-export default function ShopPage() {
+function ShopPageContent() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  const collectionParam = searchParams.get("collection");
+
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("ALL");
   const [isDrawerOpen, setIsDrawerOpen] = useState(true); // Default open in Stitch desktop demo
   const [filters, setFilters] = useState<FilterState>({
@@ -23,6 +28,26 @@ export default function ShopPage() {
     inStockOnly: true,
     sortBy: "featured",
   });
+
+  useEffect(() => {
+    if (categoryParam) {
+      const upper = categoryParam.toUpperCase();
+      if (
+        ["DRESSES", "KNITWEAR", "OUTERWEAR", "ACCESSORIES"].includes(upper)
+      ) {
+        setActiveCategory(upper as CategoryFilter);
+        setFilters((prev) => ({
+          ...prev,
+          selectedCategories: [
+            categoryParam.charAt(0).toUpperCase() +
+              categoryParam.slice(1).toLowerCase(),
+          ],
+        }));
+      }
+    } else if (collectionParam === "new-in") {
+      setActiveCategory("NEW IN");
+    }
+  }, [categoryParam, collectionParam]);
 
   const handleResetFilters = () => {
     setFilters({
@@ -48,6 +73,7 @@ export default function ShopPage() {
       setFilters((prev) => ({ ...prev, selectedCategories: [formatted] }));
     }
   };
+
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
@@ -172,3 +198,12 @@ export default function ShopPage() {
     </main>
   );
 }
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-surface" />}>
+      <ShopPageContent />
+    </Suspense>
+  );
+}
+
