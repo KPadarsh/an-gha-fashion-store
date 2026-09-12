@@ -24,9 +24,9 @@ export function OrderConfirmationHeader() {
         <div className="flex flex-col items-center justify-center text-center select-none">
           <Link
             href="/"
-            className="font-serif text-lg uppercase tracking-[0.22em] text-[#211A16] leading-none hover:text-[#894B37] transition-colors"
+            className="font-serif text-lg tracking-[0.18em] text-[#211A16] leading-none hover:text-[#894B37] transition-colors"
           >
-            ANGHA
+            An Gha
           </Link>
           <span className="font-sans text-[10px] uppercase tracking-[0.24em] text-[#53433F] mt-1 font-semibold">
             Order Confirmation
@@ -46,10 +46,10 @@ export function OrderConfirmationHeader() {
         <div className="flex items-center gap-2">
           <Link
             href="/"
-            className="font-serif text-2xl lg:text-3xl tracking-tight text-[#211A16] hover:text-[#894B37] transition-colors focus-visible:outline-none"
+            className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-[#211A16] hover:text-[#894B37] transition-colors focus-visible:outline-none"
             aria-label="An Gha Home"
           >
-            ANGHA
+            An Gha
           </Link>
           <span className="font-mono text-xs text-[#85736E] uppercase ml-1 hidden sm:inline">
             / ATELIER

@@ -18,9 +18,12 @@ export function CheckoutHeader() {
         </Link>
 
         <div className="flex flex-col items-center justify-center text-center">
-          <span className="font-serif text-lg tracking-[0.25em] uppercase text-[#2B2420] leading-none">
-            ANGHA
-          </span>
+          <Link
+            href="/"
+            className="font-serif text-lg tracking-[0.18em] text-[#2B2420] leading-none hover:text-[#894B37] transition-colors"
+          >
+            An Gha
+          </Link>
           <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7A7168] mt-1">
             CHECKOUT
           </span>
@@ -39,9 +42,9 @@ export function CheckoutHeader() {
         <div className="flex items-baseline gap-2.5">
           <Link
             href="/"
-            className="font-serif text-2xl tracking-tight text-[#2B2420] uppercase hover:text-[#894B37] transition-colors"
+            className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors"
           >
-            ANGHA
+            An Gha
           </Link>
           <span className="font-sans text-[11px] font-semibold text-[#7A7168] uppercase tracking-widest">
             — CHECKOUT
