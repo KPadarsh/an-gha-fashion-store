@@ -10,8 +10,7 @@ const FEATURED_PRODUCTS: ProductCardProps[] = [
     category: "DRESSES",
     name: "Elara Draped Dress",
     price: 128,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1VAlbM6622XpA-Qi7MCS_2vcdgzH3jRYux6MJmZjGRGVkvR76d4Bi-uhR8NDBpzNCNgadnJi_xlkK5az_k4H5yLxSS6axpRIJ2tSoZpeosOtoS0Cg6zMYW1ppBHduibe_6xtaKIz8d7cxrb5yiXvksBcP0vIoOl8-WcYraFGSP_woEIHQoxsaJkDAZ30um9GVIpj4WXr-SlBrOLKEWzYFnkmQa7j0zCkJnvflYoBYeXur8ckf5xod_gk_55",
+    imageUrl: "/images/dresses-1.png",
     imageAlt: "Elara Draped Dress in terracotta linen",
     href: "/shop/elara-draped-dress",
   },
@@ -21,9 +20,8 @@ const FEATURED_PRODUCTS: ProductCardProps[] = [
     category: "KNITWEAR",
     name: "Solis Ribbed Knit Sweater",
     price: 164,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1WykBoPkAIypz8ytgRf0NS4SUc46vxJcAnUJk1OvXEvoNsg3eVKb6OfhzLWhcQmOiA-mSN9PXwU24MB8qzwsKq307qbr5v88bOg-NrB7W1KtAKfd3BcPQI9Rgtk36rMThseIRpusM-5S12Wc3GnVUEJNbp24b8MOzVKKubntsGDU6bNyNNM2rfSPiTEwRFLPPKqgLsRnB4eXmh6VpbSm9TaOP2kjrzckLQgj1kt94voAQILRMp2ia-LkiXk",
-    imageAlt: "Solis Ribbed Knit Sweater in olive ivory blend",
+    imageUrl: "/images/knitwear-1.png",
+    imageAlt: "Solis Ribbed Knit Sweater in oatmeal melange",
     href: "/shop/solis-ribbed-knit-sweater",
   },
   {
@@ -32,8 +30,7 @@ const FEATURED_PRODUCTS: ProductCardProps[] = [
     category: "OUTERWEAR",
     name: "Mira Structured Coat",
     price: 248,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAo654oTcXyvQ4BVlZr_Kok3e2KwfNIGJQLAfJN_CrHV97eUGkbvQcV-kxPWNssKei9Rsur8rTkkUTtBrE4a90CrFS0M43q9v59EgTO2OvEa12HbBZWDZzesoVat_Ba3S6qLvXZLE64bCr9FqHUT2AgmxwH0f1BfiSe63mOgzXDTZWfz_XEZQp1gbfSpnxM0F_NZcs_F4X5zv0VDaySlsMZED9wvYsgPPtFnF3zZsOsYhZfxD0waQiCBw",
+    imageUrl: "/images/outerwear-1.png",
     imageAlt: "Mira Structured Coat in warm taupe",
     href: "/shop/mira-structured-coat",
   },
@@ -43,8 +40,7 @@ const FEATURED_PRODUCTS: ProductCardProps[] = [
     category: "ACCESSORIES",
     name: "Aven Leather Shoulder Bag",
     price: 118,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBFvwv7IeTWsVlilDONEpQDHcJeYNMjMGX7JTKVPPW2YrypwsGlt4YoENBYmqzAnLvFnFVCIBwfBS5YxPBVOoh7OIt1XsvnFiQjrCirej5Npp5o7G0tCuuCrnvJfoXfp7kSify8f0Hr9e8-lxZVQBpOX0H18aM4NIiyGiAtkN15IjW63IfmMkwAxyhDJhz3fCNtFdFB6WwPFOVR648e385g_xQe4KkMQUEu5ztXUqcpWq7tklBUSpy3rQ",
+    imageUrl: "/images/accessories-1.png",
     imageAlt: "Aven Leather Shoulder Bag in terracotta",
     href: "/shop/aven-leather-shoulder-bag",
   },

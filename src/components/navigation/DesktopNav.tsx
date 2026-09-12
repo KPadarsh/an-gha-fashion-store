@@ -10,6 +10,7 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
+  { label: "HOME", href: "/" },
   { label: "NEW IN", href: "/shop?collection=new-in" },
   { label: "COLLECTIONS", href: "/shop" },
   { label: "DRESSES", href: "/shop?category=Dresses" },
@@ -25,6 +26,9 @@ function DesktopNavContent() {
   const collection = searchParams.get("collection");
 
   const isItemActive = (item: NavItem) => {
+    if (item.href === "/") {
+      return pathname === "/";
+    }
     if (item.href.startsWith("/shop?category=")) {
       const cat = item.href.split("=")[1];
       return (

@@ -7,7 +7,6 @@ import { ProductStorySection } from "@/components/product/ProductStorySection";
 import { ProductTactileIndex } from "@/components/product/ProductTactileIndex";
 import { ProductComplementGrid } from "@/components/product/ProductComplementGrid";
 import { ProductRecentlyViewed } from "@/components/product/ProductRecentlyViewed";
-import { ProductNewsletter } from "@/components/product/ProductNewsletter";
 import { FEATURED_SPECIMEN } from "@/data/productDetailData";
 import { SHOP_PRODUCTS } from "@/data/shopProducts";
 
@@ -112,9 +111,6 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         count={productData.recentlyViewed.count}
         items={productData.recentlyViewed.items}
       />
-
-      {/* 7. Newsletter & Archival Dispatch Block */}
-      <ProductNewsletter />
     </main>
   );
 }

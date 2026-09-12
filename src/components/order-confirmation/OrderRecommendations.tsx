@@ -16,14 +16,13 @@ interface RecommendationItem {
 
 const RECOMMENDATIONS: RecommendationItem[] = [
   {
-    id: "strappy-sandal",
-    name: "Strappy Sandal",
-    category: "Footwear · Tuscan Leather",
+    id: "accessories-4",
+    name: "Aven Suede Envelope Clutch",
+    category: "Footwear & Leather",
     indexTag: "INDEX 03 / 08",
-    price: 165,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1U5zTm5U5hunCTZuWcLIkQLWFOnstC6TkuuhpQhEsUehfzvMEHmgVkTeUqKxa8g7Gq_zorO6pdnKViwTTsrtQfHdS_41al8N5OabIa7O83nY_VZHT55myH7gry02Q5C2r42QkscTmqWXgFTQhkl-nAtGJgdkov95tHFJ9rYg_FV_raqVOHELEuFRanegQWjN_7jd7vue34-v-muykrmeTDSXl3pvPzGKSCeSCKPmhCXzg5FZXl47ZD6lAI7",
-    href: "/shop/strappy-sandal",
+    price: 135,
+    imageUrl: "/images/accessories-4.png",
+    href: "/shop/aven-leather-shoulder-bag",
   },
   {
     id: "cove-leather-tote",
@@ -31,8 +30,7 @@ const RECOMMENDATIONS: RecommendationItem[] = [
     category: "Objects · Saddle Grain",
     indexTag: "INDEX 06 / 08",
     price: 142,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1X04CVOQs54zit_ngZ-XVvyB-oM6cbtzmW4_hbIroXy5uT8HiO0yyt1KSnGJPikLGsBCb4laRNbrXQdsIkDr_TaF5vAYdMkQ4tnsq5S82zgQtQNpYpn2XRsYjjJ6ABehkEfP1bwkgXY9-DEqIDpl_LbcyuoBXr05HeRiRUT0BK7ncSCiWXECtrIwLKKqB96oBcWtQB4wIM0gMLCIPwCJpeWArk4HfM9ORwhAXCdPLnqYTMCIIAxyHYqKPar",
+    imageUrl: "/images/accessories-2.png",
     href: "/shop/cove-leather-tote",
   },
   {
@@ -41,8 +39,7 @@ const RECOMMENDATIONS: RecommendationItem[] = [
     category: "Outerwear · Double Wool",
     indexTag: "INDEX 08 / 08",
     price: 280,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1Uw4R_mh7dDwtihMR40LJD5Y4FcRCT87YXljf3wJDnvOvf9RGlAa0qgxoP9lHgLrn2ttBMfU-Wq9kwcHkAzyvOAzN6HIwfnBufoPETptYNbRFndaZ_VgsQlj2E-tvyZXNlT1uYgLb1977YPpJ71XL3gjYY-QlqwMOIQCB_66NckgU5CaAtHjlwF2zD1xSkPDQec_3DWhW2MvoFFYG5rQMI7GDAnlqIEBxoxLVgR-l2jtTmF_FYTamGDNP0",
+    imageUrl: "/images/outerwear-2.png",
     href: "/shop/sienna-tailored-trench",
   },
 ];
@@ -75,9 +72,10 @@ export function OrderRecommendations() {
             <Link href="/shop/cove-leather-tote" className="block">
               <div className="relative w-full aspect-[3/4] bg-[#F3E5DF] overflow-hidden">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1X04CVOQs54zit_ngZ-XVvyB-oM6cbtzmW4_hbIroXy5uT8HiO0yyt1KSnGJPikLGsBCb4laRNbrXQdsIkDr_TaF5vAYdMkQ4tnsq5S82zgQtQNpYpn2XRsYjjJ6ABehkEfP1bwkgXY9-DEqIDpl_LbcyuoBXr05HeRiRUT0BK7ncSCiWXECtrIwLKKqB96oBcWtQB4wIM0gMLCIPwCJpeWArk4HfM9ORwhAXCdPLnqYTMCIIAxyHYqKPar"
+                  src="/images/accessories-2.png"
                   alt="Cove Tote in rich cognac amber leather"
                   fill
+                  unoptimized
                   sizes="50vw"
                   className="object-cover object-center"
                 />
@@ -103,29 +101,30 @@ export function OrderRecommendations() {
 
           {/* Item B: Strappy Sandal */}
           <article className="flex flex-col bg-[#FFFFFF] shadow-xs overflow-hidden border border-[#2B2420]/10">
-            <Link href="/shop/strappy-sandal" className="block">
+            <Link href="/shop/aven-leather-shoulder-bag" className="block">
               <div className="relative w-full aspect-[3/4] bg-[#F3E5DF] overflow-hidden">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1U5zTm5U5hunCTZuWcLIkQLWFOnstC6TkuuhpQhEsUehfzvMEHmgVkTeUqKxa8g7Gq_zorO6pdnKViwTTsrtQfHdS_41al8N5OabIa7O83nY_VZHT55myH7gry02Q5C2r42QkscTmqWXgFTQhkl-nAtGJgdkov95tHFJ9rYg_FV_raqVOHELEuFRanegQWjN_7jd7vue34-v-muykrmeTDSXl3pvPzGKSCeSCKPmhCXzg5FZXl47ZD6lAI7"
-                  alt="Minimalist supple leather strappy sandals in cognac brown"
+                  src="/images/accessories-4.png"
+                  alt="Minimalist supple leather clutch"
                   fill
+                  unoptimized
                   sizes="50vw"
                   className="object-cover object-center"
                 />
                 <span className="absolute top-2 left-2 px-1.5 py-0.5 bg-[#FFF8F5]/90 text-[#211A16] font-mono text-[9px] uppercase tracking-wider backdrop-blur-sm border border-[#2B2420]/5">
-                  02 / SHOE
+                  02 / CLUTCH
                 </span>
               </div>
               <div className="p-2.5 flex flex-col justify-between flex-1">
                 <span className="font-sans text-xs text-[#211A16] font-medium truncate block">
-                  Strappy Sandal
+                  Aven Clutch
                 </span>
                 <div className="flex justify-between items-center mt-1 pt-1 border-t border-[#2B2420]/5">
                   <span className="font-sans text-[11px] text-[#53433F]">
                     Amber
                   </span>
                   <span className="font-sans text-xs font-semibold text-[#211A16]">
-                    $165
+                    $135
                   </span>
                 </div>
               </div>
@@ -163,6 +162,7 @@ export function OrderRecommendations() {
                     src={item.imageUrl}
                     alt={item.name}
                     fill
+                    unoptimized
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />

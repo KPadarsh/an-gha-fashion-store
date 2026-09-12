@@ -22,8 +22,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     title: "DRESSES",
     specimens: "24 SPECIMENS",
     description: "Fluid draping, halter backs & weighted silk tailoring.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDaasZdZNjVPN4ghDeokmkE-8-c3GZfq_HGFX72KwDVI7LHMGcyQ81McxuJjwvJLQChVlIIVtmEEUjWI8BlUPKY7cYqziENv0toemL9ZofZm_t_QZZo_DsabuUY8ooofkRaP705xVBEolamFEk8FK8a9xRYrKtVxIp1Xm3X-LnPrsGyDSQ-2ZN9gcKnA1L65jJRmbRGwA1yRlguYvy2Wn6gTRPwesFYpwPSOujyS5H9d_HMw1AXOZWjRA",
+    imageUrl: "/images/dresses-thumpnil-2.png",
     href: "/shop?category=Dresses",
   },
   {
@@ -32,8 +31,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     title: "KNITWEAR",
     specimens: "16 SPECIMENS",
     description: "Textured Peruvian wools, brushed alpaca & raw ribbing.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDbK2l039w6U7QMkKZL0_8zVodqd2rcGaYCxEowkzJLv_q6oFI0muXMv7SrW-iPqNmPlbzWxcNy-KlRY42huf2kT2pv3iuqffD-XTK_pX8-FTNGY82SjcMLJ1N4t0ZDEKDA3BkmNTpNTavKVto0tIZeUQMup5WYIb9PcX4wvob1Sftw5001LYg6xmYaMp4R38VmVmmnHGQsO1TPf5Wom31Fimo5UM5K9tIxRvm78-54fq2ZWRnQqudFSg",
+    imageUrl: "/images/knitwear-thumpnil-2.png",
     href: "/shop?category=Knitwear",
   },
   {
@@ -42,8 +40,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     title: "OUTERWEAR",
     specimens: "12 SPECIMENS",
     description: "Architectural coats, belted trenches & boiled wool wraps.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDbpw45J4JfwEc029lnmZ61CfGdKKQxwljgc0Mxt1dF1_ItCqEupDqJxMrh0OBt3BgBDuEXiVH3XPKes_Mao2NswlMxSDPvCRL7yALlThHMwL5CozHl4l2zKvwQkCYjdyDVjao8Yf1zJfF_WpnYZI1BOCch83skvkB5xiMORPD6rEmJBGY-VHjik__7El_7frkyO1L9c4sQ_NsQ8Zb3CxhPjM5w3vWBgihFRf7Pw0-_XWpY7gHMZJKWqA",
+    imageUrl: "/images/outerwear-thumpnil-2.png",
     href: "/shop?category=Outerwear",
   },
   {
@@ -52,8 +49,7 @@ const CATEGORY_PATHWAYS: CategoryPathway[] = [
     title: "ACCESSORIES",
     specimens: "18 SPECIMENS",
     description: "Handcrafted vegetable-tanned leather & cast jewelry.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC7NqzaKzXztXn-B8RUbJ9jrAAVHevJP83F8G0xYulz_RQYu4Oz4c-9EcFaHNI4Po-ACLCBRvTdH1mmV1kEyW_vjyzr3reSTMB8aGDBIt1fUVz6tXJSEzmoG4GQQMVPAETsOhgMfBH893SzIqzZkteegeZIVzKqMLZX1weCtGVO3X_EUZsXw5YjNTI5MMYRmDPexRcl67SzgSV3qVjHGD-UyKZczXVafltgUjQFMbXpwvyXGRkzy_p9Qg",
+    imageUrl: "/images/accessories-thumpnil-2.png",
     href: "/shop?category=Accessories",
   },
 ];
@@ -71,16 +67,14 @@ const ARCHIVAL_SPECIMENS: ArchivalSpecimen[] = [
     id: "the-terracotta-draped-tunic",
     itemCode: "SERIES 08 • ITEM 08/04",
     name: "The Terracotta Draped Tunic",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBURSmVM3SP0JBRseovoaam05SetJlt1S74tmp2gPK2ivlqvqMNJTGH_ehBPIaRyv-OSa04uWyZff_E2Xm1PWno9oUkNtu7mIf3etprpwX5j0TL0FUFOsAicoAlHrQxqJmb6yNhoszmX9zcmB788-B3IGIF7tF94nPql1z11_EoDquuTchebl585wLMqVCYWbMHF_1kbRFGkVUQqehbi1e5tG5UyTKPGwj38wvL7mymX9oeEiVuHTzySQ",
+    imageUrl: "/images/dresses-1.png",
     href: "/shop/elara-draped-dress",
   },
   {
     id: "the-raw-edge-trench",
     itemCode: "SERIES 08 • ITEM 08/11",
     name: "The Raw Edge Trench",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDSu-3_q_CgifoIdPtjDg7nI8eSiUh8Ak6Tm8R7EIiAslO9UY78OyTYynT9hWN8EZYp0RM5EG2v2QnxmS2f9TIIiyWOtpn0Gn0aRKszvcrDRrZ1YCR3e6lhnI4jpOpsiKaBFd60bLhHJ0ju82R614j0nwdJ4ElxDA9a1Wg06TgRLazWMR8hF7AVhr_AUA6bQI1T6kTt2gGBedewp6UtwsJQLsXxS9CT8-T5CZalMDEuxiA1kjw31jO1NQ",
+    imageUrl: "/images/outerwear-2.png",
     href: "/shop/sienna-tailored-trench",
   },
 ];
@@ -168,12 +162,13 @@ export function EmptyBagView() {
           <div className="lg:col-span-6 relative mt-6 lg:mt-0">
             <div className="relative w-full aspect-[4/5] bg-[#F9EBE5] overflow-hidden shadow-xs group">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAItJcBvbN0ZvvV5KV22dbiDqCnTvvMyK7oO512hXD8LqmcdvvSkePN97Yr2SDGW7WD0JTZvZIWRrO36DIoNobL5iGUuPKWuOM_9yQzupbEreiktCGuQIjVzappggDDnCovFADCp2apDtp_mJDOfgnFPs6nF4facQJ8naWE2XCBnGIwNMk6-DA2V33EKkplB-5j2lHs7LHm3tYYryLbaSDZKjuzyN0zUzJgk551zYXWHJ9MX8eDt-W3RQ"
+                src="/images/dresses-2.png"
                 alt="The Terracotta Backless Halter Dress - Series 08 Mallorca Archive"
                 fill
-                quality={95}
+                unoptimized
+                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="w-full h-full object-cover object-center filter grayscale contrast-[1.05] group-hover:scale-105 group-hover:filter-none transition-all duration-700"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#211A16]/85 via-transparent to-transparent pointer-events-none" />
 
@@ -247,7 +242,7 @@ export function EmptyBagView() {
                     src={cat.imageUrl}
                     alt={cat.title}
                     fill
-                    quality={90}
+                    unoptimized
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -327,7 +322,7 @@ export function EmptyBagView() {
                     src={item.imageUrl}
                     alt={item.name}
                     fill
-                    quality={90}
+                    unoptimized
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

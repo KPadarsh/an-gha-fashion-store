@@ -9,7 +9,6 @@ import {
 } from "@/components/shop/ShopFilterBar";
 import { ShopEditorialInterruption } from "@/components/shop/ShopEditorialInterruption";
 import { ShopPagination } from "@/components/shop/ShopPagination";
-import { ShopNewsletter } from "@/components/shop/ShopNewsletter";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { SHOP_PRODUCTS } from "@/data/shopProducts";
 import { RotateCcw } from "lucide-react";
@@ -259,9 +258,6 @@ function ShopPageContent() {
             />
           </>
         )}
-
-        {/* SECTION 7: COMPACT NEWSLETTER */}
-        <ShopNewsletter />
       </div>
     </main>
   );

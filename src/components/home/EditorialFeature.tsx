@@ -12,10 +12,11 @@ export function EditorialFeature() {
           <div className="lg:col-span-7 w-full">
             <div className="relative aspect-[3/4] w-full overflow-hidden bg-surface-container border border-surface-dim/30">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-RXZMHYYLSLP_zSJSGmFkAOF9enl8glLq9BJeBShElMKtaX-d0FLMJDgw1-6jDMsUdhI-dLxEd1ZYOnga59gWkx8nPOmnXyvQTlA9smWTbqtxeLzc1SOeUJkIm7VvkwMoW9qWb3HVHxyafvuc0-FCaFzJBOVhKfpH6nhB4CNAxpJiLjpmyCYfpYdl6-GuqnG0oZa6W9XXi9P_yJWQ3G91FkaNzbAn9ZjtvdkZvIAmkSzPsieikg8r0w"
+                src="/images/outerwear-5.png"
                 alt="Editorial campaign woman wearing tailored warm wool coat in minimalist architectural stone surroundings"
                 fill
-                quality={95}
+                unoptimized
+                priority
                 sizes="(max-width: 1024px) 100vw, 58vw"
                 className="object-cover object-center"
               />

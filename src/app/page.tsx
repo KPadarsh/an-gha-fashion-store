@@ -5,8 +5,6 @@ import { FeaturedSelection } from "@/components/home/FeaturedSelection";
 import { EditorialFeature } from "@/components/home/EditorialFeature";
 import { CurrentPieces } from "@/components/home/CurrentPieces";
 import { CategoryQuickAccess } from "@/components/home/CategoryQuickAccess";
-import { NewsletterSection } from "@/components/home/NewsletterSection";
-
 export default function Home() {
   return (
     <main className="w-full bg-surface min-h-screen">
@@ -28,9 +26,6 @@ export default function Home() {
 
         {/* 06. CATEGORY QUICK ACCESS (06 / FIND YOUR FORM) */}
         <CategoryQuickAccess />
-
-        {/* 07. COMPACT NEWSLETTER (07 / THE CATALOGUE EDIT) */}
-        <NewsletterSection />
       </div>
     </main>
   );

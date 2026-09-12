@@ -124,40 +124,35 @@ export const FEATURED_SPECIMEN: ProductDetailSpecimen = {
       id: "plate-01",
       label: "PLATE 01 / 05",
       name: "Front Studio",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida/AEtjO1U5C-p9Kcbo_TvsGqGu4v7VTnaMe2aX9ofE_mGi73aoaFZ7Pfy632gXKNhrPktnSQW-6Nht4X1o84xta-GBvtREadTjOVAww3c-l8A-YgZvBDmlb8GO8vTvLK8_HWu4QkZKjgRmzgvOlY7cLq1uHdl8LnHeA_ER8xNG5BO246YRBP_x9v9jMqAGZc0gBXmcRjPHsGUm2aGuP6WUowN6zuc6Bq2FVRzGdnP3ajP84fgmSZ5OJhpUIpnQkHqJ",
+      imageUrl: "/images/dresses-1.png",
       alt: "Elara Draped Dress front studio portrait",
     },
     {
       id: "plate-02",
       label: "PLATE 02 / 05",
       name: "Movement in Courtyard",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida/AEtjO1VAlbM6622XpA-Qi7MCS_2vcdgzH3jRYux6MJmZjGRGVkvR76d4Bi-uhR8NDBpzNCNgadnJi_xlkK5az_k4H5yLxSS6axpRIJ2tSoZpeosOtoS0Cg6zMYW1ppBHduibe_6xtaKIz8d7cxrb5yiXvksBcP0vIoOl8-WcYraFGSP_woEIHQoxsaJkDAZ30um9GVIpj4WXr-SlBrOLKEWzYFnkmQa7j0zCkJnvflYoBYeXur8ckf5xod_gk_55",
+      imageUrl: "/images/dresses-2.png",
       alt: "Elara Draped Dress movement view in sunlit courtyard",
     },
     {
       id: "plate-03",
       label: "PLATE 03 / 05",
       name: "Macro Weave Texture",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida/AEtjO1VnBwcV73Pobfhc2oFwmqYQXvrtlmK_zL7J_rRU3DX7RjPMz0anF19qIRHNlDfH2du8JYFCP8RMtg_CylFUVQC0WUDVA1Jv1qN6coFrKGMmlDkM1vm3mmA1A5zapTOpCnaECjo47e32wWyuRjPW0sKPQYAhw8-yM_FtJYBDu2WiYfHQmvGl3cPdqNeYUAUqJE14fkPi0LBshA2yEwVanzm0L62SU99SA3X1ZlRrb4oXHZghNRGJmexukKDc",
+      imageUrl: "/images/dresses-3.png",
       alt: "Raw silk linen slub weave texture close up",
     },
     {
       id: "plate-04",
       label: "PLATE 04 / 05",
       name: "Back Silhouette",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida/AEtjO1W22PS0OP7nZeE9kLTUkxFHgD-4YfcjOvxqMIKFDJ40M2odB_yZ0nVsZuPVkc7Q_v6cyTidUZC2bCefL7xVrHiyV_Z7L6y7QJTw47FA84byC2xfO75YbeN28eH6XDe2WqnRnwlrPFU1XhcWygRrJUqzwkjBLMe5r4rPeZNUq_fDWqScBsFXMIZOjqHwRDDU84WXKdZG4HaO5Hbd05bmkWF2IKCGpeypOYrUl2cOJrNzLDdAURNsd3DwIg8",
+      imageUrl: "/images/dresses-4.png",
       alt: "Back silhouette contour of Elara draped dress",
     },
     {
       id: "plate-05",
       label: "PLATE 05 / 05",
       name: "Atelier Setting",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida/AEtjO1Uw4R_mh7dDwtihMR40LJD5Y4FcRCT87YXljf3wJDnvOvf9RGlAa0qgxoP9lHgLrn2ttBMfU-Wq9kwcHkAzyvOAzN6HIwfnBufoPETptYNbRFndaZ_VgsQlj2E-tvyZXNlT1uYgLb1977YPpJ71XL3gjYY-QlqwMOIQCB_66NckgU5CaAtHjlwF2zD1xSkPDQec_3DWhW2MvoFFYG5rQMI7GDAnlqIEBxoxLVgR-l2jtTmF_FYTamGDNP0",
+      imageUrl: "/images/dresses-5.png",
       alt: "Atelier styled setting with archival garments",
     },
   ],
@@ -198,8 +193,7 @@ export const FEATURED_SPECIMEN: ProductDetailSpecimen = {
       "Every fold is calibrated to react to natural gesture. Without rigid boning or synthetics, the Elara silhouette holds sculptural posture while breathing softly against the body.",
       "Our patternmakers in Tuscany spent twelve months refining the bias spiral seams. The unbleached linen provides structural tensile tension, while mulberry silk filaments temper the stiffness, producing an undulating hem that lingers gracefully with every step.",
     ],
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1VAlbM6622XpA-Qi7MCS_2vcdgzH3jRYux6MJmZjGRGVkvR76d4Bi-uhR8NDBpzNCNgadnJi_xlkK5az_k4H5yLxSS6axpRIJ2tSoZpeosOtoS0Cg6zMYW1ppBHduibe_6xtaKIz8d7cxrb5yiXvksBcP0vIoOl8-WcYraFGSP_woEIHQoxsaJkDAZ30um9GVIpj4WXr-SlBrOLKEWzYFnkmQa7j0zCkJnvflYoBYeXur8ckf5xod_gk_55",
+    imageUrl: "/images/dresses-2.png",
     tagSeries: "SERIES 08 / MOTION SPECIMEN",
     tagLocation:
       "Documented under natural Mediterranean daylight at Villa Noailles atelier.",
@@ -218,24 +212,21 @@ export const FEATURED_SPECIMEN: ProductDetailSpecimen = {
         title: "Weave",
         description:
           "Irregular slub silk linen warp and weft spun slowly on heritage Italian looms.",
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1VnBwcV73Pobfhc2oFwmqYQXvrtlmK_zL7J_rRU3DX7RjPMz0anF19qIRHNlDfH2du8JYFCP8RMtg_CylFUVQC0WUDVA1Jv1qN6coFrKGMmlDkM1vm3mmA1A5zapTOpCnaECjo47e32wWyuRjPW0sKPQYAhw8-yM_FtJYBDu2WiYfHQmvGl3cPdqNeYUAUqJE14fkPi0LBshA2yEwVanzm0L62SU99SA3X1ZlRrb4oXHZghNRGJmexukKDc",
+        imageUrl: "/images/knitwear-4.png",
       },
       {
         index: "02 / DRAPE",
         title: "Drape",
         description:
           "Fluid bias-cut back contour adjusting freely to natural body movements and sunlight.",
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1W22PS0OP7nZeE9kLTUkxFHgD-4YfcjOvxqMIKFDJ40M2odB_yZ0nVsZuPVkc7Q_v6cyTidUZC2bCefL7xVrHiyV_Z7L6y7QJTw47FA84byC2xfO75YbeN28eH6XDe2WqnRnwlrPFU1XhcWygRrJUqzwkjBLMe5r4rPeZNUq_fDWqScBsFXMIZOjqHwRDDU84WXKdZG4HaO5Hbd05bmkWF2IKCGpeypOYrUl2cOJrNzLDdAURNsd3DwIg8",
+        imageUrl: "/images/dresses-4.png",
       },
       {
         index: "03 / FOUNDATION",
         title: "Foundation",
         description:
           "Tonal pairing potential alongside untreated vegetable-tanned leathers and travertine stone.",
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1U5zTm5U5hunCTZuWcLIkQLWFOnstC6TkuuhpQhEsUehfzvMEHmgVkTeUqKxa8g7Gq_zorO6pdnKViwTTsrtQfHdS_41al8N5OabIa7O83nY_VZHT55myH7gry02Q5C2r42QkscTmqWXgFTQhkl-nAtGJgdkov95tHFJ9rYg_FV_raqVOHELEuFRanegQWjN_7jd7vue34-v-muykrmeTDSXl3pvPzGKSCeSCKPmhCXzg5FZXl47ZD6lAI7",
+        imageUrl: "/images/outerwear-4.png",
       },
     ],
   },
@@ -244,14 +235,13 @@ export const FEATURED_SPECIMEN: ProductDetailSpecimen = {
     title: "Complete the silhouette.",
     items: [
       {
-        id: "strappy-amber-sandal",
+        id: "accessories-4",
         code: "ACC-01",
-        category: "FOOTWEAR",
-        name: "Strappy Amber Sandal",
-        price: 165,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1U5zTm5U5hunCTZuWcLIkQLWFOnstC6TkuuhpQhEsUehfzvMEHmgVkTeUqKxa8g7Gq_zorO6pdnKViwTTsrtQfHdS_41al8N5OabIa7O83nY_VZHT55myH7gry02Q5C2r42QkscTmqWXgFTQhkl-nAtGJgdkov95tHFJ9rYg_FV_raqVOHELEuFRanegQWjN_7jd7vue34-v-muykrmeTDSXl3pvPzGKSCeSCKPmhCXzg5FZXl47ZD6lAI7",
-        href: "/shop/strappy-amber-sandal",
+        category: "LEATHER GOODS",
+        name: "Aven Suede Envelope Clutch",
+        price: 135,
+        imageUrl: "/images/accessories-4.png",
+        href: "/shop/aven-leather-shoulder-bag",
       },
       {
         id: "aven-leather-shoulder-bag",
@@ -259,8 +249,7 @@ export const FEATURED_SPECIMEN: ProductDetailSpecimen = {
         category: "SMOOTH VEAL",
         name: "Aven Leather Shoulder Bag",
         price: 118,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1UIrlPdVxr1S6rfQRllx7NgdfdWSeeT3GzHC2q2FOkZk7p6MiFjKMP5Ka_o46StWxn8Q1n3Fy-ZUY9o6WMgdb831qASCOhv0s3WrNX1FeAxXuLwpsgzMPsD473hfF0Kd-Zk41vo3a2EJCzXSW-FV4pJb4cK4MGWR55XTaNhlolHEXOA-nyqsY7GnL7VDPFLxxb_X6gqzboueeGEVWfWVVYlru4DcWNWPdZ7yXP_336b8WaNhRcqfvcNJVwe",
+        imageUrl: "/images/accessories-1.png",
         href: "/shop/aven-leather-shoulder-bag",
       },
       {
@@ -269,19 +258,17 @@ export const FEATURED_SPECIMEN: ProductDetailSpecimen = {
         category: "CALFSKIN LEATHER",
         name: "Cove Leather Tote",
         price: 142,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1X04CVOQs54zit_ngZ-XVvyB-oM6cbtzmW4_hbIroXy5uT8HiO0yyt1KSnGJPikLGsBCb4laRNbrXQdsIkDr_TaF5vAYdMkQ4tnsq5S82zgQtQNpYpn2XRsYjjJ6ABehkEfP1bwkgXY9-DEqIDpl_LbcyuoBXr05HeRiRUT0BK7ncSCiWXECtrIwLKKqB96oBcWtQB4wIM0gMLCIPwCJpeWArk4HfM9ORwhAXCdPLnqYTMCIIAxyHYqKPar",
+        imageUrl: "/images/accessories-2.png",
         href: "/shop/cove-leather-tote",
       },
       {
-        id: "ceramic-gold-cuff",
+        id: "arlo-mini-structured-pouch",
         code: "ACC-04",
-        category: "ATELIER JEWELRY",
-        name: "Ceramic & Gold Cuff",
-        price: 88,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1W4_f5uMB921HPpRpCKL1bEAek0pk1ukQCvJvdjI86KRFu20ht6XDuG_FhXUcWs2lbxs0brXTf0Lm75cxuukIIUs1aUO9PKCxPe4RWqCVkU5hrmDL3ySsLE8SbDy0MLRDL7AoaL86iO7CtAHSgBIzlJc-zurgqdv4te9Z4sPQLsUmx92ntG1vAj66RY4nTJEHAwDU9qBEhqk1dX2_kdoHpT5r9aKQrdSNYCGl_p9eU4x0SSj60uCEp_RVzp",
-        href: "/shop/ceramic-gold-cuff",
+        category: "ATELIER LEATHER",
+        name: "Arlo Mini Structured Pouch",
+        price: 98,
+        imageUrl: "/images/accessories-3.png",
+        href: "/shop/arlo-mini-structured-pouch",
       },
     ],
   },
@@ -293,32 +280,28 @@ export const FEATURED_SPECIMEN: ProductDetailSpecimen = {
         id: "solis-ribbed-knit-sweater",
         name: "Solis Ribbed Knit",
         price: 164,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1X6qeY8c6Hhs4ldAsv9GalUl0M0aNmasLcW2ZNke6TLUhY6nRe05IKY-oB6klpU4DzaqjJbKo8bFsG4AtLNXyy0Hkm50l9h4pc8xYB7I73VzDRMdqgKKofAm5EM42T4E7Bpmv9A_KQTpz-dyoWDyvR8z6n9WbmyK5fHP6t1UxBpvklwkW3oFbFYBgFOt7sml9-IKOc_NUsndJL_Kl_XWcyrALz_OzvTFRJ1LpbTfCO2AXLNKjV_YtrPsHg",
+        imageUrl: "/images/knitwear-1.png",
         href: "/shop/solis-ribbed-knit-sweater",
       },
       {
         id: "mira-structured-coat",
         name: "Mira Structured Coat",
         price: 248,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1W035mWswCLgPspc3EDd3MP2lv08kqFs8A1NJn1sp9aqLgPox9bgGH87F-G9crGlWkXYF1Zfuabmsxjqt_QFNdDhMCGWd-qvWIvor-ZFMEE3Ip5oKGMv0DY6yQqwMt28QOpaFoPG_PsRxxNwKNTRJWxzLzmtKDCuggevHs9drRfeolaXIRWx8OxNv2dY03AmIwxPwl5NMWRJfCteDB099zhQHE1dSAVXsjIbd-i5LpCgaCGtYZhT61HjDpY",
+        imageUrl: "/images/outerwear-1.png",
         href: "/shop/mira-structured-coat",
       },
       {
         id: "sienna-tailored-trench",
         name: "Sienna Tailored Trench",
         price: 280,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1Uw4R_mh7dDwtihMR40LJD5Y4FcRCT87YXljf3wJDnvOvf9RGlAa0qgxoP9lHgLrn2ttBMfU-Wq9kwcHkAzyvOAzN6HIwfnBufoPETptYNbRFndaZ_VgsQlj2E-tvyZXNlT1uYgLb1977YPpJ71XL3gjYY-QlqwMOIQCB_66NckgU5CaAtHjlwF2zD1xSkPDQec_3DWhW2MvoFFYG5rQMI7GDAnlqIEBxoxLVgR-l2jtTmF_FYTamGDNP0",
+        imageUrl: "/images/outerwear-2.png",
         href: "/shop/sienna-tailored-trench",
       },
       {
         id: "kora-belted-wool-trench",
         name: "Kora Belted Trench",
         price: 295,
-        imageUrl:
-          "https://lh3.googleusercontent.com/aida/AEtjO1VvEfYox31S0FyCluoIosA1zxzDYHZ9h7oFhXTCoYb1PC6ArUIZaekx05_fKyPK6xFFoS7y0LILi7aCod0GW-1TH48IPKhK1lJsGMFzZnRGOJXhsZmLYtGyah0iZH6NbDv_6wpiF7TcGlM2EOITSVD6mvdtgfz0wdZnHJml7gMLYbaJ4fO28tgG0gihY-QmAscobmZ59-5jmWDsGU7sv8xdPcTqa-WGyrLjnKPQcH6BBieGuJvvoA6h_eGE",
+        imageUrl: "/images/outerwear-3.png",
         href: "/shop/kora-belted-wool-trench",
       },
     ],

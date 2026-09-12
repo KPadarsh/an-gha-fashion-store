@@ -23,8 +23,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Elara Draped Dress",
     category: "DRESSES",
     price: 128,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1U5C-p9Kcbo_TvsGqGu4v7VTnaMe2aX9ofE_mGi73aoaFZ7Pfy632gXKNhrPktnSQW-6Nht4X1o84xta-GBvtREadTjOVAww3c-l8A-YgZvBDmlb8GO8vTvLK8_HWu4QkZKjgRmzgvOlY7cLq1uHdl8LnHeA_ER8xNG5BO246YRBP_x9v9jMqAGZc0gBXmcRjPHsGUm2aGuP6WUowN6zuc6Bq2FVRzGdnP3ajP84fgmSZ5OJhpUIpnQkHqJ",
+    imageUrl: "/images/dresses-1.png",
     imageAlt: "Elara Draped Dress in terracotta linen",
     sizes: ["XS", "S", "M", "L"],
     color: "Terracotta",
@@ -37,8 +36,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Solis Ribbed Knit Sweater",
     category: "KNITWEAR",
     price: 164,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1X6qeY8c6Hhs4ldAsv9GalUl0M0aNmasLcW2ZNke6TLUhY6nRe05IKY-oB6klpU4DzaqjJbKo8bFsG4AtLNXyy0Hkm50l9h4pc8xYB7I73VzDRMdqgKKofAm5EM42T4E7Bpmv9A_KQTpz-dyoWDyvR8z6n9WbmyK5fHP6t1UxBpvklwkW3oFbFYBgFOt7sml9-IKOc_NUsndJL_Kl_XWcyrALz_OzvTFRJ1LpbTfCO2AXLNKjV_YtrPsHg",
+    imageUrl: "/images/knitwear-1.png",
     imageAlt: "Solis Ribbed Knit Sweater in oatmeal melange",
     sizes: ["XS", "S", "M", "L"],
     color: "Cream",
@@ -51,8 +49,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Mira Structured Coat",
     category: "OUTERWEAR",
     price: 248,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1W035mWswCLgPspc3EDd3MP2lv08kqFs8A1NJn1sp9aqLgPox9bgGH87F-G9crGlWkXYF1Zfuabmsxjqt_QFNdDhMCGWd-qvWIvor-ZFMEE3Ip5oKGMv0DY6yQqwMt28QOpaFoPG_PsRxxNwKNTRJWxzLzmtKDCuggevHs9drRfeolaXIRWx8OxNv2dY03AmIwxPwl5NMWRJfCteDB099zhQHE1dSAVXsjIbd-i5LpCgaCGtYZhT61HjDpY",
+    imageUrl: "/images/outerwear-1.png",
     imageAlt: "Mira Structured Coat in warm taupe",
     badge: {
       text: "NEW",
@@ -69,8 +66,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Aven Leather Shoulder Bag",
     category: "ACCESSORIES",
     price: 118,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1UIrlPdVxr1S6rfQRllx7NgdfdWSeeT3GzHC2q2FOkZk7p6MiFjKMP5Ka_o46StWxn8Q1n3Fy-ZUY9o6WMgdb831qASCOhv0s3WrNX1FeAxXuLwpsgzMPsD473hfF0Kd-Zk41vo3a2EJCzXSW-FV4pJb4cK4MGWR55XTaNhlolHEXOA-nyqsY7GnL7VDPFLxxb_X6gqzboueeGEVWfWVVYlru4DcWNWPdZ7yXP_336b8WaNhRcqfvcNJVwe",
+    imageUrl: "/images/accessories-1.png",
     imageAlt: "Aven Leather Shoulder Bag in full-grain calfskin",
     sizes: ["ONE SIZE"],
     color: "Terracotta",
@@ -83,8 +79,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Sienna Tailored Trench",
     category: "OUTERWEAR",
     price: 280,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1VvEfYox31S0FyCluoIosA1zxzDYHZ9h7oFhXTCoYb1PC6ArUIZaekx05_fKyPK6xFFoS7y0LILi7aCod0GW-1TH48IPKhK1lJsGMFzZnRGOJXhsZmLYtGyah0iZH6NbDv_6wpiF7TcGlM2EOITSVD6mvdtgfz0wdZnHJml7gMLYbaJ4fO28tgG0gihY-QmAscobmZ59-5jmWDsGU7sv8xdPcTqa-WGyrLjnKPQcH6BBieGuJvvoA6h_eGE",
+    imageUrl: "/images/outerwear-2.png",
     imageAlt: "Sienna Tailored Trench in deep olive",
     sizes: ["XS", "S", "M", "L"],
     color: "Olive",
@@ -97,8 +92,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Alba Merino Turtleneck",
     category: "KNITWEAR",
     price: 148,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1WykBoPkAIypz8ytgRf0NS4SUc46vxJcAnUJk1OvXEvoNsg3eVKb6OfhzLWhcQmOiA-mSN9PXwU24MB8qzwsKq307qbr5v88bOg-NrB7W1KtAKfd3BcPQI9Rgtk36rMThseIRpusM-5S12Wc3GnVUEJNbp24b8MOzVKKubntsGDU6bNyNNM2rfSPiTEwRFLPPKqgLsRnB4eXmh6VpbSm9TaOP2kjrzckLQgj1kt94voAQILRMp2ia-LkiXk",
+    imageUrl: "/images/knitwear-2.png",
     imageAlt: "Alba Merino Turtleneck ribbed knit",
     sizes: ["XS", "S", "M", "L"],
     color: "Sand",
@@ -111,8 +105,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Kallie Wrap Midi Dress",
     category: "DRESSES",
     price: 136,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1VAlbM6622XpA-Qi7MCS_2vcdgzH3jRYux6MJmZjGRGVkvR76d4Bi-uhR8NDBpzNCNgadnJi_xlkK5az_k4H5yLxSS6axpRIJ2tSoZpeosOtoS0Cg6zMYW1ppBHduibe_6xtaKIz8d7cxrb5yiXvksBcP0vIoOl8-WcYraFGSP_woEIHQoxsaJkDAZ30um9GVIpj4WXr-SlBrOLKEWzYFnkmQa7j0zCkJnvflYoBYeXur8ckf5xod_gk_55",
+    imageUrl: "/images/dresses-2.png",
     imageAlt: "Kallie Wrap Midi Dress draped linen",
     badge: {
       text: "LOW STOCK",
@@ -129,8 +122,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Cove Leather Tote",
     category: "ACCESSORIES",
     price: 142,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1X04CVOQs54zit_ngZ-XVvyB-oM6cbtzmW4_hbIroXy5uT8HiO0yyt1KSnGJPikLGsBCb4laRNbrXQdsIkDr_TaF5vAYdMkQ4tnsq5S82zgQtQNpYpn2XRsYjjJ6ABehkEfP1bwkgXY9-DEqIDpl_LbcyuoBXr05HeRiRUT0BK7ncSCiWXECtrIwLKKqB96oBcWtQB4wIM0gMLCIPwCJpeWArk4HfM9ORwhAXCdPLnqYTMCIIAxyHYqKPar",
+    imageUrl: "/images/accessories-2.png",
     imageAlt: "Cove Leather Tote in dark charcoal leather",
     sizes: ["ONE SIZE"],
     color: "Charcoal",
@@ -143,8 +135,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Rowan Pleated Slip Dress",
     category: "DRESSES",
     price: 152,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1U5C-p9Kcbo_TvsGqGu4v7VTnaMe2aX9ofE_mGi73aoaFZ7Pfy632gXKNhrPktnSQW-6Nht4X1o84xta-GBvtREadTjOVAww3c-l8A-YgZvBDmlb8GO8vTvLK8_HWu4QkZKjgRmzgvOlY7cLq1uHdl8LnHeA_ER8xNG5BO246YRBP_x9v9jMqAGZc0gBXmcRjPHsGUm2aGuP6WUowN6zuc6Bq2FVRzGdnP3ajP84fgmSZ5OJhpUIpnQkHqJ",
+    imageUrl: "/images/dresses-3.png",
     imageAlt: "Rowan Pleated Slip Dress",
     sizes: ["XS", "S", "M", "L"],
     color: "Cream",
@@ -157,8 +148,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Vesper Alpaca Cardigan",
     category: "KNITWEAR",
     price: 178,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1X6qeY8c6Hhs4ldAsv9GalUl0M0aNmasLcW2ZNke6TLUhY6nRe05IKY-oB6klpU4DzaqjJbKo8bFsG4AtLNXyy0Hkm50l9h4pc8xYB7I73VzDRMdqgKKofAm5EM42T4E7Bpmv9A_KQTpz-dyoWDyvR8z6n9WbmyK5fHP6t1UxBpvklwkW3oFbFYBgFOt7sml9-IKOc_NUsndJL_Kl_XWcyrALz_OzvTFRJ1LpbTfCO2AXLNKjV_YtrPsHg",
+    imageUrl: "/images/knitwear-3.png",
     imageAlt: "Vesper Alpaca Cardigan in sand melange",
     sizes: ["XS", "S", "M", "L"],
     color: "Sand",
@@ -171,8 +161,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Kora Belted Wool Trench",
     category: "OUTERWEAR",
     price: 295,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1Uw4R_mh7dDwtihMR40LJD5Y4FcRCT87YXljf3wJDnvOvf9RGlAa0qgxoP9lHgLrn2ttBMfU-Wq9kwcHkAzyvOAzN6HIwfnBufoPETptYNbRFndaZ_VgsQlj2E-tvyZXNlT1uYgLb1977YPpJ71XL3gjYY-QlqwMOIQCB_66NckgU5CaAtHjlwF2zD1xSkPDQec_3DWhW2MvoFFYG5rQMI7GDAnlqIEBxoxLVgR-l2jtTmF_FYTamGDNP0",
+    imageUrl: "/images/outerwear-3.png",
     imageAlt: "Kora Belted Wool Trench in heavyweight virgin wool",
     sizes: ["XS", "S", "M", "L"],
     color: "Charcoal",
@@ -185,8 +174,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "Arlo Mini Structured Pouch",
     category: "ACCESSORIES",
     price: 98,
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida/AEtjO1UIrlPdVxr1S6rfQRllx7NgdfdWSeeT3GzHC2q2FOkZk7p6MiFjKMP5Ka_o46StWxn8Q1n3Fy-ZUY9o6WMgdb831qASCOhv0s3WrNX1FeAxXuLwpsgzMPsD473hfF0Kd-Zk41vo3a2EJCzXSW-FV4pJb4cK4MGWR55XTaNhlolHEXOA-nyqsY7GnL7VDPFLxxb_X6gqzboueeGEVWfWVVYlru4DcWNWPdZ7yXP_336b8WaNhRcqfvcNJVwe",
+    imageUrl: "/images/accessories-3.png",
     imageAlt: "Arlo Mini Structured Pouch in vegetable-tanned olive leather",
     sizes: ["ONE SIZE"],
     color: "Olive",

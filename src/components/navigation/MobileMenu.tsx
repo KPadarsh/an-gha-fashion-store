@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { X, ArrowUpRight } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Home, Grid, Heart, ShoppingBag, ArrowRight } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
+import { useCart } from "@/context/CartContext";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -12,31 +13,12 @@ interface MobileMenuProps {
   bagCount?: number;
 }
 
-interface MobileNavItem {
-  label: string;
-  index: string;
-  href: string;
-  highlight?: boolean;
-}
-
-const MOBILE_NAV_ITEMS: MobileNavItem[] = [
-  { label: "NEW IN", index: "01", href: "/shop?collection=new-in" },
-  { label: "COLLECTIONS", index: "02", href: "/shop" },
-  { label: "DRESSES", index: "03", href: "/shop?category=Dresses" },
-  { label: "KNITWEAR", index: "04", href: "/shop?category=Knitwear" },
-  { label: "OUTERWEAR", index: "05", href: "/shop?category=Outerwear" },
-  { label: "ACCESSORIES", index: "06", href: "/shop?category=Accessories" },
-  { label: "WISHLIST", index: "07", href: "/wishlist" },
-];
-
-function MobileMenuContent({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const category = searchParams.get("category");
-  const collection = searchParams.get("collection");
   const { totalWishlistCount } = useWishlist();
+  const { totalCount: bagCount } = useCart();
 
-  // Close on Escape key and lock body scroll
+  // Close on Escape key
   useEffect(() => {
     if (!isOpen) return;
 
@@ -46,133 +28,114 @@ function MobileMenuContent({ isOpen, onClose }: MobileMenuProps) {
       }
     };
 
-    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
-
-  // Close menu on route change
-  useEffect(() => {
-    onClose();
-  }, [pathname, searchParams, onClose]);
 
   if (!isOpen) return null;
 
-  const isItemActive = (item: MobileNavItem) => {
-    if (item.href.startsWith("/shop?category=")) {
-      const cat = item.href.split("=")[1];
-      return (
-        pathname === "/shop" && category?.toLowerCase() === cat.toLowerCase()
-      );
-    }
-    if (item.href.startsWith("/shop?collection=")) {
-      const col = item.href.split("=")[1];
-      return (
-        pathname === "/shop" &&
-        collection?.toLowerCase() === col.toLowerCase()
-      );
-    }
-    if (item.href === "/shop") {
-      return pathname === "/shop" && !category && !collection;
-    }
-    return pathname === item.href;
-  };
+  const NAV_LINKS = [
+    {
+      label: "HOME",
+      href: "/",
+      icon: Home,
+      isActive: pathname === "/",
+      badge: null,
+    },
+    {
+      label: "PRODUCTS",
+      href: "/shop",
+      icon: Grid,
+      isActive: pathname === "/shop" || pathname?.startsWith("/shop/"),
+      badge: null,
+    },
+    {
+      label: "WISHLIST",
+      href: "/wishlist",
+      icon: Heart,
+      isActive: pathname === "/wishlist",
+      badge: totalWishlistCount > 0 ? `${totalWishlistCount}` : null,
+    },
+    {
+      label: "CART",
+      href: "/cart",
+      icon: ShoppingBag,
+      isActive: pathname === "/cart",
+      badge: bagCount > 0 ? `${bagCount}` : null,
+    },
+  ];
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Navigation Menu"
-      className="fixed inset-0 z-50 flex justify-end"
-    >
-      {/* Backdrop */}
+    <>
+      {/* Dimmed backdrop under the navbar */}
       <div
-        className="fixed inset-0 bg-inverse-surface/30 backdrop-blur-sm transition-opacity"
+        className="fixed inset-x-0 bottom-0 top-16 sm:top-20 bg-black/40 backdrop-blur-xs z-40 transition-opacity animate-in fade-in duration-200"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Drawer Panel */}
-      <aside className="relative w-full max-w-[340px] bg-surface text-on-surface shadow-2xl flex flex-col justify-between h-full z-10 border-l border-surface-dim/40 overflow-y-auto">
-        {/* Drawer Header */}
-        <div>
-          <div className="h-16 px-6 flex items-center justify-between border-b border-surface-dim/40">
-            <span className="font-sans text-[11px] font-semibold tracking-[0.2em] text-on-surface-variant uppercase">
-              CATALOGUE INDEX
-            </span>
-            <button
-              type="button"
-              onClick={onClose}
-              className="w-11 h-11 -mr-2 flex items-center justify-center text-on-surface hover:text-primary transition-colors focus-visible:outline-none"
-              aria-label="Close Menu"
-            >
-              <X className="w-5 h-5" strokeWidth={1.5} />
-            </button>
-          </div>
-
-          {/* Navigation Links with Editorial Index Numerals */}
-          <nav className="px-6 py-6 flex flex-col justify-center gap-4">
-            {MOBILE_NAV_ITEMS.map((item) => {
-              const isActive = isItemActive(item);
-              const labelWithCount =
-                item.label === "WISHLIST" && totalWishlistCount > 0
-                  ? `WISHLIST [${totalWishlistCount}]`
-                  : item.label;
-
+      {/* Dropdown Popup Window directly attached below header */}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation Menu"
+        className="absolute top-full left-0 right-0 w-full bg-[#FAF6F1] text-[#2B2420] border-b border-[#2B2420]/15 shadow-2xl z-50 animate-in slide-in-from-top-2 duration-200"
+      >
+        <div className="angha-container py-2">
+          <nav className="flex flex-col divide-y divide-[#2B2420]/10">
+            {NAV_LINKS.map((item) => {
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.label}
                   href={item.href}
                   onClick={onClose}
-                  className={`flex items-baseline justify-between min-h-[44px] py-1 border-b border-surface-dim/20 transition-colors ${
-                    isActive
-                      ? "text-primary italic font-serif text-xl"
-                      : "text-on-surface hover:text-primary"
+                  className={`flex items-center justify-between py-4 px-3 sm:px-4 transition-colors group ${
+                    item.isActive
+                      ? "bg-[#F3E5DF] text-[#894B37]"
+                      : "hover:bg-[#F3E5DF]/50 text-[#2B2420]"
                   }`}
                 >
-                  <span className="font-serif text-lg uppercase tracking-wide">
-                    {labelWithCount}
-                  </span>
-                  <span
-                    className={`font-sans text-xs tracking-widest ${
-                      isActive ? "text-primary font-bold" : "text-outline"
-                    }`}
-                  >
-                    {item.index}
-                  </span>
+                  <div className="flex items-center gap-3.5">
+                    <Icon
+                      className={`w-4 h-4 ${
+                        item.isActive
+                          ? "text-[#894B37]"
+                          : "text-[#7A7168] group-hover:text-[#894B37]"
+                      }`}
+                      strokeWidth={1.8}
+                    />
+                    <span
+                      className={`font-serif text-lg uppercase tracking-wide ${
+                        item.isActive
+                          ? "font-normal italic text-[#894B37]"
+                          : "font-normal text-[#2B2420] group-hover:text-[#894B37]"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {item.badge && (
+                      <span className="px-2 py-0.5 bg-[#894B37] text-white font-sans text-[10px] font-semibold tracking-wider">
+                        [{item.badge}]
+                      </span>
+                    )}
+                    <ArrowRight
+                      className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
+                        item.isActive
+                          ? "text-[#894B37]"
+                          : "text-[#7A7168]/60 group-hover:text-[#894B37]"
+                      }`}
+                    />
+                  </div>
                 </Link>
               );
             })}
           </nav>
         </div>
-
-        {/* Client Services Footer Panel */}
-        <div className="px-6 py-6 bg-surface-container-low flex flex-col gap-2 border-t border-surface-dim/30">
-          <Link
-            href="/shop"
-            onClick={onClose}
-            className="flex items-center justify-between text-on-surface-variant font-sans text-xs font-semibold tracking-widest uppercase hover:text-primary transition-colors"
-          >
-            <span>CLIENT SERVICES</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-          <p className="font-sans text-xs text-outline">
-            Private Appointments & Fitting Guidance
-          </p>
-        </div>
-      </aside>
-    </div>
-  );
-}
-
-export function MobileMenu(props: MobileMenuProps) {
-  return (
-    <Suspense fallback={null}>
-      <MobileMenuContent {...props} />
-    </Suspense>
+      </div>
+    </>
   );
 }
