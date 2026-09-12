@@ -2,6 +2,18 @@
 
 import React, { useState } from "react";
 import {
+  ShoppingBag,
+  Heart,
+  Truck,
+  RotateCcw,
+  MessageSquare,
+  X,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Mail,
+} from "lucide-react";
+import {
   ProductColorOption,
   SizeMeasurement,
   AccordionSection,
@@ -22,12 +34,12 @@ interface ProductInfoPanelProps {
 }
 
 export function ProductInfoPanel({
-  categoryLine = "ARCHIVE DRESSES · SPECIMEN 01",
-  stockStatus = "IN STOCK [4 UNITS]",
+  categoryLine = "ARCHIVE DRESSES · SS26",
+  stockStatus = "IN STOCK · READY TO SHIP",
   name,
   price,
   currency = "USD",
-  edition = "EDITION N° 08 / AUTUMN 2026",
+  edition = "EDITION OF 40",
   description,
   colors,
   sizes,
@@ -37,6 +49,7 @@ export function ProductInfoPanel({
   const [selectedColor, setSelectedColor] = useState(colors[0]?.name || "TERRACOTTA");
   const [selectedSize, setSelectedSize] = useState(sizes[1] || sizes[0] || "S");
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+  const [isConciergeOpen, setIsConciergeOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -50,7 +63,7 @@ export function ProductInfoPanel({
 
   const handleAddToBag = () => {
     setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2000);
+    setTimeout(() => setIsAdded(false), 2500);
   };
 
   const toggleAccordion = (id: string) => {
@@ -62,42 +75,71 @@ export function ProductInfoPanel({
 
   const totalFormattedPrice = `$${price * quantity}`;
 
+  const getSizeDetail = (s: string) => {
+    switch (s) {
+      case "XS":
+        return "XS (EU 34 / US 2)";
+      case "S":
+        return "S (EU 36 / US 4)";
+      case "M":
+        return "M (EU 38 / US 6)";
+      case "L":
+        return "L (EU 40 / US 8)";
+      case "XL":
+        return "XL (EU 42 / US 10)";
+      default:
+        return s;
+    }
+  };
+
   return (
-    <div className="w-full flex flex-col gap-6 lg:sticky lg:top-20">
-      {/* Product Title & Reference Header */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center justify-between text-[10px] font-semibold tracking-[0.22em] uppercase">
-          <span className="text-[#C17A63]">{categoryLine}</span>
-          <span className="text-[#7A7168]">{stockStatus}</span>
+    <div className="w-full flex flex-col gap-5 lg:sticky lg:top-20">
+      {/* 1. Category, Title & Pricing */}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center justify-between">
+          <span className="font-sans text-[11px] tracking-[0.2em] text-[#C17A63] uppercase font-semibold">
+            {categoryLine}
+          </span>
+          <span className="font-mono text-[11px] text-[#7A7168] uppercase tracking-wider">
+            {edition}
+          </span>
         </div>
 
-        <h1 className="font-serif text-3xl md:text-4xl text-[#2B2420] font-normal tracking-tight pt-0.5 leading-tight">
+        <h1 className="font-serif text-[2rem] md:text-4xl text-[#2B2420] font-normal tracking-tight leading-tight mt-0.5">
           {name}
         </h1>
 
         <div className="flex items-baseline justify-between pt-1 border-b border-[#2B2420]/10 pb-3">
-          <span className="text-xl font-medium tracking-wide text-[#2B2420]">
-            ${price} {currency}
-          </span>
-          <span className="text-[10px] font-medium tracking-[0.16em] uppercase text-[#7A7168]">
-            {edition}
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-sans text-xl font-medium tracking-wide text-[#2B2420]">
+              ${price}
+            </span>
+            <span className="font-sans text-[12px] text-[#7A7168] font-light">
+              {currency}
+            </span>
+          </div>
+          <span className="font-sans text-[10px] text-[#5C5A3E] font-semibold uppercase tracking-widest bg-[#5C5A3E]/10 border border-[#5C5A3E]/30 px-2 py-0.5">
+            {stockStatus}
           </span>
         </div>
+
+        <p className="font-sans text-[13.5px] sm:text-[14px] leading-relaxed text-[#7A7168] pt-2">
+          {description}
+        </p>
       </div>
 
-      {/* Short Editorial Description */}
-      <p className="text-[13px] leading-relaxed text-[#7A7168]">{description}</p>
-
-      {/* Color Swatches */}
-      <div className="flex flex-col gap-2.5">
-        <div className="flex items-center justify-between text-[11px] tracking-[0.18em] uppercase">
-          <span className="text-[#2B2420] font-semibold">
-            COLOR — <span className="text-[#C17A63]">{selectedColor}</span>
+      {/* 2. Curated Color Swatches */}
+      <div className="flex flex-col gap-2 pt-1">
+        <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.16em]">
+          <span className="text-[#2B2420]">
+            COLOR: <strong className="font-semibold text-[#C17A63]">{selectedColor}</strong>
           </span>
-          <span className="text-[10px] text-[#7A7168]">{colors.length} PALETTES</span>
+          <span className="font-mono text-[11px] text-[#7A7168]">
+            {colors.length} TONALITIES
+          </span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 pt-0.5" role="radiogroup" aria-label="Curated Color Selections">
           {colors.map((c) => {
             const isActive = selectedColor === c.name;
             return (
@@ -106,11 +148,11 @@ export function ProductInfoPanel({
                 type="button"
                 onClick={() => setSelectedColor(c.name)}
                 aria-label={`Select color ${c.name}`}
-                className={`w-7 h-7 rounded-none transition-all cursor-pointer ${
+                className={`w-8 h-8 rounded-none transition-all cursor-pointer ${
                   isActive
                     ? "ring-2 ring-[#C17A63] ring-offset-2 ring-offset-[#FAF6F1]"
-                    : "ring-1 ring-[#2B2420]/20 hover:ring-[#2B2420]"
-                } ${c.isLight ? "border border-black/10" : ""}`}
+                    : "ring-0 ring-offset-2 ring-offset-[#FAF6F1] hover:ring-1 hover:ring-[#2B2420]"
+                } ${c.isLight ? "border border-[#2B2420]/20" : ""}`}
                 style={{ backgroundColor: c.hex }}
               />
             );
@@ -118,23 +160,22 @@ export function ProductInfoPanel({
         </div>
       </div>
 
-      {/* Size Selector */}
-      <div className="flex flex-col gap-2.5">
-        <div className="flex items-center justify-between text-[11px] tracking-[0.18em] uppercase">
-          <span className="text-[#2B2420] font-semibold">
-            SIZE: <span className="text-[#C17A63]">{selectedSize}</span>
+      {/* 3. Rectangular Size Buttons */}
+      <div className="flex flex-col gap-2 pt-1">
+        <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.16em]">
+          <span className="text-[#2B2420]">
+            SIZE: <strong className="font-semibold text-[#2B2420]">{getSizeDetail(selectedSize)}</strong>
           </span>
           <button
             type="button"
-            onClick={() => setIsSizeGuideOpen((prev) => !prev)}
-            className="text-[10px] text-[#7A7168] hover:text-[#2B2420] underline underline-offset-4 tracking-[0.14em] uppercase transition-colors cursor-pointer"
+            onClick={() => setIsSizeGuideOpen(true)}
+            className="text-[11px] uppercase tracking-[0.14em] text-[#C17A63] hover:underline underline-offset-4 flex items-center gap-1 cursor-pointer"
           >
-            Size Guide →
+            <span>Size Guide →</span>
           </button>
         </div>
 
-        {/* Minimal Rectangular Size Buttons */}
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-5 gap-2 pt-0.5" role="radiogroup" aria-label="Size matrix">
           {sizes.map((s) => {
             const isSelected = selectedSize === s;
             return (
@@ -142,10 +183,10 @@ export function ProductInfoPanel({
                 key={s}
                 type="button"
                 onClick={() => setSelectedSize(s)}
-                className={`h-11 text-[11px] font-semibold tracking-wider transition-colors flex items-center justify-center cursor-pointer ${
+                className={`min-h-[44px] flex items-center justify-center font-sans text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                   isSelected
-                    ? "bg-[#2B2420] text-[#FAF6F1]"
-                    : "border border-[#2B2420]/15 bg-[#FAF6F1] text-[#2B2420] hover:border-[#2B2420]"
+                    ? "bg-[#2B2420] text-[#FAF6F1] border border-[#2B2420]"
+                    : "bg-[#FAF6F1] text-[#2B2420] border border-[#2B2420]/20 hover:bg-[#F5EFE8]"
                 }`}
               >
                 {s}
@@ -153,96 +194,34 @@ export function ProductInfoPanel({
             );
           })}
         </div>
+
+        <span className="font-sans text-[12px] text-[#7A7168] pt-0.5 flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#5C5A3E]" />
+          Model is 178cm / 5&apos;10&quot; wearing size S. Unhurried fluid fit.
+        </span>
       </div>
 
-      {/* Expandable Size Guide Drawer */}
-      {isSizeGuideOpen && (
-        <div className="bg-[#F5EFE8] p-4 text-[12px] text-[#7A7168] flex flex-col gap-2 border border-[#2B2420]/10 animate-in fade-in duration-200">
-          <div className="flex justify-between items-center text-[10px] font-semibold tracking-widest uppercase text-[#2B2420]">
-            <span>Garment Measurements (Inches)</span>
-            <button
-              type="button"
-              onClick={() => setIsSizeGuideOpen(false)}
-              className="text-[#C17A63] hover:underline cursor-pointer"
-            >
-              Close
-            </button>
-          </div>
-
-          <div className="grid grid-cols-4 text-center text-[11px] gap-1 pt-1">
-            <div className="bg-[#FAF6F1] py-1 font-semibold text-[#2B2420]">SIZE</div>
-            <div className="bg-[#FAF6F1] py-1 font-semibold text-[#2B2420]">BUST</div>
-            <div className="bg-[#FAF6F1] py-1 font-semibold text-[#2B2420]">WAIST</div>
-            <div className="bg-[#FAF6F1] py-1 font-semibold text-[#2B2420]">LENGTH</div>
-
-            {measurements.map((m) => {
-              const isSelected = m.size === selectedSize;
-              return (
-                <React.Fragment key={m.size}>
-                  <div
-                    className={`py-1 ${
-                      isSelected
-                        ? "bg-[#FAF6F1] text-[#C17A63] font-bold"
-                        : "bg-[#FAF6F1]/60"
-                    }`}
-                  >
-                    {m.size}
-                  </div>
-                  <div
-                    className={`py-1 ${
-                      isSelected
-                        ? "bg-[#FAF6F1] text-[#C17A63] font-bold"
-                        : "bg-[#FAF6F1]/60"
-                    }`}
-                  >
-                    {m.bust}
-                  </div>
-                  <div
-                    className={`py-1 ${
-                      isSelected
-                        ? "bg-[#FAF6F1] text-[#C17A63] font-bold"
-                        : "bg-[#FAF6F1]/60"
-                    }`}
-                  >
-                    {m.waist}
-                  </div>
-                  <div
-                    className={`py-1 ${
-                      isSelected
-                        ? "bg-[#FAF6F1] text-[#C17A63] font-bold"
-                        : "bg-[#FAF6F1]/60"
-                    }`}
-                  >
-                    {m.length}
-                  </div>
-                </React.Fragment>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Quantity + Primary Add CTA */}
-      <div className="flex flex-col gap-3 pt-1">
-        <div className="flex items-stretch gap-2.5">
-          {/* Stepped quantity toggle '− 01 +' */}
-          <div className="flex items-center bg-[#F5EFE8] border border-[#2B2420]/15 px-2">
+      {/* 4. Quantity Selector & ADD TO BAG CTA & Archive Save */}
+      <div className="flex flex-col gap-2.5 pt-2">
+        <div className="flex items-stretch gap-2">
+          {/* Stepped quantity selector '− 01 +' */}
+          <div className="flex items-center bg-[#F5EFE8] border border-[#2B2420]/20 h-[48px] px-1">
             <button
               type="button"
               onClick={() => handleAlterQty(-1)}
               aria-label="Decrease quantity"
-              className="w-8 h-12 flex items-center justify-center text-[#2B2420] hover:text-[#C17A63] transition-colors text-base cursor-pointer"
+              className="w-10 h-full flex items-center justify-center text-[#2B2420] hover:text-[#C17A63] active:scale-90 font-medium text-lg cursor-pointer transition-colors"
             >
               −
             </button>
-            <span className="w-8 text-center text-[12px] font-semibold text-[#2B2420]">
+            <span className="font-mono text-sm px-2 font-medium tracking-wider text-[#2B2420]">
               {quantity < 10 ? `0${quantity}` : quantity}
             </span>
             <button
               type="button"
               onClick={() => handleAlterQty(1)}
               aria-label="Increase quantity"
-              className="w-8 h-12 flex items-center justify-center text-[#2B2420] hover:text-[#C17A63] transition-colors text-base cursor-pointer"
+              className="w-10 h-full flex items-center justify-center text-[#2B2420] hover:text-[#C17A63] active:scale-90 font-medium text-lg cursor-pointer transition-colors"
             >
               +
             </button>
@@ -252,12 +231,13 @@ export function ProductInfoPanel({
           <button
             type="button"
             onClick={handleAddToBag}
-            className={`flex-1 text-[11px] font-semibold uppercase tracking-[0.22em] py-3.5 px-6 transition-colors flex items-center justify-center gap-2 cursor-pointer ${
+            className={`flex-1 min-h-[48px] font-sans text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 transition-colors duration-200 active:scale-[0.99] px-4 shadow-xs font-semibold cursor-pointer ${
               isAdded
                 ? "bg-[#C17A63] text-[#FAF6F1]"
                 : "bg-[#2B2420] hover:bg-[#C17A63] text-[#FAF6F1]"
             }`}
           >
+            <ShoppingBag className="w-4 h-4" strokeWidth={1.75} />
             <span>
               {isAdded ? "SPECIMEN RESERVED ✓" : `ADD TO BAG — ${totalFormattedPrice}`}
             </span>
@@ -268,103 +248,275 @@ export function ProductInfoPanel({
         <button
           type="button"
           onClick={() => setIsWishlisted((prev) => !prev)}
-          className={`py-1.5 text-center text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer ${
+          className={`w-full py-2 flex items-center justify-center gap-1.5 font-sans text-[11px] tracking-[0.14em] uppercase transition-colors cursor-pointer ${
             isWishlisted
               ? "text-[#C17A63]"
               : "text-[#7A7168] hover:text-[#2B2420]"
           }`}
         >
-          <span className="text-xs">{isWishlisted ? "♥" : "♡"}</span>
+          <Heart
+            className={`w-3.5 h-3.5 ${
+              isWishlisted ? "fill-[#C17A63] text-[#C17A63]" : "text-[#7A7168]"
+            }`}
+          />
           <span>
             {isWishlisted
-              ? "SAVED IN PERMANENT ARCHIVE"
+              ? "IN YOUR PERMANENT ARCHIVE"
               : "SAVE TO PERMANENT ARCHIVE"}
           </span>
         </button>
       </div>
 
-      {/* Delivery & Trust Notes */}
-      <div className="flex flex-col gap-2.5 bg-[#F5EFE8] p-4 border border-[#2B2420]/10">
-        <div className="flex items-center gap-3 text-[12px] text-[#2B2420]">
-          <svg
-            className="w-4 h-4 text-[#C17A63] shrink-0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span>Complimentary Worldwide Shipping</span>
+      {/* 5. 3 Quiet Trust Notes */}
+      <div className="grid grid-cols-1 gap-2 pt-2 border-t border-[#2B2420]/10">
+        <div className="p-3 bg-[#F5EFE8] flex items-start gap-2.5 border border-[#2B2420]/10">
+          <Truck className="w-4 h-4 text-[#C17A63] shrink-0 mt-0.5" strokeWidth={1.75} />
+          <div className="flex flex-col">
+            <span className="font-sans text-[11px] text-[#2B2420] uppercase tracking-wider font-semibold">
+              Complimentary Worldwide Express Dispatch
+            </span>
+            <span className="font-sans text-[12px] text-[#7A7168]">
+              Carbon-neutral courier packaging delivered in 2–4 business days.
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3 text-[12px] text-[#2B2420]">
-          <svg
-            className="w-4 h-4 text-[#C17A63] shrink-0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span>30-Day Quiet Returns</span>
+        <div className="p-3 bg-[#F5EFE8] flex items-start gap-2.5 border border-[#2B2420]/10">
+          <RotateCcw className="w-4 h-4 text-[#5C5A3E] shrink-0 mt-0.5" strokeWidth={1.75} />
+          <div className="flex flex-col">
+            <span className="font-sans text-[11px] text-[#2B2420] uppercase tracking-wider font-semibold">
+              30-Day Quiet Return Window
+            </span>
+            <span className="font-sans text-[12px] text-[#7A7168]">
+              Includes prepaid reusable garment return packaging and concierge booking.
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3 text-[12px] text-[#2B2420]">
-          <svg
-            className="w-4 h-4 text-[#C17A63] shrink-0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span>Atelier Concierge & Bespoke Tailoring</span>
-        </div>
+        <button
+          type="button"
+          onClick={() => setIsConciergeOpen(true)}
+          className="p-3 bg-[#F5EFE8] flex items-start gap-2.5 border border-[#2B2420]/10 cursor-pointer hover:bg-[#EDE5DB] text-left transition-colors"
+        >
+          <MessageSquare className="w-4 h-4 text-[#7A7168] shrink-0 mt-0.5" strokeWidth={1.75} />
+          <div className="flex flex-col">
+            <span className="font-sans text-[11px] text-[#2B2420] uppercase tracking-wider font-semibold">
+              Atelier Concierge Assistance
+            </span>
+            <span className="font-sans text-[12px] text-[#7A7168]">
+              Direct fitting dialogue with our senior stylist in Paris &amp; Milano.
+            </span>
+          </div>
+        </button>
       </div>
 
-      {/* Materials & Care Accordion */}
-      <div className="flex flex-col border-t border-[#2B2420]/10 pt-2">
+      {/* 6. Editorial Accordions: SEC 01–04 */}
+      <section aria-label="Product Specifications" className="pt-2 flex flex-col gap-2">
+        <div className="flex items-center justify-between pb-1">
+          <span className="font-sans text-[11px] tracking-[0.2em] text-[#2B2420] uppercase font-semibold">
+            GARMENT SPECIFICATION INDEX
+          </span>
+          <span className="font-mono text-[11px] text-[#7A7168]">
+            SEC 01–04
+          </span>
+        </div>
+
         {accordions.map((acc) => {
           const isOpen = !!openAccordions[acc.id];
           return (
-            <div key={acc.id} className="border-b border-[#2B2420]/10">
+            <div
+              key={acc.id}
+              className="bg-[#FAF6F1] border border-[#2B2420]/15"
+            >
               <button
                 type="button"
                 onClick={() => toggleAccordion(acc.id)}
-                className="w-full py-3.5 flex items-center justify-between text-left hover:text-[#C17A63] transition-colors cursor-pointer"
+                className="w-full min-h-[48px] px-3.5 flex items-center justify-between text-left focus:outline-none cursor-pointer hover:text-[#C17A63] transition-colors"
               >
-                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#2B2420]">
-                  {acc.index} / {acc.title}
+                <span className="flex items-baseline gap-2">
+                  <span className="font-mono text-[12px] text-[#C17A63] font-medium">
+                    {acc.index}
+                  </span>
+                  <span className="font-sans text-[12px] text-[#2B2420] uppercase tracking-wider font-semibold">
+                    {acc.title}
+                  </span>
                 </span>
-                <span className="text-sm font-mono text-[#7A7168]">
-                  {isOpen ? "−" : "+"}
-                </span>
+                {isOpen ? (
+                  <ChevronUp className="w-4 h-4 text-[#7A7168]" />
+                ) : (
+                  <ChevronDown className="w-4 h-4 text-[#7A7168]" />
+                )}
               </button>
 
               {isOpen && (
-                <div className="pb-3 text-[12px] text-[#7A7168] leading-relaxed animate-in fade-in duration-200">
-                  {acc.content}
+                <div className="px-3.5 pb-3.5 pt-1 flex flex-col gap-1.5 font-sans text-[13px] text-[#7A7168] border-t border-[#2B2420]/10 leading-relaxed animate-in fade-in duration-200">
+                  <p>{acc.content}</p>
                 </div>
               )}
             </div>
           );
         })}
-      </div>
+      </section>
+
+      {/* 7. Size Guide Modal Drawer */}
+      {isSizeGuideOpen && (
+        <div className="fixed inset-0 z-50 bg-[#211a16]/40 backdrop-blur-xs flex items-end justify-center animate-in fade-in duration-200">
+          <div className="w-full max-w-md bg-[#FAF6F1] p-5 flex flex-col gap-4 shadow-2xl border-t border-[#2B2420]/20 max-h-[85vh] overflow-y-auto">
+            <div className="flex items-center justify-between">
+              <span className="font-sans text-[10px] tracking-[0.2em] text-[#C17A63] uppercase font-semibold">
+                ARCHIVE FIT CALIBRATION
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsSizeGuideOpen(false)}
+                aria-label="Close size guide"
+                className="w-8 h-8 flex items-center justify-center text-[#2B2420] hover:text-[#C17A63] cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-0.5">
+              <h3 className="font-serif text-xl text-[#2B2420]">Size Specifications</h3>
+              <p className="font-sans text-[12px] text-[#7A7168]">
+                Measurements captured flat in centimeters and inches.
+              </p>
+            </div>
+
+            <div className="w-full overflow-x-auto">
+              <table className="w-full text-left font-sans text-[12px] border border-[#2B2420]/15">
+                <thead className="bg-[#F5EFE8] text-[#2B2420] text-[11px] uppercase font-semibold">
+                  <tr>
+                    <th className="p-2 border-b border-[#2B2420]/15">Size</th>
+                    <th className="p-2 border-b border-[#2B2420]/15">Bust</th>
+                    <th className="p-2 border-b border-[#2B2420]/15">Waist</th>
+                    <th className="p-2 border-b border-[#2B2420]/15">Length</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#2B2420]/10 text-[#7A7168]">
+                  <tr className="bg-[#FAF6F1]">
+                    <td className="p-2 font-semibold text-[#2B2420]">XS</td>
+                    <td className="p-2">82–86 cm (33&quot;)</td>
+                    <td className="p-2">64–68 cm (26&quot;)</td>
+                    <td className="p-2">124 cm (49&quot;)</td>
+                  </tr>
+                  <tr className="bg-[#F5EFE8]/50">
+                    <td className="p-2 font-semibold text-[#2B2420]">S</td>
+                    <td className="p-2">86–90 cm (35&quot;)</td>
+                    <td className="p-2">68–72 cm (28&quot;)</td>
+                    <td className="p-2">126 cm (50&quot;)</td>
+                  </tr>
+                  <tr className="bg-[#FAF6F1]">
+                    <td className="p-2 font-semibold text-[#2B2420]">M</td>
+                    <td className="p-2">90–94 cm (37&quot;)</td>
+                    <td className="p-2">72–76 cm (30&quot;)</td>
+                    <td className="p-2">128 cm (50.5&quot;)</td>
+                  </tr>
+                  <tr className="bg-[#F5EFE8]/50">
+                    <td className="p-2 font-semibold text-[#2B2420]">L</td>
+                    <td className="p-2">94–98 cm (39&quot;)</td>
+                    <td className="p-2">76–80 cm (31.5&quot;)</td>
+                    <td className="p-2">130 cm (51&quot;)</td>
+                  </tr>
+                  <tr className="bg-[#FAF6F1]">
+                    <td className="p-2 font-semibold text-[#2B2420]">XL</td>
+                    <td className="p-2">98–104 cm (41&quot;)</td>
+                    <td className="p-2">80–86 cm (33.5&quot;)</td>
+                    <td className="p-2">131 cm (51.5&quot;)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsSizeGuideOpen(false)}
+              className="w-full min-h-[44px] bg-[#F5EFE8] text-[#2B2420] text-xs font-semibold uppercase tracking-wider border border-[#2B2420]/20 hover:bg-[#EDE5DB] cursor-pointer"
+            >
+              RETURN TO GARMENT
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* 8. Atelier Concierge Modal Drawer */}
+      {isConciergeOpen && (
+        <div className="fixed inset-0 z-50 bg-[#211a16]/40 backdrop-blur-xs flex items-end justify-center animate-in fade-in duration-200">
+          <div className="w-full max-w-md bg-[#FAF6F1] p-5 flex flex-col gap-4 shadow-2xl border-t border-[#2B2420]/20">
+            <div className="flex items-center justify-between">
+              <span className="font-sans text-[10px] tracking-[0.2em] text-[#C17A63] uppercase font-semibold">
+                PARIS / MILANO CONCIERGE
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsConciergeOpen(false)}
+                aria-label="Close concierge dialog"
+                className="w-8 h-8 flex items-center justify-center text-[#2B2420] hover:text-[#C17A63] cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <h3 className="font-serif text-xl text-[#2B2420]">Atelier Guidance</h3>
+              <p className="font-sans text-[12px] text-[#7A7168]">
+                Our senior stylist is available daily for tailoring inquiries, custom fits, or styling appointments.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 pt-2">
+              <a
+                href="mailto:concierge@angha.com"
+                className="w-full min-h-[44px] bg-[#2B2420] text-[#FAF6F1] font-sans text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#C17A63] transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>EMAIL AN ATELIER STYLIST</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => setIsConciergeOpen(false)}
+                className="w-full min-h-[44px] bg-[#F5EFE8] text-[#2B2420] font-sans text-xs uppercase tracking-wider border border-[#2B2420]/20 hover:bg-[#EDE5DB] cursor-pointer"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 9. Toast Notification Pill for Cart Feedback */}
+      {isAdded && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#2B2420] text-[#FAF6F1] px-4 py-2.5 shadow-xl flex items-center gap-2 font-sans text-[11px] uppercase tracking-wider border border-[#FAF6F1]/20 animate-in fade-in slide-in-from-top-4 duration-300">
+          <Check className="w-4 h-4 text-[#C17A63]" />
+          <span>Added to Archival Bag [{quantity}]</span>
+        </div>
+      )}
+
+      {/* 10. Sticky Mobile Buy Bar: Fixed bottom bar on mobile viewports */}
+      <aside
+        id="sticky-commerce-bar"
+        className="fixed bottom-0 inset-x-0 z-40 bg-[#FAF6F1]/95 backdrop-blur-md px-4 py-2.5 border-t border-[#2B2420]/15 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] flex md:hidden items-center justify-between"
+      >
+        <div className="flex flex-col min-w-0 pr-2">
+          <span className="font-serif text-[13px] text-[#2B2420] font-normal truncate">
+            {name} · ${price}
+          </span>
+          <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#7A7168]">
+            <span className="text-[#C17A63] font-medium">SIZE {selectedSize}</span>
+            <span>•</span>
+            <span className="text-[#5C5A3E] font-medium">{selectedColor}</span>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleAddToBag}
+          className="min-h-[44px] px-5 bg-[#2B2420] hover:bg-[#C17A63] text-[#FAF6F1] font-sans text-[11px] font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors shrink-0 active:scale-95 shadow-xs cursor-pointer"
+        >
+          <ShoppingBag className="w-3.5 h-3.5" />
+          <span>ADD TO BAG</span>
+        </button>
+      </aside>
     </div>
   );
 }

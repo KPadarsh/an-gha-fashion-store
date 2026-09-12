@@ -43,7 +43,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     : specimen;
 
   return (
-    <main className="flex-1 w-full bg-[#FAF6F1]">
+    <main className="flex-1 w-full bg-[#FAF6F1] pb-16 md:pb-0">
       {/* 1. Editorial Breadcrumb */}
       <ProductBreadcrumb
         category={productData.category}
@@ -52,15 +52,15 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       />
 
       {/* 2. Signature Hero Layout (7:5 Split) */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-12 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
+      <section className="max-w-[1440px] mx-auto px-0 md:px-12 py-0 md:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 items-start">
           {/* Left Column (7 parts): Gallery */}
           <div className="lg:col-span-7">
             <ProductGallery gallery={productData.gallery} />
           </div>
 
           {/* Right Column (5 parts): Info Panel */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 px-4 md:px-0">
             <ProductInfoPanel
               categoryLine={productData.categoryLine}
               stockStatus={productData.stockStatus}

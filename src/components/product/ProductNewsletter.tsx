@@ -18,40 +18,40 @@ export function ProductNewsletter() {
   };
 
   return (
-    <section className="w-full bg-[#EDE5DB] py-16 md:py-20 mt-12 border-t border-[#2B2420]/10">
-      <div className="max-w-xl mx-auto px-6 text-center flex flex-col items-center gap-4">
-        <span className="text-[10px] font-semibold text-[#C17A63] tracking-[0.25em] uppercase">
-          03 / THE CATALOGUE EDIT — A QUIET UPDATE
+    <section className="px-4 md:px-12 py-12 md:py-20 bg-[#EDE5DB]/60 border-t border-[#2B2420]/15 flex flex-col items-center text-center">
+      <div className="max-w-xl mx-auto flex flex-col gap-3">
+        <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#C17A63] font-semibold">
+          MONOGRAPH CORRESPONDENCE
         </span>
 
-        <h3 className="font-serif text-3xl text-[#2B2420] font-normal">
-          A quiet update.
-        </h3>
+        <h2 className="font-serif text-2xl md:text-3xl text-[#2B2420] font-light">
+          A Quiet Update
+        </h2>
 
-        <p className="text-[13px] text-[#7A7168] leading-relaxed max-w-md">
-          Receive unreleased catalogue monographs, private fitting invitations, and notifications when limited archival editions are cut.
+        <p className="font-sans text-[13px] text-[#7A7168] leading-relaxed max-w-md mx-auto">
+          Occasional dispatch on limited release editions, natural dye research, and atelier invitations. Zero spam, unhurried cadence.
         </p>
 
-        <form onSubmit={handleSubmit} className="w-full flex flex-col sm:flex-row gap-2 pt-3">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 pt-2 max-w-md w-full mx-auto">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="YOUR EMAIL ADDRESS"
+            placeholder="Enter your email address"
             required
-            className="flex-1 bg-[#FAF6F1] px-4 py-3 text-[11px] font-semibold text-[#2B2420] placeholder:text-[#7A7168]/70 border border-[#2B2420]/15 focus:outline-none focus:border-[#2B2420] uppercase tracking-wider"
+            className="flex-1 min-h-[46px] px-3.5 bg-[#FAF6F1] text-sm text-[#2B2420] placeholder:text-[#7A7168] border border-[#2B2420]/20 focus:outline-none focus:border-[#2B2420] transition-colors"
           />
           <button
             type="submit"
-            className="bg-[#2B2420] hover:bg-[#C17A63] text-[#FAF6F1] text-[11px] font-semibold uppercase tracking-[0.2em] px-8 py-3 transition-colors cursor-pointer"
+            className="min-h-[46px] px-6 bg-[#2B2420] hover:bg-[#C17A63] text-[#FAF6F1] font-sans text-xs uppercase tracking-widest flex items-center justify-center transition-colors active:scale-95 border border-[#2B2420] shrink-0 font-semibold cursor-pointer"
           >
-            JOIN
+            <span>JOIN</span>
           </button>
         </form>
 
         {isSubmitted && (
-          <span className="text-[11px] font-semibold text-[#C17A63] tracking-widest pt-1 uppercase animate-in fade-in duration-200">
-            YOUR CORRESPONDENCE IS RECORDED IN OUR REGISTRY.
+          <span className="text-[#5C5A3E] font-sans text-[11px] pt-1 font-semibold uppercase tracking-wider animate-in fade-in duration-200">
+            Thank you. You are now inscribed on the register.
           </span>
         )}
       </div>
