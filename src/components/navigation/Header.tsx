@@ -43,7 +43,9 @@ export function Header() {
 
   if (
     pathname?.startsWith("/checkout") ||
-    pathname?.startsWith("/order-confirmation")
+    pathname?.startsWith("/order-confirmation") ||
+    pathname?.startsWith("/sign-in") ||
+    pathname?.startsWith("/sign-up")
   ) {
     return null;
   }
@@ -145,7 +147,7 @@ export function Header() {
 
             {/* User Avatar Circle */}
             <Link
-              href="/shop"
+              href="/sign-in"
               className="w-7 h-7 rounded-full bg-[#8D5B4C] hover:bg-primary transition-colors flex items-center justify-center text-white shadow-xs focus-visible:outline-none shrink-0"
               aria-label="Maison Atelier"
               title="An Gha Atelier"

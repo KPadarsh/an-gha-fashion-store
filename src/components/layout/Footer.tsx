@@ -9,7 +9,9 @@ export function Footer() {
 
   if (
     pathname?.startsWith("/checkout") ||
-    pathname?.startsWith("/order-confirmation")
+    pathname?.startsWith("/order-confirmation") ||
+    pathname?.startsWith("/sign-in") ||
+    pathname?.startsWith("/sign-up")
   ) {
     return null;
   }
