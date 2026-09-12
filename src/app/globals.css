@@ -167,3 +167,27 @@ img, picture, video, canvas, svg {
     padding-right: 3rem;
   }
 }
+
+/* Touch & Scrollbar Utilities */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}
+

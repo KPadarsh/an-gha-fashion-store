@@ -135,7 +135,10 @@ export function ShopFilterBar({
           </div>
 
           {/* Active filter chips (Mobile) */}
-          <div className="flex items-center gap-1.5 pt-1.5 pb-0.5 overflow-x-auto no-scrollbar">
+          <div
+            className="flex items-center gap-1.5 pt-1.5 pb-0.5 overflow-x-auto no-scrollbar scroll-touch touch-pan-x overscroll-x-contain"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
             <span className="font-sans text-[10px] text-tertiary uppercase tracking-wider pr-0.5 shrink-0">
               APPLIED:
             </span>

@@ -75,7 +75,11 @@ export function ShopHeader({
       </div>
 
       {/* Mobile Horizontal Category Pill Buttons (< md) */}
-      <div className="flex md:hidden items-center gap-2 overflow-x-auto py-2 -mx-4 px-4 sm:-mx-8 sm:px-8 no-scrollbar" role="tablist">
+      <div
+        className="flex md:hidden items-center gap-2 overflow-x-auto py-2 -mx-4 px-4 sm:-mx-8 sm:px-8 no-scrollbar scroll-touch touch-pan-x overscroll-x-contain"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        role="tablist"
+      >
         {CATEGORIES.map((category) => {
           const isActive = activeCategory === category;
           const label = category === "ALL" ? `ALL [${totalCount}]` : category;
@@ -85,7 +89,7 @@ export function ShopHeader({
               key={category}
               type="button"
               onClick={() => onSelectCategory(category)}
-              className={`whitespace-nowrap px-4 py-2 font-sans text-xs uppercase tracking-wider transition-colors shrink-0 ${
+              className={`whitespace-nowrap px-4 py-2 font-sans text-xs uppercase tracking-wider transition-colors shrink-0 cursor-pointer ${
                 isActive
                   ? "bg-inverse-surface text-inverse-on-surface font-semibold"
                   : "bg-surface-container text-on-surface hover:bg-surface-container-high font-medium"

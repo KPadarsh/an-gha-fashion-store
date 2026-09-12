@@ -68,7 +68,8 @@ export function ProductGallery({
 
         {/* Horizontal Scroll Thumbnail Strip */}
         <div
-          className="w-full px-4 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar border-b border-[#2B2420]/10 bg-[#FAF6F1]"
+          className="w-full px-4 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar scroll-touch touch-pan-x overscroll-x-contain border-b border-[#2B2420]/10 bg-[#FAF6F1]"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           role="tablist"
           aria-label="Mobile Product Thumbnails"
         >
