@@ -3,6 +3,7 @@ import { Playfair_Display, Manrope } from "next/font/google";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartProvider } from "@/context/CartContext";
+import { OrderProvider } from "@/context/OrderContext";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -34,9 +35,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans bg-surface text-on-surface">
         <CartProvider>
-          <Header />
-          <div className="flex-1 flex flex-col">{children}</div>
-          <Footer />
+          <OrderProvider>
+            <Header />
+            <div className="flex-1 flex flex-col">{children}</div>
+            <Footer />
+          </OrderProvider>
         </CartProvider>
       </body>
     </html>

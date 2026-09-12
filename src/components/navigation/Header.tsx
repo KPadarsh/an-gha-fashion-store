@@ -15,7 +15,10 @@ export function Header() {
   const { totalCount } = useCart();
   const bagCount = totalCount;
 
-  if (pathname?.startsWith("/checkout")) {
+  if (
+    pathname?.startsWith("/checkout") ||
+    pathname?.startsWith("/order-confirmation")
+  ) {
     return null;
   }
 

@@ -7,7 +7,10 @@ import { usePathname } from "next/navigation";
 export function Footer() {
   const pathname = usePathname();
 
-  if (pathname?.startsWith("/checkout")) {
+  if (
+    pathname?.startsWith("/checkout") ||
+    pathname?.startsWith("/order-confirmation")
+  ) {
     return null;
   }
 

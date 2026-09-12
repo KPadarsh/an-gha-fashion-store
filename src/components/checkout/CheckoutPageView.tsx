@@ -3,7 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Sliders, ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useOrder } from "@/context/OrderContext";
+import { OrderItem } from "@/types/order";
 import { CheckoutHeader } from "@/components/checkout/CheckoutHeader";
 import { CheckoutProgressRail } from "@/components/checkout/CheckoutProgressRail";
 import { CheckoutForm, CheckoutFormData } from "@/components/checkout/CheckoutForm";
@@ -15,7 +18,9 @@ import { CheckoutEmptyState } from "@/components/checkout/CheckoutEmptyState";
 import { CheckoutFooter } from "@/components/checkout/CheckoutFooter";
 
 export function CheckoutPageView() {
-  const { items, totalCount } = useCart();
+  const router = useRouter();
+  const { items, totalCount, subtotal, clearCart } = useCart();
+  const { createOrder } = useOrder();
   const [isValidationStateActive, setIsValidationStateActive] = useState(false);
   const [simulatedEmpty, setSimulatedEmpty] = useState(false);
 
@@ -52,7 +57,62 @@ export function CheckoutPageView() {
   };
 
   const handlePlaceOrder = () => {
-    alert("Thank you. Your bespoke atelier order simulation has been received.");
+    const shippingCost = formData.deliveryMethod === "express" ? 45 : 0;
+    const finalTotal = subtotal + shippingCost;
+
+    const orderItems: OrderItem[] = items.map((item, index) => ({
+      id: item.id,
+      productId: item.productId,
+      name: item.name,
+      category: item.category || `Archive Specimen 0${index + 1}`,
+      specimenNumber: item.specimenNumber || `SPECIMEN N° 0${index + 1}`,
+      price: item.price,
+      currency: item.currency || "USD",
+      color: item.color,
+      size: item.size,
+      fabricDetails: item.fabricDetails,
+      careDetails: item.careDetails,
+      imageUrl: item.imageUrl,
+      quantity: item.quantity,
+      href: item.href,
+    }));
+
+    createOrder({
+      items: orderItems,
+      subtotal,
+      shippingCost,
+      shippingMethod: formData.deliveryMethod,
+      tax: 0,
+      total: finalTotal,
+      customer: {
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        country: formData.country === "IN" ? "India" : formData.country,
+        address: formData.address,
+        apartment: formData.apartment,
+        city: formData.city,
+        state: formData.state,
+        pin: formData.pin,
+        specialInstructions: formData.specialInstructions,
+      },
+      payment: {
+        method: formData.paymentMethod,
+        cardLast4: formData.cardNumber
+          ? formData.cardNumber.replace(/\s+/g, "").slice(-4)
+          : "4821",
+        cardBrand: "VISA",
+        cardName: formData.cardName,
+        upiId: formData.upiId,
+        is3DSecure: true,
+        billingSameAsShipping: formData.billingSameAsShipping,
+      },
+      status: "confirmed",
+    });
+
+    clearCart();
+    router.push("/order-confirmation");
   };
 
   const isCartEmpty = items.length === 0 || simulatedEmpty;
