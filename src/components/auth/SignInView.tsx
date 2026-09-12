@@ -9,11 +9,8 @@ import {
   Lock,
   ArrowRight,
   ShieldCheck,
-  Check,
   ArrowLeft,
-  Sparkles,
 } from "lucide-react";
-import { AuthHeader } from "./AuthHeader";
 import { AuthFooter } from "./AuthFooter";
 
 export function SignInView() {
@@ -31,21 +28,39 @@ export function SignInView() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF6F1] text-[#2B2420]">
-      <AuthHeader />
-
-      <main className="flex-1 w-full pt-20 bg-[#FAF6F1]">
+      <main className="flex-1 w-full bg-[#FAF6F1] flex flex-col justify-center py-8 lg:py-14">
         {/* DESKTOP VIEW (>= lg) */}
-        <div className="hidden lg:block w-full px-8 lg:px-12 py-12 lg:py-16">
+        <div className="hidden lg:block w-full px-8 lg:px-12">
+          {/* Top Brand Wordmark Strip */}
+          <div className="max-w-[1440px] mx-auto flex items-center justify-between pb-8 mb-4 border-b border-[#2B2420]/10">
+            <Link
+              href="/home"
+              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors select-none"
+            >
+              An Gha
+            </Link>
+            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#7A7168]">
+              Client Atelier — Sartorial Archive
+            </span>
+            <Link
+              href="/shop"
+              className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7A7168] hover:text-[#2B2420] transition-colors"
+            >
+              ← Return to Catalogue
+            </Link>
+          </div>
+
           <div className="max-w-[1440px] mx-auto grid grid-cols-12 gap-8 lg:gap-16 items-start">
             {/* Visual Column (Campaign Plate) */}
             <div className="col-span-6 flex flex-col">
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-[#F9EBE5] border border-[#2B2420]/10 shadow-xs">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvIfau7p6SJelshQOU1t2hCuBaXQr6GAg13TaxbxRLMaVSO3Kf4sxxqWyP7-xKaF_eBTvPpItebiSALw4lLZjiocmOItYknJP6LIsO9mfEdUcy8tNw2J6KHjATYD2L4ynW4aFpO8_i-BXhKjBHCdgB6CdRdWQS-g4UluKaKcg-Jny4RSiQhljIAvA2lbWutkSOUlNwEiWflSi1w3dQ6gDW7LL3xa1fIdZKpfr3nedBuKAVepWIzniBzw"
-                  alt="Editorial fashion campaign photograph of a poised woman wearing a luxurious oversized unstructured camel wool wrap coat"
+                  src="/images/signIn-image.png"
+                  alt="Editorial fashion campaign photograph of An Gha atelier wrap coat"
                   fill
                   quality={95}
                   priority
+                  unoptimized
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="w-full h-full object-cover object-center filter contrast-[0.98] brightness-[0.99]"
                 />
@@ -223,7 +238,20 @@ export function SignInView() {
         </div>
 
         {/* MOBILE VIEW (< lg) */}
-        <div className="block lg:hidden px-4 sm:px-6 py-8 w-full max-w-[420px] mx-auto flex flex-col">
+        <div className="block lg:hidden px-4 sm:px-6 py-6 w-full max-w-[420px] mx-auto flex flex-col">
+          {/* Brand Logo Header */}
+          <div className="flex flex-col items-center justify-center text-center select-none mb-6">
+            <Link
+              href="/home"
+              className="font-serif text-2xl tracking-[0.18em] text-[#2B2420] leading-none hover:text-[#894B37] transition-colors"
+            >
+              An Gha
+            </Link>
+            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#7A7168] mt-1">
+              Client Atelier — Sartorial Archive
+            </span>
+          </div>
+
           {/* Folio & Editorial Header */}
           <div className="flex flex-col mb-6">
             <div className="flex items-center justify-between mb-2">
@@ -371,7 +399,7 @@ export function SignInView() {
             </div>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-1.5 mt-3 font-sans text-[11px] font-semibold tracking-[0.18em] text-[#2B2420] uppercase underline underline-offset-4 hover:text-[#894B37] transition-colors"
+              className="inline-flex items-center gap-1.5 mt-3 font-sans text-[11px] font-semibold tracking-[0.18em] text-[#2B2420] underline underline-offset-4 hover:text-[#894B37] transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>RETURN TO ARCHIVE COLLECTION</span>

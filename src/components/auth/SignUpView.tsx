@@ -6,18 +6,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Mail,
-  Lock,
   ArrowRight,
   ShieldCheck,
-  Check,
   Eye,
   EyeOff,
   Info,
   Headphones,
-  ArrowLeft,
   Unlock,
 } from "lucide-react";
-import { AuthHeader } from "./AuthHeader";
 import { AuthFooter } from "./AuthFooter";
 
 export function SignUpView() {
@@ -39,11 +35,28 @@ export function SignUpView() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF6F1] text-[#2B2420]">
-      <AuthHeader />
-
-      <main className="flex-1 w-full pt-20 bg-[#FAF6F1]">
+      <main className="flex-1 w-full bg-[#FAF6F1] flex flex-col justify-center py-8 lg:py-14">
         {/* DESKTOP VIEW (>= lg) */}
-        <div className="hidden lg:block w-full px-8 lg:px-12 py-12 lg:py-16">
+        <div className="hidden lg:block w-full px-8 lg:px-12">
+          {/* Top Brand Wordmark Strip */}
+          <div className="max-w-[1400px] mx-auto flex items-center justify-between pb-8 mb-4 border-b border-[#2B2420]/10">
+            <Link
+              href="/home"
+              className="font-serif text-2xl lg:text-3xl font-normal tracking-[0.18em] text-[#2B2420] hover:text-[#894B37] transition-colors select-none"
+            >
+              An Gha
+            </Link>
+            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#7A7168]">
+              Client Atelier — Sartorial Archive
+            </span>
+            <Link
+              href="/shop"
+              className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7A7168] hover:text-[#2B2420] transition-colors"
+            >
+              ← Return to Catalogue
+            </Link>
+          </div>
+
           <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* LEFT COLUMN: Editorial Photography & Monograph Narrative (5 cols) */}
             <aside className="col-span-5 flex flex-col">
@@ -51,11 +64,12 @@ export function SignUpView() {
               <div className="relative bg-[#FFFFFF] border border-[#2B2420]/10 shadow-xs overflow-hidden">
                 <div className="aspect-[3/4] w-full relative overflow-hidden bg-[#EDE0D9]">
                   <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaasZdZNjVPN4ghDeokmkE-8-c3GZfq_HGFX72KwDVI7LHMGcyQ81McxuJjwvJLQChVlIIVtmEEUjWI8BlUPKY7cYqziENv0toemL9ZofZm_t_QZZo_DsabuUY8ooofkRaP705xVBEolamFEk8FK8a9xRYrKtVxIp1Xm3X-LnPrsGyDSQ-2ZN9gcKnA1L65jJRmbRGwA1yRlguYvy2Wn6gTRPwesFYpwPSOujyS5H9d_HMw1AXOZWjRA"
-                    alt="Archival Monograph Editorial"
+                    src="/images/signup-image.png"
+                    alt="Archival Monograph Editorial plate for An Gha atelier"
                     fill
                     quality={95}
                     priority
+                    unoptimized
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-[1.02]"
                   />
@@ -354,7 +368,20 @@ export function SignUpView() {
         </div>
 
         {/* MOBILE VIEW (< lg) */}
-        <div className="block lg:hidden px-4 sm:px-6 py-8 w-full max-w-[420px] mx-auto flex flex-col">
+        <div className="block lg:hidden px-4 sm:px-6 py-6 w-full max-w-[420px] mx-auto flex flex-col">
+          {/* Brand Logo Header */}
+          <div className="flex flex-col items-center justify-center text-center select-none mb-6">
+            <Link
+              href="/home"
+              className="font-serif text-2xl tracking-[0.18em] text-[#2B2420] leading-none hover:text-[#894B37] transition-colors"
+            >
+              An Gha
+            </Link>
+            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#7A7168] mt-1">
+              Client Atelier — Sartorial Archive
+            </span>
+          </div>
+
           {/* Top Editorial Header & Ledger Meta */}
           <div className="flex flex-col mb-6">
             <div className="flex items-center justify-between mb-2">
@@ -547,10 +574,11 @@ export function SignUpView() {
           <div className="my-6 p-4 bg-[#FFF1EA] flex items-center gap-3.5 border border-[#2B2420]/10">
             <div className="w-14 h-18 shrink-0 relative overflow-hidden bg-[#F9EBE5] border border-[#2B2420]/10">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaasZdZNjVPN4ghDeokmkE-8-c3GZfq_HGFX72KwDVI7LHMGcyQ81McxuJjwvJLQChVlIIVtmEEUjWI8BlUPKY7cYqziENv0toemL9ZofZm_t_QZZo_DsabuUY8ooofkRaP705xVBEolamFEk8FK8a9xRYrKtVxIp1Xm3X-LnPrsGyDSQ-2ZN9gcKnA1L65jJRmbRGwA1yRlguYvy2Wn6gTRPwesFYpwPSOujyS5H9d_HMw1AXOZWjRA"
+                src="/images/signup-image.png"
                 alt="Architectural fabric detail"
                 fill
                 quality={85}
+                unoptimized
                 className="object-cover grayscale-[20%]"
               />
             </div>
